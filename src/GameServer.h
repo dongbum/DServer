@@ -4,5 +4,12 @@
 
 class GameServer : public Server
 {
+public:
+	GameServer(void);
+	virtual ~GameServer(void);
+
+	void Start(void);
+
+private:
 
 };

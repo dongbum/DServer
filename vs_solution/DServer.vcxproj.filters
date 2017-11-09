@@ -30,6 +30,9 @@
     <ClCompile Include="..\src\dserver\basic_socket.cpp">
       <Filter>소스 파일\dserver</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\GameServer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\dserver\boost.h">

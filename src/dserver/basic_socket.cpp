@@ -12,6 +12,10 @@ BasicSocket::~BasicSocket(void)
 	OnClose();
 }
 
+void BasicSocket::StartHandler(void)
+{
+}
+
 void BasicSocket::OnReceive(void)
 {
 	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);
