@@ -1,0 +1,6 @@
+vs_solution/ipch/
+vs_solution/.vs/
+*.db
+*.opendb
+*.obj
+vs_solution/x64/
