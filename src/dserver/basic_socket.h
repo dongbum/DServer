@@ -7,8 +7,6 @@ public:
 	BasicSocket(IoService& io_service);
 	virtual ~BasicSocket(void);
 
-	void StartHandler(void);
-
 	void OnReceive(void);
 	void OnReceiveHandler(const ErrorCode& error, size_t bytes_transferred);
 

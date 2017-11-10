@@ -24,6 +24,8 @@
 
 #include "boost.h"
 
+#include "header.h"
+#include "linear_buffer.h"
 #include "basic_socket.h"
 #include "basic_service.h"
 #include "basic_acceptor.h"

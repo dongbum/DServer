@@ -75,7 +75,14 @@ void BasicAcceptor<T>::AcceptHandler(std::shared_ptr<T> socket_ptr, const ErrorC
 	std::cout << "Accept" << std::endl;
 	if (0 == ec)
 	{
-		socket_ptr->StartHandler();
+		try
+		{
+			socket_ptr->OnReceive();
+		}
+		catch (...)
+		{
+
+		}
 	}
 	else
 	{

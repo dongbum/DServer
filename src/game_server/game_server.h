@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dserver/define.h"
+#include "../dserver/define.h"
 #include "game_socket.h"
 
 class GameServer : public Server<GameSocket>

@@ -12,14 +12,8 @@ BasicSocket::~BasicSocket(void)
 	OnClose();
 }
 
-void BasicSocket::StartHandler(void)
-{
-}
-
 void BasicSocket::OnReceive(void)
 {
-	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);
-
 	socket_.async_read_some(
 		boost::asio::buffer(recv_buffer_),
 		boost::bind(
@@ -33,17 +27,23 @@ void BasicSocket::OnReceive(void)
 
 void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transferred)
 {
-	if (error)
+	std::cout << "OnReceive bytes_transferred:" << bytes_transferred << std::endl;
+
+	if (error || bytes_transferred < sizeof(Header))
 	{
 		if (boost::asio::error::eof)
 		{
-			// client closed.
+			std::cout << "Client connection end." << std::endl;
 		}
 
 		OnClose();
 		return;
 	}
 
+	Header header;
+	int remain_position = 0;
+
+	OnPacket();
 
 	OnReceive();
 }

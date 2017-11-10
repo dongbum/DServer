@@ -1,4 +1,4 @@
-#include "GameServer.h"
+#include "game_server.h"
 
 GameServer::GameServer(void)
 {

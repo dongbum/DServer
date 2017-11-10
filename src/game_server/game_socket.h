@@ -9,5 +9,10 @@ public:
 
 	};
 
+	void OnPacket(void)
+	{
+		std::cout << "GameSocket OnPacket" << std::endl;
+	};
+
 private:
 };
