@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\dserver\basic_acceptor.cpp" />
     <ClCompile Include="..\src\dserver\basic_socket.cpp" />
     <ClCompile Include="..\src\dserver\server.cpp" />
     <ClCompile Include="..\src\GameServer.cpp" />
@@ -121,7 +120,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
     </ClCompile>
