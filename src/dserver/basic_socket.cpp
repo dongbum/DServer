@@ -4,7 +4,7 @@ BasicSocket::BasicSocket(IoService& io_service)
 	: socket_(io_service)
 {
 	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);
-	memset(send_buffer_, 0, RECV_BUFFER_SIZE);
+	memset(send_buffer_, 0, SEND_BUFFER_SIZE);
 }
 
 BasicSocket::~BasicSocket(void)
@@ -40,8 +40,13 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 		return;
 	}
 
+	buffer_manager_.Push(recv_buffer_, bytes_transferred);
+
 	Header header;
-	int remain_position = 0;
+	buffer_manager_.Pop(&header, sizeof(header));
+
+	char body[1024] = { 0, };
+	buffer_manager_.Pop(body, header.total_length_);
 
 	OnPacket();
 

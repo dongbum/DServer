@@ -7,7 +7,7 @@ public:
 	Server(void);
 	virtual ~Server(void);
 
-	void Start(int thread_pool_size);
+	void Start(int thread_pool_size = 0);
 	void Stop(void);
 
 private:
@@ -40,7 +40,7 @@ Server<T>::~Server(void)
 }
 
 template<typename T>
-void Server<T>::Start(int thread_pool_size)
+void Server<T>::Start(int thread_pool_size /* = 0 */)
 {
 	acceptor_.Start();
 

@@ -7,7 +7,7 @@ public:
 		: read_position_(0)
 		, write_position_(0)
 	{
-
+		
 	};
 
 	char* GetBuffer(void)
@@ -15,15 +15,22 @@ public:
 		return &buffer_[0];
 	};
 
-	char* GetWritePtr(void) { return &buffer_[write_position_]; };
-	char* GetReadPtr(void) { return &buffer_[read_position_]; };
-	
-	void SetWritePtr(uint32_t write_position) { write_position_ += write_position; };
-	void SetReadPtr(uint32_t read_position) { read_position_ += read_position; };
+	void Push(char* data, int size)
+	{
+		memcpy(&buffer_[write_position_], data, size);
+		write_position_ += size;
+	};
+
+	void Pop(OUT void* target, int size)
+	{
+		memcpy(target, &buffer_[0], size);
+		memmove(&buffer_[0], &buffer_[size], write_position_ - size);
+		write_position_ -= size;
+	};
 
 	void Reset(void)
 	{
-		buffer_.clear();
+		memset(buffer_, 0, sizeof(RECV_BUFFER_SIZE));
 		read_position_ = 0;
 		write_position_ = 0;
 	};
@@ -31,5 +38,5 @@ public:
 private:
 	uint32_t read_position_;
 	uint32_t write_position_;
-	std::vector<char> buffer_;
+	char buffer_[RECV_BUFFER_SIZE];
 };
