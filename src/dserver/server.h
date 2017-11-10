@@ -13,8 +13,9 @@ private:
 	void CreateThreadPool(void);
 
 private:
+	IoService io_service_;
+
 	BasicAcceptor<BasicSocket> acceptor_;
 
-	IoService io_service_;
 	boost::thread_group io_thread_group_;
 };
