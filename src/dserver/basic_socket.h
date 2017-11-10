@@ -17,7 +17,9 @@ public:
 
 	void OnClose(void);
 
-	virtual void OnPacket(void) = 0;
+	virtual void OnPacket(void);
+
+	Socket& GetSocket(void) { return socket_; };
 
 protected:
 	std::shared_ptr<Socket> socket_ptr_;

@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\dserver\basic_socket.cpp" />
-    <ClCompile Include="..\src\dserver\server.cpp" />
     <ClCompile Include="..\src\GameServer.cpp" />
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
@@ -32,6 +31,7 @@
     <ClInclude Include="..\src\dserver\define.h" />
     <ClInclude Include="..\src\dserver\server.h" />
     <ClInclude Include="..\src\GameServer.h" />
+    <ClInclude Include="..\src\game_socket.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4746DCEF-2EC0-4515-BE2E-47C3C91266C9}</ProjectGuid>

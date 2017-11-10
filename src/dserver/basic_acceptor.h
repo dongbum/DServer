@@ -12,7 +12,7 @@ public:
 
 private:
 	bool Init(void);
-	void AcceptHandler(std::shared_ptr<Socket> socket_ptr, const ErrorCode& ec);
+	void AcceptHandler(std::shared_ptr<T> socket_ptr, const ErrorCode& ec);
 
 private:
 	IoService& io_service_;
@@ -26,9 +26,10 @@ private:
 template<typename T>
 BasicAcceptor<T>::BasicAcceptor(IoService& io_service, const unsigned short server_port)
 	: io_service_(io_service)
-	, acceptor_(io_service, EndPoint(TCP_V4, server_port))
+	, acceptor_(io_service_, EndPoint(TCP_V4, server_port))
 	, is_stopped_(false)
 {
+
 }
 
 template<typename T>
@@ -53,33 +54,37 @@ void BasicAcceptor<T>::Stop(void)
 template<typename T>
 bool BasicAcceptor<T>::Init(void)
 {
-	std::shared_ptr<Socket> socket_ptr(new Socket(io_service_));
+	std::shared_ptr<T> socket_ptr(new T(io_service_));
 
 	acceptor_.async_accept(
-		*socket_ptr,
+		socket_ptr->GetSocket(),
 		boost::bind(
-			&BasicAcceptor::AcceptHandler,
+			&BasicAcceptor<T>::AcceptHandler,
 			this,
 			socket_ptr,
 			boost::asio::placeholders::error
-		));
+		)
+	);
 
-	return false;
+	return true;
 }
 
 template<typename T>
-void BasicAcceptor<T>::AcceptHandler(std::shared_ptr<Socket> socket_ptr, const ErrorCode& ec)
+void BasicAcceptor<T>::AcceptHandler(std::shared_ptr<T> socket_ptr, const ErrorCode& ec)
 {
+	std::cout << "Accept" << std::endl;
 	if (0 == ec)
 	{
-		// (new T(socket_ptr))->StartHandler();
+		socket_ptr->StartHandler();
 	}
 	else
 	{
 
 	}
 
-	if (is_stopped_)
+	if (false == is_stopped_.load())
 		Init();
+	else
+		acceptor_.close();
 }
 

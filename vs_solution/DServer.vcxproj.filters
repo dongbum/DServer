@@ -21,9 +21,6 @@
     <ClCompile Include="..\src\main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\dserver\server.cpp">
-      <Filter>소스 파일\dserver</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\dserver\basic_socket.cpp">
       <Filter>소스 파일\dserver</Filter>
     </ClCompile>
@@ -51,6 +48,9 @@
       <Filter>소스 파일\dserver</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GameServer.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game_socket.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
