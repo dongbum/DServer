@@ -19,11 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\dserver\base_protocol.cpp" />
     <ClCompile Include="..\src\dserver\basic_socket.cpp" />
+    <ClCompile Include="..\src\game_server\game_protocol.cpp" />
     <ClCompile Include="..\src\game_server\game_server.cpp" />
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\dserver\base_protocol.h" />
     <ClInclude Include="..\src\dserver\basic_acceptor.h" />
     <ClInclude Include="..\src\dserver\basic_service.h" />
     <ClInclude Include="..\src\dserver\basic_socket.h" />
@@ -32,6 +35,7 @@
     <ClInclude Include="..\src\dserver\header.h" />
     <ClInclude Include="..\src\dserver\linear_buffer.h" />
     <ClInclude Include="..\src\dserver\server.h" />
+    <ClInclude Include="..\src\game_server\game_protocol.h" />
     <ClInclude Include="..\src\game_server\game_server.h" />
     <ClInclude Include="..\src\game_server\game_socket.h" />
   </ItemGroup>
@@ -124,8 +128,7 @@
       <AdditionalIncludeDirectories>D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>
       </MultiProcessorCompilation>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>dserver/define.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

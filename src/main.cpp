@@ -1,3 +1,4 @@
+#include "dserver/define.h"
 #include "game_server/game_server.h"
 
 int main(void)

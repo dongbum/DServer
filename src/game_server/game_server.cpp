@@ -1,4 +1,8 @@
+
+#include "../dserver/define.h"
+#include "game_socket.h"
 #include "game_server.h"
+
 
 GameServer::GameServer(void)
 {

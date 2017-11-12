@@ -45,6 +45,8 @@ void Server<T>::Start(int thread_pool_size /* = 0 */)
 	acceptor_.Start();
 
 	CreateThreadPool();
+
+	std::cout << "Server Start" << std::endl;
 }
 
 template<typename T>

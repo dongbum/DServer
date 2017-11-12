@@ -3,6 +3,7 @@
 #include <iostream>
 #include <atomic>
 #include <deque>
+#include <memory>
 
 #ifndef _WIN32_WINNT         
 #define _WIN32_WINNT	0x0501
@@ -30,4 +31,5 @@
 #include "basic_socket.h"
 #include "basic_service.h"
 #include "basic_acceptor.h"
+#include "base_protocol.h"
 #include "server.h"
