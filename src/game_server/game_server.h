@@ -1,7 +1,7 @@
 #pragma once
 
-#include "game_socket.h"
 #include "game_protocol.h"
+#include "game_socket.h"
 
 class GameServer : public Server<GameSocket>
 {

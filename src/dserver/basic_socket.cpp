@@ -99,5 +99,5 @@ void BasicSocket::OnClose(void)
 
 void BasicSocket::OnPacket(void)
 {
-	std::cout << "OnPacket" << std::endl;
+	std::cout << "BasicSocket OnPacket" << std::endl;
 }

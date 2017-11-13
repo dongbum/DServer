@@ -8,7 +8,7 @@ BaseProtocol::~BaseProtocol(void)
 {
 }
 
-bool BaseProtocol::ExecuteProtocol(std::shared_ptr<BasicSocket> socket, uint32_t protocol_no, unsigned char * data, uint32_t data_length)
+bool BaseProtocol::ExecuteProtocol(std::shared_ptr<BasicSocket> socket, uint32_t protocol_no, char * data, uint32_t data_length)
 {
 	BaseProtocol::ProtocolMap::iterator iter = protocol_map.find(protocol_no);
 	if (iter == protocol_map.end())

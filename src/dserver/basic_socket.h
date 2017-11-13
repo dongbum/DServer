@@ -18,6 +18,7 @@ public:
 	virtual void OnPacket(void);
 
 	Socket& GetSocket(void) { return socket_; };
+	LinearBuffer& GetBufferManager(void) { return buffer_manager_; };
 
 protected:
 	std::shared_ptr<Socket> socket_ptr_;
