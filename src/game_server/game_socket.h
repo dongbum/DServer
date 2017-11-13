@@ -11,13 +11,28 @@ public:
 
 	};
 
-	void OnPacket(void)
+	void OnPacket(char* packet, int size)
 	{
-		std::cout << "GameSocket OnPacket" << std::endl;
+		std::cout << "GameSocket OnPacket size:" << size << std::endl;
 		
-		// bool BaseProtocol::ExecuteProtocol(std::shared_ptr<BasicSocket> socket, uint32_t protocol_no, unsigned char * data, uint32_t data_length)
-		ExecuteProtocol(shared_from_this(), 1, GetBufferManager().GetBuffer(), 12);
+		buffer_manager_.Push(packet, size);
+
+		Header header;
+		buffer_manager_.Pop(&header, sizeof(header));
+
+		std::cout << "Header.TotalLength : " << header.total_length_ << std::endl;
+		std::cout << "Header.ProtocolNo : " << header.protocol_no_ << std::endl;
+		std::cout << "Header.DataLength : " << header.data_length_ << std::endl;
+
+		char body[1024] = { 0, };
+		buffer_manager_.Pop(body, header.data_length_);
+
+		ExecuteProtocol(shared_from_this(), header.protocol_no_, body, header.data_length_);
 	};
 
+	LinearBuffer& GetBufferManager(void) { return buffer_manager_; };
+
 private:
+	LinearBuffer buffer_manager_;
+
 };

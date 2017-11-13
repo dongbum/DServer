@@ -40,19 +40,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 		return;
 	}
 
-	buffer_manager_.Push(recv_buffer_, bytes_transferred);
-
-	Header header;
-	buffer_manager_.Pop(&header, sizeof(header));
-
-	std::cout << "Header.TotalLength : " << header.total_length_ << std::endl;
-	std::cout << "Header.ProtocolNo : " << header.protocol_no_ << std::endl;
-	std::cout << "Header.DataLength : " << header.data_length_ << std::endl;
-
-	char body[1024] = { 0, };
-	buffer_manager_.Pop(body, header.data_length_);
-
-	OnPacket();
+	OnPacket(recv_buffer_, bytes_transferred);
 
 	OnReceive();
 }
@@ -97,7 +85,7 @@ void BasicSocket::OnClose(void)
 	socket_.close();
 }
 
-void BasicSocket::OnPacket(void)
+void BasicSocket::OnPacket(char* packet, int size)
 {
 	std::cout << "BasicSocket OnPacket" << std::endl;
 }

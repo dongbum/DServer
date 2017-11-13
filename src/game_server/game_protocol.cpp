@@ -18,7 +18,7 @@ void GameProtocol::Init(void)
 
 uint32_t GameProtocol::Echo(std::shared_ptr<BasicSocket> session, uint32_t& protocol_no, char* data, uint32_t data_length)
 {
-
+	std::cout << "Protocol Echo" << std::endl;
 
 	return 0;
 }

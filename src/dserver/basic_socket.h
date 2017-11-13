@@ -15,11 +15,10 @@ public:
 
 	void OnClose(void);
 
-	virtual void OnPacket(void);
+	virtual void OnPacket(char* packet, int size);
 
 	Socket& GetSocket(void) { return socket_; };
-	LinearBuffer& GetBufferManager(void) { return buffer_manager_; };
-
+	
 protected:
 	std::shared_ptr<Socket> socket_ptr_;
 
@@ -29,5 +28,5 @@ private:
 	char recv_buffer_[RECV_BUFFER_SIZE];
 	char send_buffer_[SEND_BUFFER_SIZE];
 
-	LinearBuffer buffer_manager_;
+	
 };
