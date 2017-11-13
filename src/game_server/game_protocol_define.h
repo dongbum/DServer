@@ -1,0 +1,8 @@
+#pragma once
+
+
+enum GAME_PROTOCOL
+{
+	GAME_PROTOCOL_ECHO = 0,
+	GAME_PROTOCOL_MAX,
+};

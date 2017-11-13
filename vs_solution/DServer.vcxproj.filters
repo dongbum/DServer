@@ -74,5 +74,8 @@
     <ClInclude Include="..\src\dserver\base_protocol.h">
       <Filter>소스 파일\dserver</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game_server\game_protocol_define.h">
+      <Filter>소스 파일\game_server</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

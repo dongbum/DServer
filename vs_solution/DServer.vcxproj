@@ -36,6 +36,7 @@
     <ClInclude Include="..\src\dserver\linear_buffer.h" />
     <ClInclude Include="..\src\dserver\server.h" />
     <ClInclude Include="..\src\game_server\game_protocol.h" />
+    <ClInclude Include="..\src\game_server\game_protocol_define.h" />
     <ClInclude Include="..\src\game_server\game_server.h" />
     <ClInclude Include="..\src\game_server\game_socket.h" />
   </ItemGroup>
