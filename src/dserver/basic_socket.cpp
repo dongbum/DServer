@@ -59,6 +59,9 @@ void BasicSocket::OnSend(int size, char* data)
 	char send_data[SEND_BUFFER_SIZE] = { 0, };
 	int send_data_size = 0;
 
+	memcpy(send_data, data, size);
+	send_data_size = size;
+
 	boost::asio::async_write(socket_,
 		boost::asio::buffer(send_data, send_data_size),
 		boost::bind(
@@ -72,7 +75,7 @@ void BasicSocket::OnSend(int size, char* data)
 
 void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred)
 {
-
+	std::cout << "OnSendHandler" << std::endl;
 }
 
 void BasicSocket::OnClose(void)
