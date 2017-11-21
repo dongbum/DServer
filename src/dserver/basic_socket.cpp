@@ -83,11 +83,14 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 
 void BasicSocket::OnSend(int size, char* data)
 {
+	std::lock_guard<std::mutex> lock(send_mutex_);
+
 	ErrorCode error_code;
 	EndPoint end_point = socket_.remote_endpoint(error_code);
 
 	if (error_code)
 	{
+		std::cout << "OnSend ErrorCode:[" << error_code.value() << "] message:[" << error_code.message() << "]" << std::endl;
 		OnClose();
 		return;
 	}
