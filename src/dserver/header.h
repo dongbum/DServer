@@ -18,5 +18,6 @@ struct Header
 	int32_t			GetDataLength(void) { return data_length_; };
 
 	void			SetTotalLength(int32_t total_length) { total_length_ = total_length; };
+	void			SetProtocolNo(int32_t protocol_no) { protocol_no_ = protocol_no; };
 	void			SetDataLength(int32_t data_length) { data_length_ = data_length; };
 };
