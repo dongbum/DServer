@@ -27,6 +27,8 @@
 
 #include "boost.h"
 
+#include "thread_safe_queue.h"
+#include "object_pool.h"
 #include "header.h"
 #include "linear_buffer.h"
 #include "basic_socket.h"
