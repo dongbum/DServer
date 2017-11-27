@@ -3,6 +3,9 @@
 #include <boost/asio.hpp>
 #include <boost/thread.hpp>
 
+#include <boost/pool/singleton_pool.hpp>
+#include <boost/pool/pool_alloc.hpp>
+
 #define TCP_V4	boost::asio::ip::address_v4::any()
 #define TCP_V6	boost::asio::ip::address_v6::any()
 
