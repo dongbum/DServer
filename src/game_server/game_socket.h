@@ -5,8 +5,9 @@
 class GameSocket : public BasicSocket, public GameProtocol
 {
 public:
-	GameSocket(IoService& io_service)
+	GameSocket(IoService& io_service, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool)
 		: BasicSocket(io_service)
+		, session_pool_(session_pool)
 	{
 		__super::InitProtocol();
 	};
@@ -27,4 +28,11 @@ public:
 		ExecuteProtocol(shared_from_this(), header.protocol_no_, body, header.data_length_);
 	};
 
+	void OnClose(void)
+	{
+		session_pool_.ReleasePoolObject(shared_from_this());
+		__super::OnClose();
+	};
+private:
+	ObjectPool<std::shared_ptr<BasicSocket>>& session_pool_;
 };

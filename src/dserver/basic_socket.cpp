@@ -12,6 +12,8 @@ BasicSocket::BasicSocket(IoService& io_service)
 BasicSocket::~BasicSocket(void)
 {
 	OnClose();
+
+	SendBufferPool::purge_memory();
 }
 
 void BasicSocket::OnReceive(void)
@@ -31,7 +33,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 {
 	std::cout << "OnReceive bytes_transferred:" << bytes_transferred << std::endl;
 
-  	if (error || bytes_transferred < sizeof(Header))
+  	if (error)
 	{
 		if (boost::asio::error::eof)
 		{
@@ -95,7 +97,7 @@ void BasicSocket::OnSend(int size, char* data)
 		return;
 	}
 
-	char send_data[SEND_BUFFER_SIZE] = { 0, };
+	unsigned char* send_data = static_cast<unsigned char*>(SendBufferPool::malloc());
 	int send_data_size = 0;
 
 	memcpy(send_data, data, size);
@@ -107,14 +109,17 @@ void BasicSocket::OnSend(int size, char* data)
 			&BasicSocket::OnSendHandler,
 			shared_from_this(),
 			boost::asio::placeholders::error,
-			boost::asio::placeholders::bytes_transferred
+			boost::asio::placeholders::bytes_transferred,
+			send_data
 		)
 	);
 }
 
-void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred)
+void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred, unsigned char* send_data)
 {
 	std::cout << "OnSendHandler" << std::endl;
+
+	SendBufferPool::free(send_data);
 }
 
 void BasicSocket::OnClose(void)
@@ -125,6 +130,8 @@ void BasicSocket::OnClose(void)
 	ErrorCode ignored_error;
 	socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_error);
 	socket_.close();
+
+	
 }
 
 void BasicSocket::OnPacket(char* packet, int size)

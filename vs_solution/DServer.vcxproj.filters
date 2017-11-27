@@ -77,5 +77,11 @@
     <ClInclude Include="..\src\game_server\game_server.h">
       <Filter>소스 파일\game_server</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\dserver\object_pool.h">
+      <Filter>소스 파일\dserver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\thread_safe_queue.h">
+      <Filter>소스 파일\dserver</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
