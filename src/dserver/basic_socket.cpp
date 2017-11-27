@@ -125,6 +125,8 @@ void BasicSocket::OnClose(void)
 	ErrorCode ignored_error;
 	socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_error);
 	socket_.close();
+
+	
 }
 
 void BasicSocket::OnPacket(char* packet, int size)

@@ -4,9 +4,12 @@ template<typename TaskType>
 class ThreadSafeQueue
 {
 public:
-	void Push(const TaskType& type)
+	void Push(const TaskType& task)
 	{
 		std::unique_lock<std::mutex> lock(queue_mutex_);
+		queue_.push_back(task);
+		lock.unlock();
+		cond_var_.notify_one();
 	}
 
 	TaskType TryPop(void)

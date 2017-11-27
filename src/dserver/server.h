@@ -16,21 +16,28 @@ private:
 private:
 	IoService io_service_;
 	std::shared_ptr<Work> work_ptr_;
-	BasicAcceptor<T> acceptor_;
+	BasicAcceptor<BasicSocket> acceptor_;
 
 	boost::thread_group io_thread_group_;
 
 	uint32_t thread_pool_size_;
+	ObjectPool<std::shared_ptr<BasicSocket>> session_pool_;
 };
 
 
 
 template<typename T>
 Server<T>::Server(void)
-	: acceptor_(io_service_, 20000)
+	: acceptor_(io_service_, session_pool_, 20000)
 	, work_ptr_(new Work(io_service_))
 	, thread_pool_size_(0)
 {
+	for (uint32_t i = 0; i < 3000; ++i)
+	{
+		
+		std::shared_ptr<BasicSocket> object_ptr = std::make_shared<T>(io_service_, session_pool_);
+		session_pool_.PushObject(object_ptr);
+	}
 }
 
 template<typename T>
