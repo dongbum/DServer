@@ -33,7 +33,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 {
 	std::cout << "OnReceive bytes_transferred:" << bytes_transferred << std::endl;
 
-  	if (error || bytes_transferred < sizeof(Header))
+  	if (error)
 	{
 		if (boost::asio::error::eof)
 		{
