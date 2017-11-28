@@ -14,9 +14,9 @@ public:
 	void OnReceiveHandler(const ErrorCode& error, size_t bytes_transferred);
 
 	void OnSend(int size, char* data);
-	void OnSendHandler(const ErrorCode& error, size_t bytes_transferred, unsigned char* send_data);
+	void OnSendHandler(const ErrorCode& error, size_t bytes_transferred, char* send_data);
 
-	void OnClose(void);
+	virtual void OnClose(void);
 
 	virtual void OnPacket(char* packet, int size);
 
@@ -24,14 +24,12 @@ public:
 	
 protected:
 	std::shared_ptr<Socket> socket_ptr_;
-	char packet_buffer_[RECV_BUFFER_SIZE];
-	int32_t remain_size_;
 
-private:
 	Socket socket_;
+
+	char packet_buffer_[RECV_BUFFER_SIZE * 2];
+	int32_t remain_size_;
 
 	char recv_buffer_[RECV_BUFFER_SIZE];
 	char send_buffer_[SEND_BUFFER_SIZE];
-	
-	std::mutex send_mutex_;
 };
