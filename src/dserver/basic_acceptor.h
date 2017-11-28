@@ -31,7 +31,7 @@ BasicAcceptor<T>::BasicAcceptor(IoService& io_service, ObjectPool<std::shared_pt
 	, session_pool_(session_pool)
 	, is_stopped_(false)
 {
-
+	acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
 }
 
 template<typename T>
