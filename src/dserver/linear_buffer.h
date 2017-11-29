@@ -1,42 +1,70 @@
 #pragma once
 
+template< std::size_t BUF_SIZE >
 class LinearBuffer
 {
 public:
-	LinearBuffer(void)
-		: read_position_(0)
-		, write_position_(0)
-	{
-		
-	};
+	LinearBuffer(void)				{ ClearBuf(); }
+	virtual ~LinearBuffer(void)	{ ClearBuf(); }
 
-	char* GetBuffer(void)
-	{
-		return &buffer_[0];
-	};
+	void MoveBufferPtr(void);
+	bool MoveWritePos(const uint16_t& nMovePos);
+	bool MoveReadPos(const uint16_t& nMovePos);
 
-	void Push(char* data, int size)
-	{
-		memcpy(&buffer_[write_position_], data, size);
-		write_position_ += size;
-	};
+	void	ClearBuf(void)			{ clearReadPos(), clearWritePos(); }
 
-	void Pop(OUT void* target, int size)
-	{
-		memcpy(target, &buffer_[0], size);
-		memmove(&buffer_[0], &buffer_[size], write_position_ - size);
-		write_position_ -= size;
-	};
+	uint16_t	GetUseSize(void)		{ return m_nWritePos - m_nReadPos; }
+	uint16_t	GetFreeSize(void)		{ return BUF_SIZE - GetUseSize(); }
 
-	void Reset(void)
-	{
-		memset(buffer_, 0, sizeof(RECV_BUFFER_SIZE));
-		read_position_ = 0;
-		write_position_ = 0;
-	};
+	char*	GetReadBufferPtr(void)	{ return &m_szBuf[m_nReadPos]; }
+	char*	GetWriteBufferPtr(void)	{ return &m_szBuf[m_nWritePos]; }
+
+protected:
+	void clearReadPos(void)			{ m_nReadPos = 0; }
+	void clearWritePos(void)		{ m_nWritePos = 0; }
 
 private:
-	uint32_t read_position_;
-	uint32_t write_position_;
-	char buffer_[RECV_BUFFER_SIZE];
+	LinearBuffer(const LinearBuffer& rhs);
+	LinearBuffer& operator=(const LinearBuffer& rhs);
+
+protected:
+	char		m_szBuf[BUF_SIZE];
+	uint16_t	m_nReadPos;
+	uint16_t	m_nWritePos;
 };
+
+
+template<std::size_t BUF_SIZE>
+void LinearBuffer<BUF_SIZE>::MoveBufferPtr(void)
+{
+	if ( m_nReadPos <= 0 )
+		return;
+
+	m_nWritePos -= m_nReadPos;
+	if ( 0 < m_nWritePos )	// no move(clear all packet)
+		memmove(&m_szBuf[0], &m_szBuf[m_nReadPos], m_nWritePos);
+
+	clearReadPos();
+}
+
+
+template<std::size_t BUF_SIZE>
+bool LinearBuffer<BUF_SIZE>::MoveWritePos(const uint16_t& nMovePos)
+{
+	if ( BUF_SIZE < m_nWritePos+nMovePos )
+		return false;
+
+	m_nWritePos += nMovePos;
+	return true;
+}
+
+
+template<std::size_t BUF_SIZE>
+bool LinearBuffer<BUF_SIZE>::MoveReadPos(const uint16_t& nMovePos)
+{
+	if ( m_nWritePos < m_nReadPos+nMovePos )
+		return false;
+
+	m_nReadPos += nMovePos;
+	return true;
+}
