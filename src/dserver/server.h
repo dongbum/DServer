@@ -34,7 +34,6 @@ Server<T>::Server(void)
 {
 	for (uint32_t i = 0; i < 3000; ++i)
 	{
-		
 		std::shared_ptr<BasicSocket> object_ptr = std::make_shared<T>(io_service_, session_pool_);
 		session_pool_.PushObject(object_ptr);
 	}
@@ -49,6 +48,8 @@ Server<T>::~Server(void)
 template<typename T>
 void Server<T>::Start(int thread_pool_size /* = 0 */)
 {
+	thread_pool_size_ = thread_pool_size;
+
 	acceptor_.Start();
 
 	CreateThreadPool();
@@ -74,5 +75,7 @@ void Server<T>::CreateThreadPool(void)
 	{
 		boost::thread io_thread(boost::bind(&boost::asio::io_service::run, &io_service_));
 		io_thread_group_.add_thread(&io_thread);
+
+		std::cout << "Created Thread." << std::endl;
 	}
 }

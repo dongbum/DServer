@@ -18,6 +18,8 @@ BasicSocket::~BasicSocket(void)
 
 void BasicSocket::OnReceive(void)
 {
+	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);
+
 	socket_.async_read_some(
 		boost::asio::buffer(recv_buffer_),
 		boost::bind(
@@ -31,29 +33,35 @@ void BasicSocket::OnReceive(void)
 
 void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transferred)
 {
-	std::cout << "OnReceive bytes_transferred:" << bytes_transferred << std::endl;
-
   	if (error)
 	{
-		if (boost::asio::error::eof)
-		{
+		if (boost::asio::error::eof == error)
 			std::cout << "Client connection end." << std::endl;
-		}
+		else
+			std::cout << "Client connection error : " << error.value() << " - msg : " << error.message().c_str() << std::endl;
 
 		OnClose();
 		return;
 	}
 
+	// std::cout << "OnReceive 1 remain_size_:" << remain_size_ << " - bytes_transferred:" << bytes_transferred << std::endl;
+
 	// 패킷을 담아둘 버퍼에 수신버퍼의 내용을 복사한다.
 	memcpy(&packet_buffer_[remain_size_], recv_buffer_, bytes_transferred);
 
+	// std::cout << "OnReceive 2 remain_size_:" << remain_size_ << " - bytes_transferred:" << bytes_transferred << std::endl;
+
 	uint32_t packet_data_size = remain_size_ + static_cast<uint32_t>(bytes_transferred);
 	uint32_t read_position = 0;
+
+	// std::cout << "OnReceive remain_size_:" << remain_size_ << " - bytes_transferred:" << bytes_transferred << " - packet_data_size:" << packet_data_size << std::endl;
 	
 	while (packet_data_size > 0)
 	{
 		if (packet_data_size < sizeof(Header))
 			break;
+
+		// std::cout << "OnReceiveHandler packet_data_size : " << packet_data_size  << " - remain_size_ : " << remain_size_  << std::endl;
 
 		Header* header = (Header*)&packet_buffer_[read_position];
 
@@ -74,6 +82,11 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 
 	if (packet_data_size > 0)
 	{
+		if (packet_data_size > RECV_BUFFER_SIZE)
+		{
+			packet_data_size = RECV_BUFFER_SIZE;
+		}
+
 		// 남은 데이터가 있다면 패킷버퍼 맨 앞으로 이동한다.
 		memmove(&packet_buffer_[0], &packet_buffer_[read_position], packet_data_size);
 	}
@@ -85,8 +98,6 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 
 void BasicSocket::OnSend(int size, char* data)
 {
-	std::lock_guard<std::mutex> lock(send_mutex_);
-
 	ErrorCode error_code;
 	EndPoint end_point = socket_.remote_endpoint(error_code);
 
@@ -97,14 +108,11 @@ void BasicSocket::OnSend(int size, char* data)
 		return;
 	}
 
-	unsigned char* send_data = static_cast<unsigned char*>(SendBufferPool::malloc());
-	int send_data_size = 0;
-
+	char* send_data = static_cast<char*>(SendBufferPool::malloc());
 	memcpy(send_data, data, size);
-	send_data_size = size;
 
 	boost::asio::async_write(socket_,
-		boost::asio::buffer(send_data, send_data_size),
+		boost::asio::buffer(send_data, size),
 		boost::bind(
 			&BasicSocket::OnSendHandler,
 			shared_from_this(),
@@ -115,23 +123,27 @@ void BasicSocket::OnSend(int size, char* data)
 	);
 }
 
-void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred, unsigned char* send_data)
+void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred, char* send_data)
 {
-	std::cout << "OnSendHandler" << std::endl;
+	// std::cout << "OnSendHandler bytes_transferred:" << bytes_transferred << std::endl;
+
+	if (error)
+	{
+		std::cout << "OnSendHandler error : " << error.value() << " - msg : " << error.message().c_str() << std::endl;
+		OnClose();
+	}
 
 	SendBufferPool::free(send_data);
 }
 
 void BasicSocket::OnClose(void)
 {
-	if (!socket_.is_open())
-		return;
-
-	ErrorCode ignored_error;
-	socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_error);
-	socket_.close();
-
-	
+	if (true == socket_.is_open())
+	{
+		ErrorCode ignored_error;
+		socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_error);
+		socket_.close();
+	}
 }
 
 void BasicSocket::OnPacket(char* packet, int size)

@@ -7,7 +7,7 @@ public:
 	ObjectPool(void) {};
 	virtual ~ObjectPool(void) {};
 
-	void PushObject(T object_ptr)
+	void PushObject(T& object_ptr)
 	{
 		object_queue_.Push(object_ptr);
 	}
@@ -18,7 +18,7 @@ public:
 		return object_ptr;
 	}
 
-	void ReleasePoolObject(T object_ptr)
+	void ReleasePoolObject(T& object_ptr)
 	{
 		object_queue_.Push(object_ptr);
 	}

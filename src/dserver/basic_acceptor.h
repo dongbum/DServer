@@ -76,7 +76,13 @@ template<typename T>
 void BasicAcceptor<T>::AcceptHandler(std::shared_ptr<T> socket_ptr, const ErrorCode& ec)
 {
 	std::cout << "Accept" << std::endl;
-	if (0 == ec)
+
+	if (false == acceptor_.is_open())
+	{
+		return;
+	}
+
+	if (!ec)
 	{
 		try
 		{
@@ -84,12 +90,12 @@ void BasicAcceptor<T>::AcceptHandler(std::shared_ptr<T> socket_ptr, const ErrorC
 		}
 		catch (...)
 		{
-
+			socket_ptr->OnClose();
 		}
 	}
 	else
 	{
-
+		socket_ptr->OnClose();
 	}
 
 	if (false == is_stopped_.load())
