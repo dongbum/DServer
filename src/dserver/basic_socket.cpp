@@ -44,6 +44,10 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 		return;
 	}
 
+	OnSend(bytes_transferred, recv_buffer_);
+	OnReceive();
+	return;
+
 	// std::cout << "OnReceive 1 remain_size_:" << remain_size_ << " - bytes_transferred:" << bytes_transferred << std::endl;
 
 	// 패킷을 담아둘 버퍼에 수신버퍼의 내용을 복사한다.
@@ -144,6 +148,8 @@ void BasicSocket::OnClose(void)
 		socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_error);
 		socket_.close();
 	}
+
+	SendBufferPool::purge_memory();
 }
 
 void BasicSocket::OnPacket(char* packet, int size)
