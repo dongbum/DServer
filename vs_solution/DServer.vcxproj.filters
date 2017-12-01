@@ -19,6 +19,12 @@
     <Filter Include="소스 파일\game_server">
       <UniqueIdentifier>{cbff68e3-98d6-4ff8-abea-0d37d9531936}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\dserver\protocol">
+      <UniqueIdentifier>{075f3d00-bca2-42ae-b3d0-0ca5f1abd4f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\container">
+      <UniqueIdentifier>{a7026cf6-64df-48a4-afc3-4badb75eee02}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -33,8 +39,8 @@
     <ClCompile Include="..\src\game_server\game_protocol.cpp">
       <Filter>소스 파일\game_server</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\dserver\base_protocol.cpp">
-      <Filter>소스 파일\dserver</Filter>
+    <ClCompile Include="..\src\dserver\protocol\base_protocol.cpp">
+      <Filter>소스 파일\dserver\protocol</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,9 +74,6 @@
     <ClInclude Include="..\src\game_server\game_protocol.h">
       <Filter>소스 파일\game_server</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\dserver\base_protocol.h">
-      <Filter>소스 파일\dserver</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\game_server\game_protocol_define.h">
       <Filter>소스 파일\game_server</Filter>
     </ClInclude>
@@ -80,8 +83,11 @@
     <ClInclude Include="..\src\dserver\object_pool.h">
       <Filter>소스 파일\dserver</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\dserver\thread_safe_queue.h">
-      <Filter>소스 파일\dserver</Filter>
+    <ClInclude Include="..\src\dserver\protocol\base_protocol.h">
+      <Filter>소스 파일\dserver\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\container\thread_safe_queue.h">
+      <Filter>소스 파일\dserver\container</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

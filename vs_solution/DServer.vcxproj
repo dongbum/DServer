@@ -19,24 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\dserver\base_protocol.cpp" />
     <ClCompile Include="..\src\dserver\basic_socket.cpp" />
+    <ClCompile Include="..\src\dserver\protocol\base_protocol.cpp" />
     <ClCompile Include="..\src\game_server\game_protocol.cpp" />
     <ClCompile Include="..\src\game_server\game_server.cpp" />
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\dserver\base_protocol.h" />
     <ClInclude Include="..\src\dserver\basic_acceptor.h" />
     <ClInclude Include="..\src\dserver\basic_service.h" />
     <ClInclude Include="..\src\dserver\basic_socket.h" />
     <ClInclude Include="..\src\dserver\boost.h" />
+    <ClInclude Include="..\src\dserver\container\thread_safe_queue.h" />
     <ClInclude Include="..\src\dserver\define.h" />
     <ClInclude Include="..\src\dserver\header.h" />
     <ClInclude Include="..\src\dserver\linear_buffer.h" />
     <ClInclude Include="..\src\dserver\object_pool.h" />
+    <ClInclude Include="..\src\dserver\protocol\base_protocol.h" />
     <ClInclude Include="..\src\dserver\server.h" />
-    <ClInclude Include="..\src\dserver\thread_safe_queue.h" />
     <ClInclude Include="..\src\game_server\game_protocol.h" />
     <ClInclude Include="..\src\game_server\game_protocol_define.h" />
     <ClInclude Include="..\src\game_server\game_server.h" />

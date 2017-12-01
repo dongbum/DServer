@@ -32,12 +32,12 @@
 
 #include "boost.h"
 
-#include "thread_safe_queue.h"
+#include "container/thread_safe_queue.h"
 #include "object_pool.h"
 #include "header.h"
 #include "linear_buffer.h"
 #include "basic_socket.h"
 #include "basic_service.h"
 #include "basic_acceptor.h"
-#include "base_protocol.h"
+#include "protocol/base_protocol.h"
 #include "server.h"
