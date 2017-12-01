@@ -109,7 +109,9 @@ void BasicSocket::OnSend(int size, char* data)
 		return;
 	}
 
-	char* send_data = static_cast<char*>(SendBufferPool::malloc());
+	// boost 메모리풀 사용시 CPU 점유율은 10% 정도 떨어지지만 부하가 있을시 메모리 사용율이 크게 올라간다.
+	// char* send_data = static_cast<char*>(SendBufferPool::malloc());
+	char* send_data = new char[size];
 	memcpy(send_data, data, size);
 
 	boost::asio::async_write(socket_,
@@ -126,7 +128,8 @@ void BasicSocket::OnSend(int size, char* data)
 					OnClose();
 				}
 
-				SendBufferPool::free(send_data);
+				// SendBufferPool::free(send_data);
+				delete[] send_data;
 			}
 		)
 	);
