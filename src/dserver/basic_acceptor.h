@@ -75,7 +75,7 @@ bool BasicAcceptor<T>::Init(void)
 template<typename T>
 void BasicAcceptor<T>::AcceptHandler(std::shared_ptr<T> socket_ptr, const ErrorCode& ec)
 {
-	std::cout << "Accept" << std::endl;
+	LL_DEBUG("Accept");
 
 	if (false == acceptor_.is_open())
 	{

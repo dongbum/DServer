@@ -30,9 +30,16 @@
 #define RECV_BUFFER_SIZE	1024
 #define SEND_BUFFER_SIZE	1024
 
+#define MAX_LOG_MESSAGE_LENGTH		1024
+
 #include "boost.h"
 
 #include "container/thread_safe_queue.h"
+#include "utility/util.h"
+#include "config/config.h"
+#include "logging/log_define.h"
+#include "logging/log_message.h"
+#include "logging/log_manager.h"
 #include "object_pool.h"
 #include "header.h"
 #include "linear_buffer.h"
@@ -40,4 +47,5 @@
 #include "basic_service.h"
 #include "basic_acceptor.h"
 #include "protocol/base_protocol.h"
+
 #include "server.h"
