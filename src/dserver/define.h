@@ -25,6 +25,9 @@
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
+#include <Windows.h>
+#include <Psapi.h>
+#pragma comment(lib, "psapi.lib")
 #endif
 
 #define RECV_BUFFER_SIZE			1024
@@ -45,6 +48,7 @@
 #include "database/mysql/mysql_conn.h"
 #include "database/mysql/mysql_conn_pool.h"
 #include "database/redis/redis.h"
+#include "monitor/system_resource_monitor.h"
 #include "object_pool.h"
 #include "header.h"
 #include "linear_buffer.h"
