@@ -27,12 +27,13 @@
 #define NOMINMAX
 #endif
 
-#define RECV_BUFFER_SIZE	1024
-#define SEND_BUFFER_SIZE	1024
-
+#define RECV_BUFFER_SIZE			1024
+#define SEND_BUFFER_SIZE			1024
 #define MAX_LOG_MESSAGE_LENGTH		1024
+#define MAX_DATETIME_SIZE			(19+1)
 
 #include "boost.h"
+#include "database.h"
 
 #include "container/thread_safe_queue.h"
 #include "utility/util.h"
@@ -40,6 +41,9 @@
 #include "logging/log_define.h"
 #include "logging/log_message.h"
 #include "logging/log_manager.h"
+#include "database/mysql/mysql_conn.h"
+#include "database/mysql/mysql_conn_pool.h"
+#include "database/redis/redis.h"
 #include "object_pool.h"
 #include "header.h"
 #include "linear_buffer.h"

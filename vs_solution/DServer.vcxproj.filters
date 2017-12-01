@@ -34,6 +34,15 @@
     <Filter Include="소스 파일\dserver\config">
       <UniqueIdentifier>{33773e90-9a39-414c-aaaa-ba1ebccd2b9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\dserver\database">
+      <UniqueIdentifier>{0dfea542-02d9-43c8-9dd7-c3ba2d25da6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\database\mysql">
+      <UniqueIdentifier>{ae35eedf-becb-4892-8ffc-01e287d757ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\database\redis">
+      <UniqueIdentifier>{cf3af680-8b43-42ef-8aa4-af08c0648a66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -56,6 +65,18 @@
     </ClCompile>
     <ClCompile Include="..\src\dserver\config\config.cpp">
       <Filter>소스 파일\dserver\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_conn.cpp">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_conn_pool.cpp">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_example.cpp">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\redis\redis.cpp">
+      <Filter>소스 파일\dserver\database\redis</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +139,18 @@
     </ClInclude>
     <ClInclude Include="..\src\dserver\config\config.h">
       <Filter>소스 파일\dserver\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\mysql\mysql_conn.h">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\mysql\mysql_conn_pool.h">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\redis\redis.h">
+      <Filter>소스 파일\dserver\database\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database.h">
+      <Filter>소스 파일\dserver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

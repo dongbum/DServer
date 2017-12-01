@@ -21,6 +21,10 @@
   <ItemGroup>
     <ClCompile Include="..\src\dserver\basic_socket.cpp" />
     <ClCompile Include="..\src\dserver\config\config.cpp" />
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_conn.cpp" />
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_conn_pool.cpp" />
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_example.cpp" />
+    <ClCompile Include="..\src\dserver\database\redis\redis.cpp" />
     <ClCompile Include="..\src\dserver\logging\log_manager.cpp" />
     <ClCompile Include="..\src\dserver\protocol\base_protocol.cpp" />
     <ClCompile Include="..\src\game_server\game_protocol.cpp" />
@@ -34,6 +38,10 @@
     <ClInclude Include="..\src\dserver\boost.h" />
     <ClInclude Include="..\src\dserver\config\config.h" />
     <ClInclude Include="..\src\dserver\container\thread_safe_queue.h" />
+    <ClInclude Include="..\src\dserver\database.h" />
+    <ClInclude Include="..\src\dserver\database\mysql\mysql_conn.h" />
+    <ClInclude Include="..\src\dserver\database\mysql\mysql_conn_pool.h" />
+    <ClInclude Include="..\src\dserver\database\redis\redis.h" />
     <ClInclude Include="..\src\dserver\define.h" />
     <ClInclude Include="..\src\dserver\header.h" />
     <ClInclude Include="..\src\dserver\linear_buffer.h" />
@@ -141,7 +149,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>
       </MultiProcessorCompilation>
       <PrecompiledHeaderFile>dserver/define.h</PrecompiledHeaderFile>
@@ -149,7 +157,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Library\boost_1_60_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\lib;D:\Library\boost_1_60_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -180,14 +189,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Library\boost_1_60_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\lib;D:\Library\boost_1_60_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
