@@ -4,3 +4,4 @@ vs_solution/.vs/
 *.opendb
 *.obj
 vs_solution/x64/
+vs_solution/Temp/
