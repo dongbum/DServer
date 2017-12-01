@@ -3,6 +3,7 @@
 BasicSocket::BasicSocket(IoService& io_service)
 	: socket_(io_service)
 	, remain_size_(0)
+	, strand_(io_service)
 {
 	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);
 	memset(send_buffer_, 0, SEND_BUFFER_SIZE);
@@ -117,20 +118,26 @@ void BasicSocket::OnSend(int size, char* data)
 
 	boost::asio::async_write(socket_,
 		boost::asio::buffer(send_data, size),
-		boost::bind(
-			&BasicSocket::OnSendHandler,
-			shared_from_this(),
-			boost::asio::placeholders::error,
-			boost::asio::placeholders::bytes_transferred,
-			send_data
+		strand_.wrap(
+			[=](
+				const ErrorCode& error,
+				size_t bytes_transferred
+				)
+			{
+				if (error)
+				{
+					std::cout << "OnSendHandler error : " << error.value() << " - msg : " << error.message().c_str() << std::endl;
+					OnClose();
+				}
+
+				SendBufferPool::free(send_data);
+			}
 		)
 	);
 }
 
 void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred, char* send_data)
 {
-	// std::cout << "OnSendHandler bytes_transferred:" << bytes_transferred << std::endl;
-
 	if (error)
 	{
 		std::cout << "OnSendHandler error : " << error.value() << " - msg : " << error.message().c_str() << std::endl;

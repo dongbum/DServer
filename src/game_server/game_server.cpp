@@ -11,5 +11,5 @@ GameServer::~GameServer(void)
 
 void GameServer::Start(void)
 {
-	__super::Start(8);
+	__super::Start(16);
 }
