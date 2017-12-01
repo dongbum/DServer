@@ -34,6 +34,7 @@
 
 #include "boost.h"
 #include "database.h"
+#include "json/json.h"
 
 #include "container/thread_safe_queue.h"
 #include "utility/util.h"
