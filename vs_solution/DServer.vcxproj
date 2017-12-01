@@ -20,6 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\dserver\basic_socket.cpp" />
+    <ClCompile Include="..\src\dserver\config\config.cpp" />
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_conn.cpp" />
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_conn_pool.cpp" />
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_example.cpp" />
+    <ClCompile Include="..\src\dserver\database\redis\redis.cpp" />
+    <ClCompile Include="..\src\dserver\json\json_reader.cpp" />
+    <ClCompile Include="..\src\dserver\json\json_value.cpp" />
+    <ClCompile Include="..\src\dserver\json\json_writer.cpp" />
+    <ClCompile Include="..\src\dserver\logging\log_manager.cpp" />
+    <ClCompile Include="..\src\dserver\monitor\system_resource_monitor.cpp" />
     <ClCompile Include="..\src\dserver\protocol\base_protocol.cpp" />
     <ClCompile Include="..\src\game_server\game_protocol.cpp" />
     <ClCompile Include="..\src\game_server\game_server.cpp" />
@@ -30,17 +40,42 @@
     <ClInclude Include="..\src\dserver\basic_service.h" />
     <ClInclude Include="..\src\dserver\basic_socket.h" />
     <ClInclude Include="..\src\dserver\boost.h" />
+    <ClInclude Include="..\src\dserver\config\config.h" />
     <ClInclude Include="..\src\dserver\container\thread_safe_queue.h" />
+    <ClInclude Include="..\src\dserver\database.h" />
+    <ClInclude Include="..\src\dserver\database\mysql\mysql_conn.h" />
+    <ClInclude Include="..\src\dserver\database\mysql\mysql_conn_pool.h" />
+    <ClInclude Include="..\src\dserver\database\redis\redis.h" />
     <ClInclude Include="..\src\dserver\define.h" />
     <ClInclude Include="..\src\dserver\header.h" />
+    <ClInclude Include="..\src\dserver\json\allocator.h" />
+    <ClInclude Include="..\src\dserver\json\assertions.h" />
+    <ClInclude Include="..\src\dserver\json\autolink.h" />
+    <ClInclude Include="..\src\dserver\json\config.h" />
+    <ClInclude Include="..\src\dserver\json\features.h" />
+    <ClInclude Include="..\src\dserver\json\forwards.h" />
+    <ClInclude Include="..\src\dserver\json\json.h" />
+    <ClInclude Include="..\src\dserver\json\json_tool.h" />
+    <ClInclude Include="..\src\dserver\json\reader.h" />
+    <ClInclude Include="..\src\dserver\json\value.h" />
+    <ClInclude Include="..\src\dserver\json\version.h" />
+    <ClInclude Include="..\src\dserver\json\writer.h" />
     <ClInclude Include="..\src\dserver\linear_buffer.h" />
+    <ClInclude Include="..\src\dserver\logging\log_define.h" />
+    <ClInclude Include="..\src\dserver\logging\log_manager.h" />
+    <ClInclude Include="..\src\dserver\logging\log_message.h" />
+    <ClInclude Include="..\src\dserver\monitor\system_resource_monitor.h" />
     <ClInclude Include="..\src\dserver\object_pool.h" />
     <ClInclude Include="..\src\dserver\protocol\base_protocol.h" />
     <ClInclude Include="..\src\dserver\server.h" />
+    <ClInclude Include="..\src\dserver\utility\util.h" />
     <ClInclude Include="..\src\game_server\game_protocol.h" />
     <ClInclude Include="..\src\game_server\game_protocol_define.h" />
     <ClInclude Include="..\src\game_server\game_server.h" />
     <ClInclude Include="..\src\game_server\game_socket.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\dserver\json\json_valueiterator.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4746DCEF-2EC0-4515-BE2E-47C3C91266C9}</ProjectGuid>
@@ -98,12 +133,18 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
+    <IntDir>Temp\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)64D</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
+    <IntDir>Temp\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)64</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -128,7 +169,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>
       </MultiProcessorCompilation>
       <PrecompiledHeaderFile>dserver/define.h</PrecompiledHeaderFile>
@@ -136,7 +177,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Library\boost_1_60_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\lib;D:\Library\boost_1_60_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -167,14 +209,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Library\boost_1_60_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\lib;D:\Library\boost_1_60_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -30,7 +30,7 @@ public:
 
 	void OnClose(void)
 	{
-		std::cout << "GameSocket OnClose" << std::endl;
+		LL_DEBUG("GameSocket OnClose");
 
 		__super::OnClose();
 		session_pool_.ReleasePoolObject(shared_from_this());

@@ -2,6 +2,13 @@
 
 #include <boost/asio.hpp>
 #include <boost/thread.hpp>
+#include <boost/format.hpp>
+#include <boost/filesystem.hpp>
+
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/ini_parser.hpp>
+
+#include <boost/serialization/singleton.hpp>
 
 #include <boost/pool/singleton_pool.hpp>
 #include <boost/pool/pool_alloc.hpp>

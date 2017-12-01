@@ -54,7 +54,7 @@ void Server<T>::Start(int thread_pool_size /* = 0 */)
 
 	CreateThreadPool();
 
-	std::cout << "Server Start" << std::endl;
+	LL_DEBUG("Server Start");
 }
 
 template<typename T>
@@ -76,6 +76,6 @@ void Server<T>::CreateThreadPool(void)
 		boost::thread io_thread(boost::bind(&boost::asio::io_service::run, &io_service_));
 		io_thread_group_.add_thread(&io_thread);
 
-		std::cout << "Created Thread." << std::endl;
+		LL_DEBUG("Created Thread. [%d]", i);
 	}
 }

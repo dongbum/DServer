@@ -25,6 +25,30 @@
     <Filter Include="소스 파일\dserver\container">
       <UniqueIdentifier>{a7026cf6-64df-48a4-afc3-4badb75eee02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\dserver\logging">
+      <UniqueIdentifier>{2be7e0e5-abc1-4ff7-a489-c336b8aed922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\utility">
+      <UniqueIdentifier>{46ba59a2-5046-4c20-af3c-41f2aeff661c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\config">
+      <UniqueIdentifier>{33773e90-9a39-414c-aaaa-ba1ebccd2b9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\database">
+      <UniqueIdentifier>{0dfea542-02d9-43c8-9dd7-c3ba2d25da6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\database\mysql">
+      <UniqueIdentifier>{ae35eedf-becb-4892-8ffc-01e287d757ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\database\redis">
+      <UniqueIdentifier>{cf3af680-8b43-42ef-8aa4-af08c0648a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\json">
+      <UniqueIdentifier>{b2e74573-0c01-4368-8cf0-f0f275dffdd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dserver\monitor">
+      <UniqueIdentifier>{78971222-3f79-4e66-9771-4584b452b4db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -41,6 +65,36 @@
     </ClCompile>
     <ClCompile Include="..\src\dserver\protocol\base_protocol.cpp">
       <Filter>소스 파일\dserver\protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\logging\log_manager.cpp">
+      <Filter>소스 파일\dserver\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\config\config.cpp">
+      <Filter>소스 파일\dserver\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_conn.cpp">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_conn_pool.cpp">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\mysql\mysql_example.cpp">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\redis\redis.cpp">
+      <Filter>소스 파일\dserver\database\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\json\json_reader.cpp">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\json\json_value.cpp">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\json\json_writer.cpp">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\monitor\system_resource_monitor.cpp">
+      <Filter>소스 파일\dserver\monitor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,5 +143,76 @@
     <ClInclude Include="..\src\dserver\container\thread_safe_queue.h">
       <Filter>소스 파일\dserver\container</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\dserver\logging\log_manager.h">
+      <Filter>소스 파일\dserver\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\logging\log_message.h">
+      <Filter>소스 파일\dserver\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\logging\log_define.h">
+      <Filter>소스 파일\dserver\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\utility\util.h">
+      <Filter>소스 파일\dserver\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\config\config.h">
+      <Filter>소스 파일\dserver\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\mysql\mysql_conn.h">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\mysql\mysql_conn_pool.h">
+      <Filter>소스 파일\dserver\database\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\redis\redis.h">
+      <Filter>소스 파일\dserver\database\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database.h">
+      <Filter>소스 파일\dserver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\config.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\features.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\forwards.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\json.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\json_tool.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\reader.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\value.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\version.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\writer.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\allocator.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\assertions.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\json\autolink.h">
+      <Filter>소스 파일\dserver\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\monitor\system_resource_monitor.h">
+      <Filter>소스 파일\dserver\monitor</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\dserver\json\json_valueiterator.inl">
+      <Filter>소스 파일\dserver\json</Filter>
+    </None>
   </ItemGroup>
 </Project>

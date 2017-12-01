@@ -37,9 +37,13 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
   	if (error)
 	{
 		if (boost::asio::error::eof == error)
-			std::cout << "Client connection end." << std::endl;
+		{
+			LL_DEBUG("Client connection end.");
+		}
 		else
-			std::cout << "Client connection error : " << error.value() << " - msg : " << error.message().c_str() << std::endl;
+		{
+			LL_DEBUG("Client connection error:[%d] msg:[%s]", error.value(), error.message().c_str());
+		}
 
 		OnClose();
 		return;
@@ -49,24 +53,16 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 	OnReceive();
 	return;
 
-	// std::cout << "OnReceive 1 remain_size_:" << remain_size_ << " - bytes_transferred:" << bytes_transferred << std::endl;
-
 	// 패킷을 담아둘 버퍼에 수신버퍼의 내용을 복사한다.
 	memcpy(&packet_buffer_[remain_size_], recv_buffer_, bytes_transferred);
-
-	// std::cout << "OnReceive 2 remain_size_:" << remain_size_ << " - bytes_transferred:" << bytes_transferred << std::endl;
 
 	uint32_t packet_data_size = remain_size_ + static_cast<uint32_t>(bytes_transferred);
 	uint32_t read_position = 0;
 
-	// std::cout << "OnReceive remain_size_:" << remain_size_ << " - bytes_transferred:" << bytes_transferred << " - packet_data_size:" << packet_data_size << std::endl;
-	
 	while (packet_data_size > 0)
 	{
 		if (packet_data_size < sizeof(Header))
 			break;
-
-		// std::cout << "OnReceiveHandler packet_data_size : " << packet_data_size  << " - remain_size_ : " << remain_size_  << std::endl;
 
 		Header* header = (Header*)&packet_buffer_[read_position];
 
@@ -108,12 +104,14 @@ void BasicSocket::OnSend(int size, char* data)
 
 	if (error_code)
 	{
-		std::cout << "OnSend ErrorCode:[" << error_code.value() << "] message:[" << error_code.message() << "]" << std::endl;
+		LL_DEBUG("OnSend error:[%d] msg:[%s]", error_code.value(), error_code.message().c_str());
 		OnClose();
 		return;
 	}
 
-	char* send_data = static_cast<char*>(SendBufferPool::malloc());
+	// boost 메모리풀 사용시 CPU 점유율은 10% 정도 떨어지지만 부하가 있을시 메모리 사용율이 크게 올라간다.
+	// char* send_data = static_cast<char*>(SendBufferPool::malloc());
+	char* send_data = new char[size];
 	memcpy(send_data, data, size);
 
 	boost::asio::async_write(socket_,
@@ -126,11 +124,12 @@ void BasicSocket::OnSend(int size, char* data)
 			{
 				if (error)
 				{
-					std::cout << "OnSendHandler error : " << error.value() << " - msg : " << error.message().c_str() << std::endl;
+					LL_DEBUG("OnSendHandler error:[%d] msg:[%s]", error.value(), error.message().c_str());
 					OnClose();
 				}
 
-				SendBufferPool::free(send_data);
+				// SendBufferPool::free(send_data);
+				delete[] send_data;
 			}
 		)
 	);
@@ -140,7 +139,7 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 {
 	if (error)
 	{
-		std::cout << "OnSendHandler error : " << error.value() << " - msg : " << error.message().c_str() << std::endl;
+		LL_DEBUG("OnSendHandler error:[%d] msg:[%s]", error.value(), error.message().c_str());
 		OnClose();
 	}
 
@@ -161,5 +160,5 @@ void BasicSocket::OnClose(void)
 
 void BasicSocket::OnPacket(char* packet, int size)
 {
-	std::cout << "BasicSocket OnPacket" << std::endl;
+	LL_DEBUG("BasicSocket OnPacket");
 }
