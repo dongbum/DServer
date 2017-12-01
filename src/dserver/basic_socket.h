@@ -33,5 +33,6 @@ protected:
 	char recv_buffer_[RECV_BUFFER_SIZE];
 	char send_buffer_[SEND_BUFFER_SIZE];
 
+	bool is_cgcii_test_;
 	Strand strand_;
 };

@@ -4,10 +4,16 @@ BasicSocket::BasicSocket(IoService& io_service)
 	: socket_(io_service)
 	, remain_size_(0)
 	, strand_(io_service)
+	, is_cgcii_test_(false)
 {
 	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);
 	memset(send_buffer_, 0, SEND_BUFFER_SIZE);
 	memset(packet_buffer_, 0, RECV_BUFFER_SIZE);
+
+	if ("TRUE" == CONFIG_MANAGER_INSTANCE.GetValue("DServer", "USE_CGCII_TEST", true))
+	{
+		is_cgcii_test_ = true;
+	}
 }
 
 BasicSocket::~BasicSocket(void)
@@ -49,9 +55,12 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 		return;
 	}
 
-	OnSend(bytes_transferred, recv_buffer_);
-	OnReceive();
-	return;
+	if (is_cgcii_test_)
+	{
+		OnSend(bytes_transferred, recv_buffer_);
+		OnReceive();
+		return;
+	}
 
 	// 패킷을 담아둘 버퍼에 수신버퍼의 내용을 복사한다.
 	memcpy(&packet_buffer_[remain_size_], recv_buffer_, bytes_transferred);
