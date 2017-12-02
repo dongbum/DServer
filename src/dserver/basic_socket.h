@@ -4,9 +4,6 @@
 class BasicSocket : public std::enable_shared_from_this<BasicSocket>
 {
 public:
-	struct SEND_BUFFER_TAG {};
-	typedef boost::singleton_pool<SEND_BUFFER_TAG, SEND_BUFFER_SIZE> SendBufferPool;
-
 	BasicSocket(IoService& io_service);
 	virtual ~BasicSocket(void);
 
@@ -14,7 +11,7 @@ public:
 	void OnReceiveHandler(const ErrorCode& error, size_t bytes_transferred);
 
 	void OnSend(int size, char* data);
-	void OnSendHandler(const ErrorCode& error, size_t bytes_transferred, char* send_data);
+	void OnSendHandler(const ErrorCode& error, size_t bytes_transferred);
 
 	virtual void OnClose(void);
 
@@ -35,4 +32,7 @@ protected:
 
 	bool is_cgcii_test_;
 	Strand strand_;
+	
+	std::deque<std::pair<char*, int>> send_queue_;
+	std::mutex send_mutex_;
 };

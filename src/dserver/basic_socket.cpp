@@ -19,8 +19,6 @@ BasicSocket::BasicSocket(IoService& io_service)
 BasicSocket::~BasicSocket(void)
 {
 	OnClose();
-
-	SendBufferPool::purge_memory();
 }
 
 void BasicSocket::OnReceive(void)
@@ -57,7 +55,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 
 	if (is_cgcii_test_)
 	{
-		OnSend(bytes_transferred, recv_buffer_);
+		OnSend(static_cast<int>(bytes_transferred), recv_buffer_);
 		OnReceive();
 		return;
 	}
@@ -75,7 +73,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 
 		Header* header = (Header*)&packet_buffer_[read_position];
 
-		if (header->GetTotalLength() <= packet_data_size)
+		if (static_cast<uint32_t>(header->GetTotalLength()) <= packet_data_size)
 		{
 			// 패킷 처리
 
@@ -118,33 +116,33 @@ void BasicSocket::OnSend(int size, char* data)
 		return;
 	}
 
-	// boost 메모리풀 사용시 CPU 점유율은 10% 정도 떨어지지만 부하가 있을시 메모리 사용율이 크게 올라간다.
-	// char* send_data = static_cast<char*>(SendBufferPool::malloc());
 	char* send_data = new char[size];
 	memcpy(send_data, data, size);
 
-	boost::asio::async_write(socket_,
-		boost::asio::buffer(send_data, size),
-		strand_.wrap(
-			[=](
-				const ErrorCode& error,
-				size_t bytes_transferred
-				)
-			{
-				if (error)
-				{
-					LL_DEBUG("OnSendHandler error:[%d] msg:[%s]", error.value(), error.message().c_str());
-					OnClose();
-				}
+	send_mutex_.lock();
 
-				// SendBufferPool::free(send_data);
-				delete[] send_data;
-			}
-		)
-	);
+	bool can_send_now = send_queue_.empty();
+	send_queue_.push_back(std::pair<char*, int>(send_data, size));
+
+	if (can_send_now)
+	{
+		boost::asio::async_write(socket_,
+			boost::asio::buffer(send_queue_.front().first, send_queue_.front().second),
+			strand_.wrap(
+				boost::bind(
+					&BasicSocket::OnSendHandler,
+					shared_from_this(),
+					boost::asio::placeholders::error,
+					boost::asio::placeholders::bytes_transferred
+				)
+			)
+		);
+	}
+
+	send_mutex_.unlock();
 }
 
-void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred, char* send_data)
+void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred)
 {
 	if (error)
 	{
@@ -152,7 +150,35 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 		OnClose();
 	}
 
-	SendBufferPool::free(send_data);
+	send_mutex_.lock();
+
+	char* completed_data = send_queue_.front().first;
+	delete[] completed_data;
+	
+	send_queue_.pop_front();
+
+	if (send_queue_.empty())
+	{
+		send_mutex_.unlock();
+		return;
+	}
+
+	if (false == send_queue_.empty())
+	{
+		boost::asio::async_write(socket_,
+			boost::asio::buffer(send_queue_.front().first, send_queue_.front().second),
+			strand_.wrap(
+				boost::bind(
+					&BasicSocket::OnSendHandler,
+					shared_from_this(),
+					boost::asio::placeholders::error,
+					boost::asio::placeholders::bytes_transferred
+				)
+			)
+		);
+	}
+
+	send_mutex_.unlock();
 }
 
 void BasicSocket::OnClose(void)
@@ -164,7 +190,14 @@ void BasicSocket::OnClose(void)
 		socket_.close();
 	}
 
-	SendBufferPool::purge_memory();
+	send_mutex_.lock();
+	while (send_queue_.empty())
+	{
+		std::pair<char*, int> temp_data = send_queue_.front();
+		delete[] temp_data.first;
+		send_queue_.pop_front();
+	}
+	send_mutex_.unlock();
 }
 
 void BasicSocket::OnPacket(char* packet, int size)

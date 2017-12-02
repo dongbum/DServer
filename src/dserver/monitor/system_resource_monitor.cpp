@@ -16,7 +16,7 @@ SystemResourceMonitor::DiskSpaceInfo SystemResourceMonitor::GetDiskSpaceInfo(std
 	}
 	catch (boost::filesystem::filesystem_error& ec)
 	{
-		
+		LL_DEBUG("FileSystemError [%d] [%s]", ec.code(), ec.what())
 	}
 
 	return disk_space_info;
