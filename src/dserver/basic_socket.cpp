@@ -189,6 +189,15 @@ void BasicSocket::OnClose(void)
 		socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_error);
 		socket_.close();
 	}
+
+	send_mutex_.lock();
+	while (send_queue_.empty())
+	{
+		std::pair<char*, int> temp_data = send_queue_.front();
+		delete[] temp_data.first;
+		send_queue_.pop_front();
+	}
+	send_mutex_.unlock();
 }
 
 void BasicSocket::OnPacket(char* packet, int size)
