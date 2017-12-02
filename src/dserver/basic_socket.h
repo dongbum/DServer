@@ -14,7 +14,7 @@ public:
 	void OnReceiveHandler(const ErrorCode& error, size_t bytes_transferred);
 
 	void OnSend(int size, char* data);
-	void OnSendHandler(const ErrorCode& error, size_t bytes_transferred, char* send_data);
+	void OnSendHandler(const ErrorCode& error, size_t bytes_transferred);
 
 	virtual void OnClose(void);
 
@@ -35,4 +35,7 @@ protected:
 
 	bool is_cgcii_test_;
 	Strand strand_;
+	//Concurrency::concurrent_queue<std::vector<char>> send_queue_;
+	std::deque<std::pair<char*, int>> send_queue_;
+	std::mutex send_mutex_;
 };

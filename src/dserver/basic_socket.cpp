@@ -118,33 +118,36 @@ void BasicSocket::OnSend(int size, char* data)
 		return;
 	}
 
-	// boost 메모리풀 사용시 CPU 점유율은 10% 정도 떨어지지만 부하가 있을시 메모리 사용율이 크게 올라간다.
-	// char* send_data = static_cast<char*>(SendBufferPool::malloc());
 	char* send_data = new char[size];
 	memcpy(send_data, data, size);
 
-	boost::asio::async_write(socket_,
-		boost::asio::buffer(send_data, size),
-		strand_.wrap(
-			[=](
-				const ErrorCode& error,
-				size_t bytes_transferred
-				)
-			{
-				if (error)
-				{
-					LL_DEBUG("OnSendHandler error:[%d] msg:[%s]", error.value(), error.message().c_str());
-					OnClose();
-				}
+	// boost 메모리풀 사용시 CPU 점유율은 10% 정도 떨어지지만 부하가 있을시 메모리 사용율이 크게 올라간다.
+	// char* send_data = static_cast<char*>(SendBufferPool::malloc());
 
-				// SendBufferPool::free(send_data);
-				delete[] send_data;
-			}
-		)
-	);
+	send_mutex_.lock();
+
+	bool can_send_now = send_queue_.empty();
+	send_queue_.push_back(std::pair<char*, int>(send_data, size));
+
+	if (can_send_now)
+	{
+		boost::asio::async_write(socket_,
+			boost::asio::buffer(send_queue_.front().first, send_queue_.front().second),
+			strand_.wrap(
+				boost::bind(
+					&BasicSocket::OnSendHandler,
+					shared_from_this(),
+					boost::asio::placeholders::error,
+					boost::asio::placeholders::bytes_transferred
+				)
+			)
+		);
+	}
+
+	send_mutex_.unlock();
 }
 
-void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred, char* send_data)
+void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred)
 {
 	if (error)
 	{
@@ -152,7 +155,37 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 		OnClose();
 	}
 
-	SendBufferPool::free(send_data);
+	// SendBufferPool::free(send_data);
+
+	send_mutex_.lock();
+
+	char* completed_data = send_queue_.front().first;
+	delete[] completed_data;
+	
+	send_queue_.pop_front();
+
+	if (send_queue_.empty())
+	{
+		send_mutex_.unlock();
+		return;
+	}
+
+	if (false == send_queue_.empty())
+	{
+		boost::asio::async_write(socket_,
+			boost::asio::buffer(send_queue_.front().first, send_queue_.front().second),
+			strand_.wrap(
+				boost::bind(
+					&BasicSocket::OnSendHandler,
+					shared_from_this(),
+					boost::asio::placeholders::error,
+					boost::asio::placeholders::bytes_transferred
+				)
+			)
+		);
+	}
+
+	send_mutex_.unlock();
 }
 
 void BasicSocket::OnClose(void)
