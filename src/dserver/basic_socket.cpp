@@ -19,8 +19,6 @@ BasicSocket::BasicSocket(IoService& io_service)
 BasicSocket::~BasicSocket(void)
 {
 	OnClose();
-
-	SendBufferPool::purge_memory();
 }
 
 void BasicSocket::OnReceive(void)
@@ -121,9 +119,6 @@ void BasicSocket::OnSend(int size, char* data)
 	char* send_data = new char[size];
 	memcpy(send_data, data, size);
 
-	// boost 메모리풀 사용시 CPU 점유율은 10% 정도 떨어지지만 부하가 있을시 메모리 사용율이 크게 올라간다.
-	// char* send_data = static_cast<char*>(SendBufferPool::malloc());
-
 	send_mutex_.lock();
 
 	bool can_send_now = send_queue_.empty();
@@ -154,8 +149,6 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 		LL_DEBUG("OnSendHandler error:[%d] msg:[%s]", error.value(), error.message().c_str());
 		OnClose();
 	}
-
-	// SendBufferPool::free(send_data);
 
 	send_mutex_.lock();
 
@@ -196,8 +189,6 @@ void BasicSocket::OnClose(void)
 		socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_error);
 		socket_.close();
 	}
-
-	SendBufferPool::purge_memory();
 }
 
 void BasicSocket::OnPacket(char* packet, int size)
