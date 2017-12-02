@@ -32,7 +32,7 @@ protected:
 
 	bool is_cgcii_test_;
 	Strand strand_;
-	//Concurrency::concurrent_queue<std::vector<char>> send_queue_;
+	
 	std::deque<std::pair<char*, int>> send_queue_;
 	std::mutex send_mutex_;
 };
