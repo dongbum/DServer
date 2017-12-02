@@ -55,7 +55,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 
 	if (is_cgcii_test_)
 	{
-		OnSend(bytes_transferred, recv_buffer_);
+		OnSend(static_cast<int>(bytes_transferred), recv_buffer_);
 		OnReceive();
 		return;
 	}
@@ -73,7 +73,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 
 		Header* header = (Header*)&packet_buffer_[read_position];
 
-		if (header->GetTotalLength() <= packet_data_size)
+		if (static_cast<uint32_t>(header->GetTotalLength()) <= packet_data_size)
 		{
 			// 패킷 처리
 
