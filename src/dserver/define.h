@@ -43,6 +43,7 @@
 
 #include "container/thread_safe_queue.h"
 #include "utility/util.h"
+#include "lock/custom_lock.h"
 #include "config/config.h"
 #include "logging/log_define.h"
 #include "logging/log_message.h"
