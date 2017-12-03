@@ -61,6 +61,7 @@
     <ClInclude Include="..\src\dserver\json\version.h" />
     <ClInclude Include="..\src\dserver\json\writer.h" />
     <ClInclude Include="..\src\dserver\linear_buffer.h" />
+    <ClInclude Include="..\src\dserver\lock\custom_lock.h" />
     <ClInclude Include="..\src\dserver\logging\log_define.h" />
     <ClInclude Include="..\src\dserver\logging\log_manager.h" />
     <ClInclude Include="..\src\dserver\logging\log_message.h" />

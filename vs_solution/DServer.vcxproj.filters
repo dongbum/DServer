@@ -49,6 +49,9 @@
     <Filter Include="소스 파일\dserver\monitor">
       <UniqueIdentifier>{78971222-3f79-4e66-9771-4584b452b4db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\dserver\lock">
+      <UniqueIdentifier>{790d38d5-f8a5-4b7b-aab6-9c7264e11133}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="..\src\dserver\monitor\system_resource_monitor.h">
       <Filter>소스 파일\dserver\monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\lock\custom_lock.h">
+      <Filter>소스 파일\dserver\lock</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
