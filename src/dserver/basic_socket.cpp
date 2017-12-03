@@ -119,7 +119,7 @@ void BasicSocket::OnSend(int size, char* data)
 	char* send_data = new char[size];
 	memcpy(send_data, data, size);
 
-	send_mutex_.lock();
+	send_lock_.lock();
 
 	bool can_send_now = send_queue_.empty();
 	send_queue_.push_back(std::pair<char*, int>(send_data, size));
@@ -139,7 +139,7 @@ void BasicSocket::OnSend(int size, char* data)
 		);
 	}
 
-	send_mutex_.unlock();
+	send_lock_.unlock();
 }
 
 void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred)
@@ -150,7 +150,7 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 		OnClose();
 	}
 
-	send_mutex_.lock();
+	send_lock_.lock();
 
 	char* completed_data = send_queue_.front().first;
 	delete[] completed_data;
@@ -159,7 +159,7 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 
 	if (send_queue_.empty())
 	{
-		send_mutex_.unlock();
+		send_lock_.unlock();
 		return;
 	}
 
@@ -178,7 +178,7 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 		);
 	}
 
-	send_mutex_.unlock();
+	send_lock_.unlock();
 }
 
 void BasicSocket::OnClose(void)
@@ -190,14 +190,14 @@ void BasicSocket::OnClose(void)
 		socket_.close();
 	}
 
-	send_mutex_.lock();
+	send_lock_.lock();
 	while (send_queue_.empty())
 	{
 		std::pair<char*, int> temp_data = send_queue_.front();
 		delete[] temp_data.first;
 		send_queue_.pop_front();
 	}
-	send_mutex_.unlock();
+	send_lock_.unlock();
 }
 
 void BasicSocket::OnPacket(char* packet, int size)

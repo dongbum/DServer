@@ -34,5 +34,6 @@ protected:
 	Strand strand_;
 	
 	std::deque<std::pair<char*, int>> send_queue_;
-	std::mutex send_mutex_;
+	
+	CustomLock send_lock_;
 };
