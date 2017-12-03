@@ -1,5 +1,8 @@
 #pragma once
 
+#ifdef _WIN32
+#include <Windows.h>
+
 class CustomLock
 {
 public:
@@ -24,5 +27,31 @@ public:
 	}
 private:
 	CRITICAL_SECTION	cs;
+};
+#else
+class CustomLock
+{
+public:
+	CustomLock(void)
+	{
+
+	}
+
+	virtual ~CustomLock(void)
+	{
+
+	}
+
+	void lock(void)
+	{
+		mutex_.lock();
+	}
+
+	void unlock(void)
+	{
+		mutex_.unlock();
+	}
+private:
 	std::mutex			mutex_;
 };
+#endif
