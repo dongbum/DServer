@@ -48,3 +48,26 @@ ConfigManager::INI_Value ConfigManager::GetValue(std::string section_name, std::
 		exit(1);
 	}
 }
+
+int32_t ConfigManager::GetInt32(std::string section_name, std::string key_name)
+{
+	return std::stoi(GetValue(section_name, key_name));
+}
+
+std::string ConfigManager::GetString(std::string section_name, std::string key_name, bool to_upper_case /* = false */)
+{
+	return GetValue(section_name, key_name, to_upper_case);
+}
+
+bool ConfigManager::GetBool(std::string section_name, std::string key_name)
+{
+	if ("TRUE" == GetValue(section_name, key_name, true))
+		return true;
+	else if ("FALSE" == GetValue(section_name, key_name, true))
+		return false;
+	else
+	{
+		std::cout << "GetValue failed : " << std::endl;
+		exit(1);
+	}
+}
