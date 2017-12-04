@@ -10,7 +10,7 @@ BasicSocket::BasicSocket(IoService& io_service)
 	memset(send_buffer_, 0, SEND_BUFFER_SIZE);
 	memset(packet_buffer_, 0, RECV_BUFFER_SIZE);
 
-	if ("TRUE" == CONFIG_MANAGER_INSTANCE.GetValue("DServer", "USE_CGCII_TEST", true))
+	if (CONFIG_MANAGER_INSTANCE.GetBool("DServer", "USE_ECHO_TEST"))
 	{
 		is_cgcii_test_ = true;
 	}
