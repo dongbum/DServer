@@ -34,6 +34,7 @@ Server<T>::Server(int32_t server_port, int32_t max_session_count)
 {
 	LL_INFO("Server Port:[%d]", server_port);
 	LL_INFO("Max Session Count:[%d]", max_session_count);
+	LL_INFO("Use ECHO Test Mode:[%s]", CONFIG_MANAGER_INSTANCE.GetString("DServer", "USE_ECHO_TEST").c_str());
 
 	for (int32_t i = 0; i < max_session_count; ++i)
 	{
