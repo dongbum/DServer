@@ -1,7 +1,13 @@
-vs_solution/ipch/
 vs_solution/.vs/
-*.db
-*.opendb
-*.obj
+vs_solution/*.db
+vs_solution/*.opendb
 vs_solution/x64/
 vs_solution/Temp/
+vs_solution/Bin/*.ipdb
+vs_solution/Bin/*.exe
+vs_solution/Bin/*.exp
+vs_solution/Bin/*.lib
+vs_solution/Bin/*.pdb
+vs_solution/Bin/*.ilk
+vs_solution/Bin/*.iobj
+vs_solution/Bin/log/
