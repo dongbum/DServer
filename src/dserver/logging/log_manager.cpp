@@ -21,9 +21,9 @@ bool LogManager::Init(void)
 {
 	today_ = GetTodayInt();
 
-	log_mode_ = GetLogMode(CONFIG_MANAGER_INSTANCE.GetValue("DServer", "LOG_MODE"));
-	log_directory_name_ = CONFIG_MANAGER_INSTANCE.GetValue("DServer", "LOG_PATH");
-	log_file_name_ = CONFIG_MANAGER_INSTANCE.GetValue("DServer", "LOG_FILE") + "_" + GetTodayStr() + ".log";
+	log_mode_ = GetLogMode(CONFIG_MANAGER_INSTANCE.GetString("DServer", "LOG_MODE"));
+	log_directory_name_ = CONFIG_MANAGER_INSTANCE.GetString("DServer", "LOG_PATH");
+	log_file_name_ = CONFIG_MANAGER_INSTANCE.GetString("DServer", "LOG_FILE") + "_" + GetTodayStr() + ".log";
 
 	if (log_mode_ & LOG_MODE::LOG_MODE_FILE)
 	{
@@ -83,7 +83,7 @@ void LogManager::Run(void)
 				if (ofs_.is_open())
 					ofs_.close();
 
-				log_file_name_ = CONFIG_MANAGER_INSTANCE.GetValue("DServer", "LOG_FILE") + "_" + GetTodayStr() + ".log";
+				log_file_name_ = CONFIG_MANAGER_INSTANCE.GetString("DServer", "LOG_FILE") + "_" + GetTodayStr() + ".log";
 
 				boost::filesystem::path path("./" + log_directory_name_);
 

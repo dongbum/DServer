@@ -10,7 +10,12 @@ public:
 	ConfigManager(void);
 	virtual ~ConfigManager(void);
 
-	bool Initialize(std::string file_name);
+	bool			Initialize(std::string file_name);
+	int32_t			GetInt32(std::string section_name, std::string key_name);
+	std::string		GetString(std::string section_name, std::string key_name, bool to_upper_case = false);
+	bool			GetBool(std::string section_name, std::string key_name);
+	
+private:
 	ConfigManager::INI_Value GetValue(std::string section_name, std::string key_name, bool to_upper_case = false);
 
 public:
