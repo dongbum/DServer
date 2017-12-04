@@ -8,7 +8,11 @@ class CustomLock
 public:
 	CustomLock(void)
 	{
-		InitializeCriticalSection(&cs);
+		if (false == InitializeCriticalSectionAndSpinCount(&cs, 4000))
+		{
+			LL_WARN("InitializeCriticalSectionAndSpinCount faild.");
+				
+		}
 	}
 
 	virtual ~CustomLock(void)

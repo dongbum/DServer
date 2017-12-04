@@ -43,11 +43,11 @@
 
 #include "container/thread_safe_queue.h"
 #include "utility/util.h"
-#include "lock/custom_lock.h"
 #include "config/config.h"
 #include "logging/log_define.h"
 #include "logging/log_message.h"
 #include "logging/log_manager.h"
+#include "lock/custom_lock.h"
 #include "database/mysql/mysql_conn.h"
 #include "database/mysql/mysql_conn_pool.h"
 #include "database/redis/redis.h"
