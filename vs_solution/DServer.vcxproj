@@ -171,9 +171,10 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
       <PrecompiledHeaderFile>dserver/define.h</PrecompiledHeaderFile>
-      <MinimalRebuild>false</MinimalRebuild>
+      <MinimalRebuild>true</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -212,6 +213,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -4,7 +4,7 @@ template<typename T>
 class Server
 {
 public:
-	Server(void);
+	Server(int32_t server_port, int32_t session_count);
 	virtual ~Server(void);
 
 	void Start(int thread_pool_size = 0);
@@ -27,12 +27,15 @@ private:
 
 
 template<typename T>
-Server<T>::Server(void)
-	: acceptor_(io_service_, session_pool_, 20000)
+Server<T>::Server(int32_t server_port, int32_t max_session_count)
+	: acceptor_(io_service_, session_pool_, server_port)
 	, work_ptr_(new Work(io_service_))
 	, thread_pool_size_(0)
 {
-	for (uint32_t i = 0; i < 3000; ++i)
+	LL_INFO("Server Port:[%d]", server_port);
+	LL_INFO("Max Session Count:[%d]", max_session_count);
+
+	for (int32_t i = 0; i < max_session_count; ++i)
 	{
 		std::shared_ptr<BasicSocket> object_ptr = std::make_shared<T>(io_service_, session_pool_);
 		session_pool_.PushObject(object_ptr);
@@ -75,7 +78,7 @@ void Server<T>::CreateThreadPool(void)
 	{
 		boost::thread io_thread(boost::bind(&boost::asio::io_service::run, &io_service_));
 		io_thread_group_.add_thread(&io_thread);
-
-		LL_DEBUG("Created Thread. [%d]", i);
 	}
+
+	LL_DEBUG("Created Thread. [%d]", thread_pool_size_);
 }
