@@ -148,6 +148,7 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 	{
 		LL_DEBUG("OnSendHandler error:[%d] msg:[%s]", error.value(), error.message().c_str());
 		OnClose();
+		return;
 	}
 
 	send_lock_.lock();
@@ -191,7 +192,7 @@ void BasicSocket::OnClose(void)
 	}
 
 	send_lock_.lock();
-	while (send_queue_.empty())
+	while (!send_queue_.empty())
 	{
 		std::pair<char*, int> temp_data = send_queue_.front();
 		delete[] temp_data.first;
