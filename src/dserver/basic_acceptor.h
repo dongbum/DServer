@@ -75,7 +75,9 @@ bool BasicAcceptor<T>::Init(void)
 template<typename T>
 void BasicAcceptor<T>::AcceptHandler(std::shared_ptr<T> socket_ptr, const ErrorCode& ec)
 {
-	LL_DEBUG("Accept");
+	LL_DEBUG("Accept. Remote Endpoint:[%s:%d]",
+		std::static_pointer_cast<BasicSocket>(socket_ptr)->GetSocket().remote_endpoint().address().to_string().c_str(),
+		std::static_pointer_cast<BasicSocket>(socket_ptr)->GetSocket()->GetSocket().remote_endpoint().port());
 
 	if (false == acceptor_.is_open())
 	{
