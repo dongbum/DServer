@@ -30,7 +30,7 @@ protected:
 	char recv_buffer_[RECV_BUFFER_SIZE];
 	char send_buffer_[SEND_BUFFER_SIZE];
 
-	bool is_cgcii_test_;
+	bool is_echo_test_;
 	Strand strand_;
 	
 	std::deque<std::pair<char*, int>> send_queue_;

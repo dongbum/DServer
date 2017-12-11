@@ -4,7 +4,7 @@ BasicSocket::BasicSocket(IoService& io_service)
 	: socket_(io_service)
 	, remain_size_(0)
 	, strand_(io_service)
-	, is_cgcii_test_(false)
+	, is_echo_test_(false)
 {
 	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);
 	memset(send_buffer_, 0, SEND_BUFFER_SIZE);
@@ -12,7 +12,7 @@ BasicSocket::BasicSocket(IoService& io_service)
 
 	if (CONFIG_MANAGER_INSTANCE.GetBool("DServer", "USE_ECHO_TEST"))
 	{
-		is_cgcii_test_ = true;
+		is_echo_test_ = true;
 	}
 }
 
@@ -53,7 +53,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 		return;
 	}
 
-	if (is_cgcii_test_)
+	if (is_echo_test_)
 	{
 		OnSend(static_cast<int>(bytes_transferred), recv_buffer_);
 		OnReceive();
