@@ -10,7 +10,9 @@
 # Set variables in /etc/profile or .bash_profile.
 #
 
-INCLUDE =	-I$(BOOST_INCLUDE)
+INCLUDE =	-I$(BOOST_INCLUDE) \
+			-I$(MYSQL_INCLUDE) \
+			-I$(MYSQL_DRIVER_INCLUDE)
 
 LIB = 		-lboost_thread \
 		-lboost_system \
@@ -27,7 +29,7 @@ LIB = 		-lboost_thread \
 
 # [User modify Data] End
 
-CFLAGS = -O2 -Wno-write-strings -Wno-deprecated -Wno-attributes -Wno-int-to-pointer-cast
+CFLAGS = -O2 -Wno-write-strings -Wno-deprecated -Wno-attributes -Wno-int-to-pointer-cast -std=c++11
 LFLAGS = -g -Wall -ggdb
 #-g -Wall -ggdb
 
