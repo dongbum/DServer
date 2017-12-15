@@ -67,6 +67,7 @@
     <ClInclude Include="..\src\dserver\logging\log_message.h" />
     <ClInclude Include="..\src\dserver\monitor\system_resource_monitor.h" />
     <ClInclude Include="..\src\dserver\object_pool.h" />
+    <ClInclude Include="..\src\dserver\packet.h" />
     <ClInclude Include="..\src\dserver\protocol\base_protocol.h" />
     <ClInclude Include="..\src\dserver\server.h" />
     <ClInclude Include="..\src\dserver\utility\util.h" />
