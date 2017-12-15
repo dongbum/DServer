@@ -215,6 +215,9 @@
     <ClInclude Include="..\src\dserver\lock\custom_lock.h">
       <Filter>소스 파일\dserver\lock</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\dserver\packet.h">
+      <Filter>소스 파일\dserver</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\dserver\json\json_valueiterator.inl">

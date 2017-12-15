@@ -53,6 +53,7 @@
 #include "database/redis/redis.h"
 #include "monitor/system_resource_monitor.h"
 #include "object_pool.h"
+#include "packet.h"
 #include "header.h"
 #include "linear_buffer.h"
 #include "basic_socket.h"
