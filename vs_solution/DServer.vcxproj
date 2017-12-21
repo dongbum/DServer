@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="..\src\dserver\basic_socket.cpp" />
     <ClCompile Include="..\src\dserver\config\config.cpp" />
+    <ClCompile Include="..\src\dserver\database\mssql\mssql_conn.cpp" />
+    <ClCompile Include="..\src\dserver\database\mssql\mssql_conn_pool.cpp" />
     <ClCompile Include="..\src\dserver\database\mysql\mysql_conn.cpp" />
     <ClCompile Include="..\src\dserver\database\mysql\mysql_conn_pool.cpp" />
     <ClCompile Include="..\src\dserver\database\mysql\mysql_example.cpp" />
@@ -43,6 +45,9 @@
     <ClInclude Include="..\src\dserver\config\config.h" />
     <ClInclude Include="..\src\dserver\container\thread_safe_queue.h" />
     <ClInclude Include="..\src\dserver\database.h" />
+    <ClInclude Include="..\src\dserver\database\mssql\mssql_conn.h" />
+    <ClInclude Include="..\src\dserver\database\mssql\mssql_conn_pool.h" />
+    <ClInclude Include="..\src\dserver\database\mssql\mssql_define.h" />
     <ClInclude Include="..\src\dserver\database\mysql\mysql_conn.h" />
     <ClInclude Include="..\src\dserver\database\mysql\mysql_conn_pool.h" />
     <ClInclude Include="..\src\dserver\database\redis\redis.h" />

@@ -52,6 +52,9 @@
     <Filter Include="소스 파일\dserver\lock">
       <UniqueIdentifier>{790d38d5-f8a5-4b7b-aab6-9c7264e11133}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\dserver\database\mssql">
+      <UniqueIdentifier>{502d3068-5dfc-42e1-85ed-375e4a478dc8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -98,6 +101,12 @@
     </ClCompile>
     <ClCompile Include="..\src\dserver\monitor\system_resource_monitor.cpp">
       <Filter>소스 파일\dserver\monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\mssql\mssql_conn.cpp">
+      <Filter>소스 파일\dserver\database\mssql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dserver\database\mssql\mssql_conn_pool.cpp">
+      <Filter>소스 파일\dserver\database\mssql</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +226,15 @@
     </ClInclude>
     <ClInclude Include="..\src\dserver\packet.h">
       <Filter>소스 파일\dserver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\mssql\mssql_conn.h">
+      <Filter>소스 파일\dserver\database\mssql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\mssql\mssql_define.h">
+      <Filter>소스 파일\dserver\database\mssql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\mssql\mssql_conn_pool.h">
+      <Filter>소스 파일\dserver\database\mssql</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
