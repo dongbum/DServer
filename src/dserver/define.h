@@ -50,6 +50,8 @@
 #include "lock/custom_lock.h"
 #include "database/mysql/mysql_conn.h"
 #include "database/mysql/mysql_conn_pool.h"
+#include "database/mssql/mssql_define.h"
+#include "database/mssql/mssql_conn.h"
 #include "database/redis/redis.h"
 #include "monitor/system_resource_monitor.h"
 #include "object_pool.h"
