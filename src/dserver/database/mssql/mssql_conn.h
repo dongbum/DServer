@@ -46,7 +46,7 @@ public:
 	typedef std::vector<QUERY_DESC_PARAM>	QueryDescParamVec;
 	typedef std::vector<QUERY_COL_ATTR>		QueryColAttrVec;
 
-	MSSQLConn(void);
+	MSSQLConn(int32_t& total_query);
 	virtual ~MSSQLConn(void);
 
 	bool Connect(TCHAR* connection_string);
@@ -59,6 +59,8 @@ public:
 
 	bool Execute(void);
 
+	bool IsConnDead(void);
+
 private:
 	bool InitEnvHandle(void);
 	bool InitConnectHandle(void);
@@ -66,9 +68,10 @@ private:
 
 	void ClearStmt(void);
 	void SetDescribeParam(void);	// SQLBindParameter 타입 셋팅
+	void SetColAttr(void);			// SQLBindCol 타입 셋팅
 
 	SQLSMALLINT		GetCDataType(SQLSMALLINT sql_data_type);		// C Data Type 가져오기
-	TCHAR*			GetDBEErrorMessage(const SQLSMALLINT nHandleType, const SQLHENV& hStatement, TCHAR szMessage[]);
+	TCHAR*			GetDBEErrorMessage(const SQLSMALLINT handle_type, const SQLHENV & statement, TCHAR message[]);
 
 private:
 	SQLHENV			henv_;

@@ -105,6 +105,9 @@
     <ClCompile Include="..\src\dserver\database\mssql\mssql_conn.cpp">
       <Filter>소스 파일\dserver\database\mssql</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\dserver\database\mssql\mssql_conn_pool.cpp">
+      <Filter>소스 파일\dserver\database\mssql</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\dserver\boost.h">
@@ -228,6 +231,9 @@
       <Filter>소스 파일\dserver\database\mssql</Filter>
     </ClInclude>
     <ClInclude Include="..\src\dserver\database\mssql\mssql_define.h">
+      <Filter>소스 파일\dserver\database\mssql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dserver\database\mssql\mssql_conn_pool.h">
       <Filter>소스 파일\dserver\database\mssql</Filter>
     </ClInclude>
   </ItemGroup>

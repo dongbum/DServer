@@ -37,6 +37,9 @@
 #define MAX_LOG_MESSAGE_LENGTH		1024
 #define MAX_DATETIME_SIZE			(19+1)
 
+#define SAFE_DELETE(p)				{ if ( p ) delete p; p = nullptr; } 
+#define SAFE_DELETE_ARRAY(p)		{ if ( p ) delete[] p; p = nullptr; }
+
 #include "boost.h"
 #include "database.h"
 #include "json/json.h"
@@ -52,6 +55,7 @@
 #include "database/mysql/mysql_conn_pool.h"
 #include "database/mssql/mssql_define.h"
 #include "database/mssql/mssql_conn.h"
+#include "database/mssql/mssql_conn_pool.h"
 #include "database/redis/redis.h"
 #include "monitor/system_resource_monitor.h"
 #include "object_pool.h"

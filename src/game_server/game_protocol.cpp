@@ -30,7 +30,7 @@ uint32_t GameProtocol::Echo(std::shared_ptr<BasicSocket> session, uint32_t& prot
 	packet << send_header;
 	packet << test;
 
-	session->OnSend(packet.GetSize(), packet.GetBuffer());
+	session->OnSend(static_cast<int>(packet.GetSize()), packet.GetBuffer());
 
 	return 0;
 }
