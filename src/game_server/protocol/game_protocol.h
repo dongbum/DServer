@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../dserver/protocol/base_protocol.h"
+#include "../../dnetwork/protocol/base_protocol.h"
 
 #define BIND_PROTOCOL(PROTOCOL_NO, FUNC) \
 	AddProtocol(PROTOCOL_NO, boost::bind(FUNC, this, _1, _2, _3, _4))

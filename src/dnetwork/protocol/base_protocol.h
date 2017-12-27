@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../dserver/define.h"
+#include "../define.h"
 
 class BaseProtocol
 {
