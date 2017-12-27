@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{257A56D3-6007-423C-8472-BB3AF3B158EE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DUtil</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)Lib\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)64D</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)Lib\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)64</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\dutil\boost.h" />
+    <ClInclude Include="..\..\src\dutil\config\config.h" />
+    <ClInclude Include="..\..\src\dutil\container\thread_safe_queue.h" />
+    <ClInclude Include="..\..\src\dutil\database.h" />
+    <ClInclude Include="..\..\src\dutil\database\mssql\mssql_conn.h" />
+    <ClInclude Include="..\..\src\dutil\database\mssql\mssql_conn_pool.h" />
+    <ClInclude Include="..\..\src\dutil\database\mssql\mssql_define.h" />
+    <ClInclude Include="..\..\src\dutil\database\mysql\mysql_conn.h" />
+    <ClInclude Include="..\..\src\dutil\database\mysql\mysql_conn_pool.h" />
+    <ClInclude Include="..\..\src\dutil\database\redis\redis.h" />
+    <ClInclude Include="..\..\src\dutil\define.h" />
+    <ClInclude Include="..\..\src\dutil\json\allocator.h" />
+    <ClInclude Include="..\..\src\dutil\json\assertions.h" />
+    <ClInclude Include="..\..\src\dutil\json\autolink.h" />
+    <ClInclude Include="..\..\src\dutil\json\config.h" />
+    <ClInclude Include="..\..\src\dutil\json\features.h" />
+    <ClInclude Include="..\..\src\dutil\json\forwards.h" />
+    <ClInclude Include="..\..\src\dutil\json\json.h" />
+    <ClInclude Include="..\..\src\dutil\json\json_tool.h" />
+    <ClInclude Include="..\..\src\dutil\json\reader.h" />
+    <ClInclude Include="..\..\src\dutil\json\value.h" />
+    <ClInclude Include="..\..\src\dutil\json\version.h" />
+    <ClInclude Include="..\..\src\dutil\json\writer.h" />
+    <ClInclude Include="..\..\src\dutil\lock\custom_lock.h" />
+    <ClInclude Include="..\..\src\dutil\logging\log_define.h" />
+    <ClInclude Include="..\..\src\dutil\logging\log_manager.h" />
+    <ClInclude Include="..\..\src\dutil\logging\log_message.h" />
+    <ClInclude Include="..\..\src\dutil\monitor\system_resource_monitor.h" />
+    <ClInclude Include="..\..\src\dutil\object_pool.h" />
+    <ClInclude Include="..\..\src\dutil\stdafx.h" />
+    <ClInclude Include="..\..\src\dutil\targetver.h" />
+    <ClInclude Include="..\..\src\dutil\utility\util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\dutil\config\config.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\mssql\mssql_conn.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\mssql\mssql_conn_pool.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\mysql\mysql_conn.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\mysql\mysql_conn_pool.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\mysql\mysql_example.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\redis\redis.cpp" />
+    <ClCompile Include="..\..\src\dutil\json\json_reader.cpp" />
+    <ClCompile Include="..\..\src\dutil\json\json_value.cpp" />
+    <ClCompile Include="..\..\src\dutil\json\json_writer.cpp" />
+    <ClCompile Include="..\..\src\dutil\logging\log_manager.cpp" />
+    <ClCompile Include="..\..\src\dutil\monitor\system_resource_monitor.cpp" />
+    <ClCompile Include="..\..\src\dutil\stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\dutil\json\json_valueiterator.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

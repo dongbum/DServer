@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\config">
+      <UniqueIdentifier>{4d4121f5-13a1-48c6-9df6-4c3a9e4ba222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\container">
+      <UniqueIdentifier>{28ef8159-d5a1-44ee-8a78-f4e17042e8c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\database">
+      <UniqueIdentifier>{514d6f17-f87a-4289-91aa-d4e142b1b97e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\database\mssql">
+      <UniqueIdentifier>{b578245c-32fd-4c8a-b0da-4b63fde276e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\database\mysql">
+      <UniqueIdentifier>{faef5d82-0616-4855-bba5-06a0d327d7a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\database\redis">
+      <UniqueIdentifier>{a6f192a2-78a7-410d-8517-dfb23c23c8ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\lock">
+      <UniqueIdentifier>{b21f09d6-927e-4fed-9ab1-978ae1be7ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\logging">
+      <UniqueIdentifier>{e2bcc08b-922f-44a3-969e-700387056f20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\monitor">
+      <UniqueIdentifier>{1b5348c2-7710-4562-bb7a-67d18ecc17cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\utility">
+      <UniqueIdentifier>{6a3859d1-8270-4aff-8c55-f680254fbcb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\json">
+      <UniqueIdentifier>{098cfc54-470e-4869-a3cb-5315041faf2f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\dutil\stdafx.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\targetver.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\config\config.h">
+      <Filter>소스 파일\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\container\thread_safe_queue.h">
+      <Filter>소스 파일\container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\database\mssql\mssql_conn.h">
+      <Filter>소스 파일\database\mssql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\database\mssql\mssql_conn_pool.h">
+      <Filter>소스 파일\database\mssql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\database\mssql\mssql_define.h">
+      <Filter>소스 파일\database\mssql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\database\mysql\mysql_conn.h">
+      <Filter>소스 파일\database\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\database\mysql\mysql_conn_pool.h">
+      <Filter>소스 파일\database\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\database\redis\redis.h">
+      <Filter>소스 파일\database\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\lock\custom_lock.h">
+      <Filter>소스 파일\lock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\logging\log_message.h">
+      <Filter>소스 파일\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\logging\log_define.h">
+      <Filter>소스 파일\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\logging\log_manager.h">
+      <Filter>소스 파일\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\monitor\system_resource_monitor.h">
+      <Filter>소스 파일\monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\utility\util.h">
+      <Filter>소스 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\define.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\database.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\boost.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\features.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\forwards.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\json.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\json_tool.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\reader.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\value.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\version.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\writer.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\allocator.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\assertions.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\autolink.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\json\config.h">
+      <Filter>소스 파일\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\object_pool.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\dutil\stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\config\config.cpp">
+      <Filter>소스 파일\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\database\mssql\mssql_conn.cpp">
+      <Filter>소스 파일\database\mssql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\database\mssql\mssql_conn_pool.cpp">
+      <Filter>소스 파일\database\mssql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\database\mysql\mysql_conn_pool.cpp">
+      <Filter>소스 파일\database\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\database\mysql\mysql_example.cpp">
+      <Filter>소스 파일\database\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\database\mysql\mysql_conn.cpp">
+      <Filter>소스 파일\database\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\database\redis\redis.cpp">
+      <Filter>소스 파일\database\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\logging\log_manager.cpp">
+      <Filter>소스 파일\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\monitor\system_resource_monitor.cpp">
+      <Filter>소스 파일\monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\json\json_reader.cpp">
+      <Filter>소스 파일\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\json\json_value.cpp">
+      <Filter>소스 파일\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\json\json_writer.cpp">
+      <Filter>소스 파일\json</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\dutil\json\json_valueiterator.inl">
+      <Filter>소스 파일\json</Filter>
+    </None>
+  </ItemGroup>
+</Project>
