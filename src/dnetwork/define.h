@@ -27,9 +27,6 @@
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
-#include <Windows.h>
-#include <Psapi.h>
-#pragma comment(lib, "psapi.lib")
 #endif
 
 #define RECV_BUFFER_SIZE			1024
@@ -50,6 +47,7 @@
 #include "basic_socket.h"
 #include "basic_service.h"
 #include "basic_acceptor.h"
+#include "basic_connector.h"
 #include "protocol/base_protocol.h"
 
 #include "server.h"
