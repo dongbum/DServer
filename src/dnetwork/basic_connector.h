@@ -14,19 +14,19 @@ private:
 	BasicSocket socket_;
 };
 
-BasicConnector::BasicConnector(IoService& io_service)
+inline BasicConnector::BasicConnector(IoService& io_service)
 	: io_service_(io_service)
 	, socket_(io_service_)
 {
 
 }
 
-BasicConnector::~BasicConnector(void)
+inline BasicConnector::~BasicConnector(void)
 {
 
 }
 
-bool BasicConnector::Connect(std::string server_ip, const unsigned short server_port)
+inline bool BasicConnector::Connect(std::string server_ip, const unsigned short server_port)
 {
 	ErrorCode error_code;
 	boost::asio::ip::address_v4 address = boost::asio::ip::address_v4::from_string(server_ip, error_code);
@@ -51,7 +51,7 @@ bool BasicConnector::Connect(std::string server_ip, const unsigned short server_
 	return true;
 }
 
-void BasicConnector::ConnectHandler(const ErrorCode& ec)
+inline void BasicConnector::ConnectHandler(const ErrorCode& ec)
 {
 
 }
