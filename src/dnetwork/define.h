@@ -50,6 +50,7 @@
 #include "basic_socket.h"
 #include "basic_service.h"
 #include "basic_acceptor.h"
+#include "basic_connector.h"
 #include "protocol/base_protocol.h"
 
 #include "server.h"

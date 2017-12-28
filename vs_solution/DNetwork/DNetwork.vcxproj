@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\dnetwork\basic_acceptor.h" />
+    <ClInclude Include="..\..\src\dnetwork\basic_connector.h" />
     <ClInclude Include="..\..\src\dnetwork\basic_service.h" />
     <ClInclude Include="..\..\src\dnetwork\basic_socket.h" />
     <ClInclude Include="..\..\src\dnetwork\boost.h" />
