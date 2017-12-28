@@ -53,5 +53,12 @@ inline bool BasicConnector::Connect(std::string server_ip, const unsigned short 
 
 inline void BasicConnector::ConnectHandler(const ErrorCode& ec)
 {
+	LL_DEBUG("Connect. Remote Endpoint:[%s:%d]",
+		socket_.GetSocket().remote_endpoint().address().to_string().c_str(),
+		socket_.GetSocket().remote_endpoint().port());
 
+	if (!ec)
+	{
+		socket_.OnReceive();
+	}
 }
