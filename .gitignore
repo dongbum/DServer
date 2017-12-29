@@ -12,3 +12,4 @@ vs_solution/Bin/*.ilk
 vs_solution/Bin/*.iobj
 vs_solution/Bin/log/
 vs_solution/Lib/
+vs_solution/ipch/
