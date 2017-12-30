@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	if (false == CONFIG_MANAGER_INSTANCE.Initialize("ServerConfig.ini"))
+	if (false == CONFIG_MANAGER_INSTANCE.Initialize("BridgeServerConfig.ini"))
 		return 0;
 
 	if (false == LOG_MANAGER_INSTANCE.Init())
