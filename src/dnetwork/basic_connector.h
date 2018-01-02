@@ -1,6 +1,6 @@
 #pragma once
 
-class BasicConnector
+class BasicConnector : public BasicSocket
 {
 public:
 	BasicConnector(IoService& io_service);
@@ -10,13 +10,10 @@ public:
 	void ConnectHandler(const ErrorCode& ec);
 
 private:
-	IoService& io_service_;
-	BasicSocket socket_;
 };
 
 inline BasicConnector::BasicConnector(IoService& io_service)
-	: io_service_(io_service)
-	, socket_(io_service_)
+	: BasicSocket(io_service)
 {
 
 }
@@ -38,7 +35,7 @@ inline bool BasicConnector::Connect(std::string server_ip, const unsigned short 
 
 	EndPoint end_point(address, server_port);
 
-	Socket& socket = socket_.GetSocket();
+	Socket& socket = GetSocket();
 	socket.async_connect(
 		end_point,
 		boost::bind(
@@ -51,14 +48,28 @@ inline bool BasicConnector::Connect(std::string server_ip, const unsigned short 
 	return true;
 }
 
-inline void BasicConnector::ConnectHandler(const ErrorCode& ec)
+inline void BasicConnector::ConnectHandler(const ErrorCode& error)
 {
-	LL_DEBUG("Connect. Remote Endpoint:[%s:%d]",
-		socket_.GetSocket().remote_endpoint().address().to_string().c_str(),
-		socket_.GetSocket().remote_endpoint().port());
-
-	if (!ec)
+	if (error)
 	{
-		socket_.OnReceive();
+		if (boost::asio::error::eof == error)
+		{
+			LL_DEBUG("Client connection end.");
+		}
+		else
+		{
+			LL_DEBUG("Client connection error:[%d] msg:[%s]", error.value(), error.message().c_str());
+		}
+
+		__super::OnClose();
+		return;
 	}
+
+	Socket& socket = GetSocket();
+
+	LL_DEBUG("Connect. Remote Endpoint:[%s:%d]",
+		socket.remote_endpoint().address().to_string().c_str(),
+		socket.remote_endpoint().port());
+
+	
 }
