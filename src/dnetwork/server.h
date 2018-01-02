@@ -9,6 +9,7 @@ public:
 
 	void Start(int thread_pool_size = 0);
 	void Stop(void);
+	IoService& GetIoService(void) { return io_service_; };
 
 private:
 	void CreateThreadPool(void);
