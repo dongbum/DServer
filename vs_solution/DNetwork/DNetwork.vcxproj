@@ -96,6 +96,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\dnetwork\basic_acceptor.cpp" />
+    <ClCompile Include="..\..\src\dnetwork\basic_connector.cpp" />
     <ClCompile Include="..\..\src\dnetwork\basic_socket.cpp" />
     <ClCompile Include="..\..\src\dnetwork\protocol\base_protocol.cpp" />
     <ClCompile Include="..\..\src\dnetwork\server.cpp" />

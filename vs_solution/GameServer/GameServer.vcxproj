@@ -93,6 +93,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\game_server\bridge_connector.h" />
     <ClInclude Include="..\..\src\game_server\game_server.h" />
     <ClInclude Include="..\..\src\game_server\game_socket.h" />
     <ClInclude Include="..\..\src\game_server\protocol\game_protocol.h" />
