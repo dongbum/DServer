@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameServer", "GameServer\Ga
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BridgeServer", "BridgeServer\BridgeServer.vcxproj", "{EFF7CBFF-CD2E-4A36-97A7-7F2975DAC675}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{2C4A014C-1363-4659-976B-D9847D105EBD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{75652FF4-DDF5-46A0-BEFE-94E038939686}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -36,5 +40,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7B964AC-C56E-4DC2-9275-2AF2FF33C677} = {2C4A014C-1363-4659-976B-D9847D105EBD}
+		{257A56D3-6007-423C-8472-BB3AF3B158EE} = {2C4A014C-1363-4659-976B-D9847D105EBD}
+		{8319B31D-16FB-4E94-B7D4-618575EC5F97} = {75652FF4-DDF5-46A0-BEFE-94E038939686}
+		{EFF7CBFF-CD2E-4A36-97A7-7F2975DAC675} = {75652FF4-DDF5-46A0-BEFE-94E038939686}
 	EndGlobalSection
 EndGlobal
