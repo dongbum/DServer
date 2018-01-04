@@ -1,0 +1,10 @@
+#pragma once
+
+
+enum BR_GS_PROTOCOL
+{
+	BR_GS_START = 0,
+	BR_GS_CHATTING_REQ,
+	BR_GS_CHATTING_RES,
+	BR_GS_MAX,
+};
