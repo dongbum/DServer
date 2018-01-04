@@ -36,9 +36,6 @@
     <ClCompile Include="..\..\src\dnetwork\basic_connector.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dnetwork\basic_acceptor.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\dnetwork\basic_socket.h">
