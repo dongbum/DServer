@@ -21,9 +21,6 @@
     <ClInclude Include="..\..\src\game_server\protocol\game_protocol.h">
       <Filter>소스 파일\protocol</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\game_server\protocol\game_protocol_define.h">
-      <Filter>소스 파일\protocol</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\game_server\game_socket.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
