@@ -14,6 +14,11 @@ public:
 private:
 	void CreateThreadPool(void);
 
+public:
+	static std::shared_ptr<Server<T>> server_instance_;
+	static void SetServerInstance(std::shared_ptr<Server<T>>& server_instance) { server_instance_ = server_instance; }
+	static std::shared_ptr<Server<T>>& GetServerInstance(void) { return server_instance_; }
+
 private:
 	IoService io_service_;
 	std::shared_ptr<Work> work_ptr_;
@@ -25,7 +30,8 @@ private:
 	ObjectPool<std::shared_ptr<BasicSocket>> session_pool_;
 };
 
-
+template<typename T>
+std::shared_ptr<Server<T>> Server<T>::server_instance_ = nullptr;
 
 template<typename T>
 Server<T>::Server(int32_t server_port, int32_t max_session_count)

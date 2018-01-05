@@ -8,8 +8,9 @@ int main(void)
 	if (false == LOG_MANAGER_INSTANCE.Init())
 		return 0;
 
-	GameServer game_server;
-	game_server.Start();
+	std::shared_ptr<Server<GameSocket>> game_server(new GameServer);
+	GameServer::SetServerInstance(game_server);
+	game_server->Start();
 
 	while (true)
 		getchar();
