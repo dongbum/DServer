@@ -167,7 +167,6 @@
     <ClInclude Include="..\..\src\bridge_server\bridge_server.h" />
     <ClInclude Include="..\..\src\bridge_server\bridge_socket.h" />
     <ClInclude Include="..\..\src\bridge_server\protocol\bridge_protocol.h" />
-    <ClInclude Include="..\..\src\bridge_server\protocol\bridge_protocol_define.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

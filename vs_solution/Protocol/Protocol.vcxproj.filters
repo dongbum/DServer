@@ -13,30 +13,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\protocol">
-      <UniqueIdentifier>{a18c23ae-b8e1-4ef9-a84b-2e94ff8bcd7d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\bridge_server\main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\bridge_server\protocol\bridge_protocol.cpp">
-      <Filter>소스 파일\protocol</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\bridge_server\bridge_server.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\src\bridge_server\bridge_server.h">
+    <ClInclude Include="..\..\src\protocol\bridge_game_protocol.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\bridge_server\bridge_socket.h">
+    <ClInclude Include="..\..\src\protocol\client_game_protocol.h">
       <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\bridge_server\protocol\bridge_protocol.h">
-      <Filter>소스 파일\protocol</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

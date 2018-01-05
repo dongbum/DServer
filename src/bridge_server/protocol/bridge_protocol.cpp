@@ -1,4 +1,4 @@
-#include "bridge_protocol_define.h"
+#include "../../protocol/bridge_game_protocol.h"
 #include "bridge_protocol.h"
 
 BridgeProtocol::BridgeProtocol(void)
@@ -11,9 +11,7 @@ BridgeProtocol::~BridgeProtocol(void)
 
 void BridgeProtocol::InitProtocol(void)
 {
-	AddProtocol(BRIDGE_PROTOCOL_ECHO, boost::bind(&BridgeProtocol::Echo, this, _1, _2, _3, _4));
-
-	BIND_PROTOCOL(BRIDGE_PROTOCOL_ECHO, &BridgeProtocol::Echo);
+	BIND_PROTOCOL(BR_GS_PROTOCOL::BR_GS_CHATTING_REQ, &BridgeProtocol::Echo);
 }
 
 uint32_t BridgeProtocol::Echo(std::shared_ptr<BasicSocket> session, uint32_t& protocol_no, char* data, uint32_t data_length)
