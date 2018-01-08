@@ -13,5 +13,5 @@ public:
 	void Start(void);
 
 private:
-	BridgeConnector bridge_conn_;
+	BridgeConnector* bridge_conn_;
 };
