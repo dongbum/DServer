@@ -1,4 +1,4 @@
-#include "game_protocol.h"
+#include "../define.h"
 
 uint32_t GameProtocol::ChattingReq(std::shared_ptr<BasicSocket> session, uint32_t& protocol_no, char* data, uint32_t data_length)
 {

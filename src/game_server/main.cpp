@@ -1,4 +1,4 @@
-#include "game_server.h"
+#include "define.h"
 
 int main(void)
 {

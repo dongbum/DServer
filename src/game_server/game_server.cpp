@@ -1,5 +1,4 @@
-#include "game_server.h"
-
+#include "define.h"
 
 GameServer::GameServer(void)
 	: Server(
