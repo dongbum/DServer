@@ -1,5 +1,4 @@
-#include "../../protocol/client_game_protocol.h"
-#include "game_protocol.h"
+#include "../define.h"
 
 GameProtocol::GameProtocol(void)
 {

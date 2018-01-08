@@ -1,9 +1,5 @@
 #pragma once
 
-#include "protocol/game_protocol.h"
-#include "game_socket.h"
-#include "bridge_connector.h"
-
 class GameServer : public Server<GameSocket>
 {
 public:
@@ -12,6 +8,8 @@ public:
 
 	void Start(void);
 
+	BridgeConnector* GetBridgeConn(void)	{ return bridge_conn_; }
+
 private:
-	BridgeConnector bridge_conn_;
+	BridgeConnector* bridge_conn_;
 };

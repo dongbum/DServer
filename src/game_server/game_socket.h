@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 class GameSocket : public BasicSocket, public GameProtocol
 {
 public:

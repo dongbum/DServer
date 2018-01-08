@@ -1,4 +1,4 @@
-#include "game_protocol.h"
+#include "../define.h"
 
 uint32_t GameProtocol::ChattingReq(std::shared_ptr<BasicSocket> session, uint32_t& protocol_no, char* data, uint32_t data_length)
 {
@@ -12,7 +12,7 @@ uint32_t GameProtocol::ChattingReq(std::shared_ptr<BasicSocket> session, uint32_
 	packet << send_header;
 	packet << test;
 
-	session->OnSend(static_cast<int>(packet.GetSize()), packet.GetBuffer());
+	GAME_SVR->GetBridgeConn()->OnSend(static_cast<int>(packet.GetSize()), packet.GetBuffer());
 
 	return 0;
 }
