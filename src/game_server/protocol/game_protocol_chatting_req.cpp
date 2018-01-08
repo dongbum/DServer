@@ -12,9 +12,7 @@ uint32_t GameProtocol::ChattingReq(std::shared_ptr<BasicSocket> session, uint32_
 	packet << send_header;
 	packet << test;
 
-	session->OnSend(static_cast<int>(packet.GetSize()), packet.GetBuffer());
-
-	GAME_SVR->GetBridgeConn();
+	GAME_SVR->GetBridgeConn()->OnSend(static_cast<int>(packet.GetSize()), packet.GetBuffer());
 
 	return 0;
 }
