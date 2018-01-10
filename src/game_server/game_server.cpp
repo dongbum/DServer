@@ -5,8 +5,9 @@ GameServer::GameServer(void)
 		CONFIG_MANAGER_INSTANCE.GetInt32("DServer", "GAME_PORT"),
 		CONFIG_MANAGER_INSTANCE.GetInt32("DServer", "MAX_SESSION_COUNT")
 	)
+	, bridge_conn_(new BridgeConnector(__super::GetIoService()))
 {
-	bridge_conn_ = new BridgeConnector(__super::GetIoService());
+
 }
 
 GameServer::~GameServer(void)
