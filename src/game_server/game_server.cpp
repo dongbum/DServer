@@ -22,5 +22,7 @@ void GameServer::Start(void)
 
 	__super::Start(thread_count);
 
-	bridge_conn_->Connect("127.0.0.1", 30000);
+	bridge_conn_->Connect(
+		CONFIG_MANAGER_INSTANCE.GetString("BRIDGE_SERVER", "IP"),
+		CONFIG_MANAGER_INSTANCE.GetInt32("BRIDGE_SERVER", "PORT"));
 }
