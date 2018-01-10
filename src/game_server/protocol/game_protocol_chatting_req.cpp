@@ -7,6 +7,7 @@ uint32_t GameProtocol::ChattingReq(std::shared_ptr<BasicSocket> session, uint32_
 	Header send_header;
 	send_header.SetDataLength(4);
 	send_header.SetTotalLength(16);
+	send_header.SetProtocolNo(BR_GS_PROTOCOL::BR_GS_CHATTING_REQ);
 
 	Packet packet;
 	packet << send_header;
