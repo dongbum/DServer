@@ -8,8 +8,8 @@ public:
 
 	void Start(void);
 
-	BridgeConnector* GetBridgeConn(void)	{ return bridge_conn_; }
+	std::shared_ptr<BridgeConnector>& GetBridgeConn(void)	{ return bridge_conn_; }
 
 private:
-	BridgeConnector* bridge_conn_;
+	std::shared_ptr<BridgeConnector> bridge_conn_;
 };
