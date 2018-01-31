@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\game_server\game_server.cpp" />
+    <ClCompile Include="..\..\src\game_server\game_user.cpp" />
     <ClCompile Include="..\..\src\game_server\main.cpp" />
     <ClCompile Include="..\..\src\game_server\protocol\BR_GS\bridge_protocol.cpp" />
     <ClCompile Include="..\..\src\game_server\protocol\game_protocol.cpp" />
