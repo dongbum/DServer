@@ -6,6 +6,7 @@
 #include "protocol/game_protocol.h"
 #include "protocol/BR_GS/bridge_protocol.h"
 #include "game_socket.h"
+#include "game_user.h"
 #include "bridge_connector.h"
 #include "game_server.h"
 

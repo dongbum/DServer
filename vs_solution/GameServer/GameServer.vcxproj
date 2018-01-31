@@ -97,6 +97,7 @@
     <ClInclude Include="..\..\src\game_server\define.h" />
     <ClInclude Include="..\..\src\game_server\game_server.h" />
     <ClInclude Include="..\..\src\game_server\game_socket.h" />
+    <ClInclude Include="..\..\src\game_server\game_user.h" />
     <ClInclude Include="..\..\src\game_server\protocol\BR_GS\bridge_protocol.h" />
     <ClInclude Include="..\..\src\game_server\protocol\game_protocol.h" />
   </ItemGroup>

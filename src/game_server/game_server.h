@@ -1,6 +1,6 @@
 #pragma once
 
-class GameServer : public Server<GameSocket>
+class GameServer : public Server<GameUser>
 {
 public:
 	GameServer(void);
