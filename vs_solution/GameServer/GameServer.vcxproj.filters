@@ -16,6 +16,9 @@
     <Filter Include="소스 파일\protocol">
       <UniqueIdentifier>{ff5ce71d-69ac-4460-90a7-7c0d3197b7de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\protocol\BR_GS">
+      <UniqueIdentifier>{1361c8fd-0919-4799-94d6-e17522836723}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\game_server\protocol\game_protocol.h">
@@ -33,6 +36,9 @@
     <ClInclude Include="..\..\src\game_server\define.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\game_server\protocol\BR_GS\bridge_protocol.h">
+      <Filter>소스 파일\protocol\BR_GS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\game_server\protocol\game_protocol.cpp">
@@ -46,6 +52,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\game_server\protocol\game_protocol_chatting_req.cpp">
       <Filter>소스 파일\protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_server\protocol\BR_GS\bridge_protocol.cpp">
+      <Filter>소스 파일\protocol\BR_GS</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
