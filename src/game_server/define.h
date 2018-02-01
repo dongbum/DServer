@@ -1,5 +1,7 @@
 #pragma once
 
+#define USER_ID_LEN		10
+
 #include "../dnetwork/protocol/base_protocol.h"
 #include "../protocol/client_game_protocol.h"
 #include "../protocol/bridge_game_protocol.h"
