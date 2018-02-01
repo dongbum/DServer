@@ -42,11 +42,13 @@
 #define SAFE_DELETE(p)				{ if ( p ) delete p; p = nullptr; } 
 #define SAFE_DELETE_ARRAY(p)		{ if ( p ) delete[] p; p = nullptr; }
 
+#include <gperftools/tcmalloc.h>
+
 #include "boost.h"
 #include "database.h"
 #include "json/json.h"
-#include "gperftools/tcmalloc.h"
 
+#include "memorypool/tc_wrapper.h"
 #include "container/thread_safe_queue.h"
 #include "utility/util.h"
 #include "config/config.h"
@@ -61,5 +63,4 @@
 #include "database/mssql/mssql_conn_pool.h"
 #include "database/redis/redis.h"
 #include "monitor/system_resource_monitor.h"
-#include "memorypool/tc_wrapper.h"
 #include "object_pool.h"

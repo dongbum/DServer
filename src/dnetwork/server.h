@@ -1,7 +1,7 @@
 #pragma once
 
 template<typename T>
-class Server
+class Server : public TCWrapper
 {
 public:
 	Server(int32_t server_port, int32_t session_count);
