@@ -8,6 +8,8 @@
 #include <memory>
 #include <mutex>
 
+#pragma comment(lib, "libtcmalloc_minimal.lib")
+
 #ifndef _WIN32_WINNT         
 #define _WIN32_WINNT	0x0501
 #endif
@@ -43,6 +45,7 @@
 #include "boost.h"
 #include "database.h"
 #include "json/json.h"
+#include "gperftools/tcmalloc.h"
 
 #include "container/thread_safe_queue.h"
 #include "utility/util.h"
@@ -58,6 +61,5 @@
 #include "database/mssql/mssql_conn_pool.h"
 #include "database/redis/redis.h"
 #include "monitor/system_resource_monitor.h"
+#include "memorypool/tc_wrapper.h"
 #include "object_pool.h"
-
-#pragma comment(lib, "libtcmalloc_minimal.lib")
