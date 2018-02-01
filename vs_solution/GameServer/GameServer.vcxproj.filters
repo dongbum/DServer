@@ -39,6 +39,9 @@
     <ClInclude Include="..\..\src\game_server\protocol\BR_GS\bridge_protocol.h">
       <Filter>소스 파일\protocol\BR_GS</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\game_server\game_user.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\game_server\protocol\game_protocol.cpp">
@@ -55,6 +58,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\game_server\protocol\BR_GS\bridge_protocol.cpp">
       <Filter>소스 파일\protocol\BR_GS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_server\game_user.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

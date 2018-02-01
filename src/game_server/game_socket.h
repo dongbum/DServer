@@ -6,7 +6,6 @@ public:
 	GameSocket(IoService& io_service, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool)
 		: BasicSocket(io_service)
 		, session_pool_(session_pool)
-		, usn_(0)
 	{
 		__super::InitProtocol();
 	};
@@ -35,11 +34,6 @@ public:
 		session_pool_.ReleasePoolObject(shared_from_this());
 	};
 
-	uint64_t&	GetUSN(void) { return usn_; };
-	void		SetUSN(uint64_t usn) { usn_ = usn; };
-
-private:
-	uint64_t	usn_;
 private:
 	ObjectPool<std::shared_ptr<BasicSocket>>& session_pool_;
 };
