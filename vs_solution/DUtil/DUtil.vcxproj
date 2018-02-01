@@ -59,7 +59,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;D:\Work\DServer2.git\external_library\gperftools\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;D:\Work\DServer2.git\external_library\gperftools\src\windows;D:\Work\DServer2.git\external_library\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
       <PrecompiledHeaderFile>
@@ -79,7 +79,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;D:\Work\DServer2.git\external_library\gperftools\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;D:\Work\DServer2.git\external_library\gperftools\src;D:\Work\DServer2.git\external_library\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -103,18 +103,6 @@
     <ClInclude Include="..\..\src\dutil\database\mysql\mysql_conn_pool.h" />
     <ClInclude Include="..\..\src\dutil\database\redis\redis.h" />
     <ClInclude Include="..\..\src\dutil\define.h" />
-    <ClInclude Include="..\..\src\dutil\json\allocator.h" />
-    <ClInclude Include="..\..\src\dutil\json\assertions.h" />
-    <ClInclude Include="..\..\src\dutil\json\autolink.h" />
-    <ClInclude Include="..\..\src\dutil\json\config.h" />
-    <ClInclude Include="..\..\src\dutil\json\features.h" />
-    <ClInclude Include="..\..\src\dutil\json\forwards.h" />
-    <ClInclude Include="..\..\src\dutil\json\json.h" />
-    <ClInclude Include="..\..\src\dutil\json\json_tool.h" />
-    <ClInclude Include="..\..\src\dutil\json\reader.h" />
-    <ClInclude Include="..\..\src\dutil\json\value.h" />
-    <ClInclude Include="..\..\src\dutil\json\version.h" />
-    <ClInclude Include="..\..\src\dutil\json\writer.h" />
     <ClInclude Include="..\..\src\dutil\lock\custom_lock.h" />
     <ClInclude Include="..\..\src\dutil\logging\log_define.h" />
     <ClInclude Include="..\..\src\dutil\logging\log_manager.h" />
@@ -134,15 +122,9 @@
     <ClCompile Include="..\..\src\dutil\database\mysql\mysql_conn_pool.cpp" />
     <ClCompile Include="..\..\src\dutil\database\mysql\mysql_example.cpp" />
     <ClCompile Include="..\..\src\dutil\database\redis\redis.cpp" />
-    <ClCompile Include="..\..\src\dutil\json\json_reader.cpp" />
-    <ClCompile Include="..\..\src\dutil\json\json_value.cpp" />
-    <ClCompile Include="..\..\src\dutil\json\json_writer.cpp" />
     <ClCompile Include="..\..\src\dutil\logging\log_manager.cpp" />
     <ClCompile Include="..\..\src\dutil\monitor\system_resource_monitor.cpp" />
     <ClCompile Include="..\..\src\dutil\stdafx.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\src\dutil\json\json_valueiterator.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
