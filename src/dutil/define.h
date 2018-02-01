@@ -59,3 +59,5 @@
 #include "database/redis/redis.h"
 #include "monitor/system_resource_monitor.h"
 #include "object_pool.h"
+
+#pragma comment(lib, "libtcmalloc_minimal.lib")
