@@ -8,6 +8,8 @@
 #include <memory>
 #include <mutex>
 
+#pragma comment(lib, "libtcmalloc_minimal.lib")
+
 #ifndef _WIN32_WINNT         
 #define _WIN32_WINNT	0x0501
 #endif
@@ -40,10 +42,13 @@
 #define SAFE_DELETE(p)				{ if ( p ) delete p; p = nullptr; } 
 #define SAFE_DELETE_ARRAY(p)		{ if ( p ) delete[] p; p = nullptr; }
 
+#include <gperftools/tcmalloc.h>
+
 #include "boost.h"
 #include "database.h"
 #include "json/json.h"
 
+#include "memorypool/tc_wrapper.h"
 #include "container/thread_safe_queue.h"
 #include "utility/util.h"
 #include "config/config.h"

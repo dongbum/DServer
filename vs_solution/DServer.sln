@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Protocol", "Protocol", "{73
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Protocol", "Protocol\Protocol.vcxproj", "{F674CDAC-4572-45F0-A8D1-F698FA0F4382}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalLibrary", "ExternalLibrary", "{651074FE-98A8-4EC1-B71B-DCA543F74067}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libtcmalloc_minimal", "..\external_library\gperftools\vsprojects\libtcmalloc_minimal\libtcmalloc_minimal.vcxproj", "{55E2B3AE-3CA1-4DB6-97F7-0A044D6F446F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -45,6 +49,10 @@ Global
 		{F674CDAC-4572-45F0-A8D1-F698FA0F4382}.Debug|x64.Build.0 = Debug|x64
 		{F674CDAC-4572-45F0-A8D1-F698FA0F4382}.Release|x64.ActiveCfg = Release|x64
 		{F674CDAC-4572-45F0-A8D1-F698FA0F4382}.Release|x64.Build.0 = Release|x64
+		{55E2B3AE-3CA1-4DB6-97F7-0A044D6F446F}.Debug|x64.ActiveCfg = Debug|x64
+		{55E2B3AE-3CA1-4DB6-97F7-0A044D6F446F}.Debug|x64.Build.0 = Debug|x64
+		{55E2B3AE-3CA1-4DB6-97F7-0A044D6F446F}.Release|x64.ActiveCfg = Release|x64
+		{55E2B3AE-3CA1-4DB6-97F7-0A044D6F446F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +63,6 @@ Global
 		{8319B31D-16FB-4E94-B7D4-618575EC5F97} = {75652FF4-DDF5-46A0-BEFE-94E038939686}
 		{EFF7CBFF-CD2E-4A36-97A7-7F2975DAC675} = {75652FF4-DDF5-46A0-BEFE-94E038939686}
 		{F674CDAC-4572-45F0-A8D1-F698FA0F4382} = {73FEB918-FDCD-41FD-A79B-D0AC06C1DE1F}
+		{55E2B3AE-3CA1-4DB6-97F7-0A044D6F446F} = {651074FE-98A8-4EC1-B71B-DCA543F74067}
 	EndGlobalSection
 EndGlobal

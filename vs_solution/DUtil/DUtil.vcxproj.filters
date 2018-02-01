@@ -46,6 +46,9 @@
     <Filter Include="소스 파일\json">
       <UniqueIdentifier>{098cfc54-470e-4869-a3cb-5315041faf2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\memorypool">
+      <UniqueIdentifier>{40d73cf0-72a8-45a2-ab13-0f85f32e4533}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -146,6 +149,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\dutil\object_pool.h">
       <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dutil\memorypool\tc_wrapper.h">
+      <Filter>소스 파일\memorypool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
