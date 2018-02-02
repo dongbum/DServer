@@ -1,5 +1,11 @@
 #pragma once
 
+#include "../dutil/define.h"
+
+#pragma comment(lib, LIB_NAME("libtcmalloc_minimal"))
+#pragma comment(lib, LIB_NAME("DNetwork"))
+#pragma comment(lib, LIB_NAME("DUtil"))
+
 #define USER_ID_LEN		10
 
 #include "../dnetwork/protocol/base_protocol.h"

@@ -8,7 +8,21 @@
 #include <memory>
 #include <mutex>
 
-#pragma comment(lib, "libtcmalloc_minimal.lib")
+#ifdef _WIN64
+#	ifdef _DEBUG
+#		define LIB_NAME(LIB) LIB##"64D.lib"
+#	else
+#		define LIB_NAME(LIB) LIB##"64.lib"
+#	endif
+#else
+#	ifdef _DEBUG
+#		define LIB_NAME(LIB) LIB##"D.lib"
+#	else
+#		define LIB_NAME(LIB) LIB##".lib"
+#	endif
+#endif	// x64
+
+#pragma comment(lib, LIB_NAME("lib_json"))
 
 #ifndef _WIN32_WINNT         
 #define _WIN32_WINNT	0x0501
@@ -47,7 +61,6 @@
 
 #include "boost.h"
 #include "database.h"
-#include "json/json.h"
 
 #include "memorypool/tc_wrapper.h"
 #include "container/thread_safe_queue.h"

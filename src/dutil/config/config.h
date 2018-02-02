@@ -7,6 +7,13 @@ public:
 	typedef std::string INI_Value;
 	typedef std::map<INI_Key, INI_Value> INI_Container;
 
+	enum CONFIG_FILE_TYPE
+	{
+		CONFIG_FILE_TYPE_INI = 0,
+		CONFIG_FILE_TYPE_JSON,
+		CONFIG_FILE_TYPE_MAX,
+	};
+
 	ConfigManager(void);
 	virtual ~ConfigManager(void);
 
