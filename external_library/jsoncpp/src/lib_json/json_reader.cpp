@@ -5,9 +5,9 @@
 // See file LICENSE for detail or copy at http://jsoncpp.sourceforge.net/LICENSE
 
 #if !defined(JSON_IS_AMALGAMATION)
-#include "assertions.h"
-#include "reader.h"
-#include "value.h"
+#include <json/assertions.h>
+#include <json/reader.h>
+#include <json/value.h>
 #include "json_tool.h"
 #endif // if !defined(JSON_IS_AMALGAMATION)
 #include <utility>
@@ -1237,7 +1237,7 @@ bool OurReader::readToken(Token& token) {
     token.type_ = tokenString;
     ok = readStringSingleQuote();
     break;
-    } // else continue
+    } // else fall through
   case '/':
     token.type_ = tokenComment;
     ok = readComment();

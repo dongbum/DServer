@@ -25,9 +25,9 @@
 #define JSON_USE_EXCEPTION 1
 #endif
 
-/// If defined, indicates that the source file is amalgated
+/// If defined, indicates that the source file is amalgamated
 /// to prevent private header inclusion.
-/// Remarks: it is automatically defined in the generated amalgated header.
+/// Remarks: it is automatically defined in the generated amalgamated header.
 // #define JSON_IS_AMALGAMATION
 
 #ifdef JSON_IN_CPPTL
@@ -78,21 +78,29 @@
 
 #endif // defined(_MSC_VER)
 
-// In c++11 the override keyword allows you to explicity define that a function
+// In c++11 the override keyword allows you to explicitly define that a function
 // is intended to override the base-class version.  This makes the code more
 // managable and fixes a set of common hard-to-find bugs.
 #if __cplusplus >= 201103L
 # define JSONCPP_OVERRIDE override
 # define JSONCPP_NOEXCEPT noexcept
+# define JSONCPP_OP_EXPLICIT explicit
 #elif defined(_MSC_VER) && _MSC_VER > 1600 && _MSC_VER < 1900
 # define JSONCPP_OVERRIDE override
 # define JSONCPP_NOEXCEPT throw()
+# if _MSC_VER >= 1800 // MSVC 2013
+#   define JSONCPP_OP_EXPLICIT explicit
+# else
+#   define JSONCPP_OP_EXPLICIT
+# endif
 #elif defined(_MSC_VER) && _MSC_VER >= 1900
 # define JSONCPP_OVERRIDE override
 # define JSONCPP_NOEXCEPT noexcept
+# define JSONCPP_OP_EXPLICIT explicit
 #else
 # define JSONCPP_OVERRIDE
 # define JSONCPP_NOEXCEPT throw()
+# define JSONCPP_OP_EXPLICIT
 #endif
 
 #ifndef JSON_HAS_RVALUE_REFERENCES

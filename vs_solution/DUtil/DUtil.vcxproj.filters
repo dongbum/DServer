@@ -43,9 +43,6 @@
     <Filter Include="소스 파일\utility">
       <UniqueIdentifier>{6a3859d1-8270-4aff-8c55-f680254fbcb8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\json">
-      <UniqueIdentifier>{098cfc54-470e-4869-a3cb-5315041faf2f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\memorypool">
       <UniqueIdentifier>{40d73cf0-72a8-45a2-ab13-0f85f32e4533}</UniqueIdentifier>
     </Filter>
@@ -111,42 +108,6 @@
     <ClInclude Include="..\..\src\dutil\boost.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\features.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\forwards.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\json.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\json_tool.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\reader.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\value.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\version.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\writer.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\allocator.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\assertions.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\autolink.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dutil\json\config.h">
-      <Filter>소스 파일\json</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\dutil\object_pool.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
@@ -185,19 +146,5 @@
     <ClCompile Include="..\..\src\dutil\monitor\system_resource_monitor.cpp">
       <Filter>소스 파일\monitor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dutil\json\json_reader.cpp">
-      <Filter>소스 파일\json</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\dutil\json\json_value.cpp">
-      <Filter>소스 파일\json</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\dutil\json\json_writer.cpp">
-      <Filter>소스 파일\json</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\src\dutil\json\json_valueiterator.inl">
-      <Filter>소스 파일\json</Filter>
-    </None>
   </ItemGroup>
 </Project>
