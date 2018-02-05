@@ -107,7 +107,6 @@
     <ClInclude Include="..\..\src\dutil\logging\log_define.h" />
     <ClInclude Include="..\..\src\dutil\logging\log_manager.h" />
     <ClInclude Include="..\..\src\dutil\logging\log_message.h" />
-    <ClInclude Include="..\..\src\dutil\memorypool\tc_wrapper.h" />
     <ClInclude Include="..\..\src\dutil\monitor\system_resource_monitor.h" />
     <ClInclude Include="..\..\src\dutil\object_pool.h" />
     <ClInclude Include="..\..\src\dutil\stdafx.h" />

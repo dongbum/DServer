@@ -2,7 +2,6 @@
 
 #include "../dutil/define.h"
 
-#pragma comment(lib, LIB_NAME("libtcmalloc_minimal"))
 #pragma comment(lib, LIB_NAME("DNetwork"))
 #pragma comment(lib, LIB_NAME("DUtil"))
 

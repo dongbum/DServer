@@ -1,6 +1,6 @@
 #pragma once
 
-class MSSQLConnPool : public TCWrapper
+class MSSQLConnPool
 {
 public:
 	MSSQLConnPool(int32_t& nMaxThreadCnt, int32_t nMaxQueryCnt);

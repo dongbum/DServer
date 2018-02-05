@@ -56,13 +56,11 @@
 #define SAFE_DELETE(p)				{ if ( p ) delete p; p = nullptr; } 
 #define SAFE_DELETE_ARRAY(p)		{ if ( p ) delete[] p; p = nullptr; }
 
-#include <gperftools/tcmalloc.h>
 #include <json/json.h>
 
 #include "boost.h"
 #include "database.h"
 
-#include "memorypool/tc_wrapper.h"
 #include "container/thread_safe_queue.h"
 #include "utility/util.h"
 #include "config/config.h"

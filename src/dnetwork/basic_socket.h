@@ -1,7 +1,7 @@
 #pragma once
 
 
-class BasicSocket : public std::enable_shared_from_this<BasicSocket>, public TCWrapper
+class BasicSocket : public std::enable_shared_from_this<BasicSocket>
 {
 public:
 	BasicSocket(IoService& io_service);
