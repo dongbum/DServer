@@ -111,6 +111,9 @@
     <ClInclude Include="..\..\src\dutil\object_pool.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\dutil\memorypool\memory_pool.h">
+      <Filter>소스 파일\memorypool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\dutil\stdafx.cpp">
