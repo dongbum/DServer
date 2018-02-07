@@ -62,7 +62,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Library\boost_1_60_0;D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Work\DServer2.git\external_library\gperftools\src\windows;D:\Work\DServer2.git\external_library\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Library\boost_1_60_0;D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Work\DServer2.git\external_library\jemalloc\include;D:\Work\DServer2.git\external_library\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

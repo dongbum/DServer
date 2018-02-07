@@ -1,7 +1,7 @@
 #pragma once
 
 
-class BasicSocket : public std::enable_shared_from_this<BasicSocket>
+class BasicSocket : public std::enable_shared_from_this<BasicSocket>, public MemoryPool
 {
 public:
 	BasicSocket(IoService& io_service);

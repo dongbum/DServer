@@ -22,6 +22,7 @@
 #	endif
 #endif	// x64
 
+#pragma comment(lib, LIB_NAME("jemalloc"))
 #pragma comment(lib, LIB_NAME("lib_json"))
 
 #ifndef _WIN32_WINNT         
@@ -56,9 +57,11 @@
 #define SAFE_DELETE(p)				{ if ( p ) delete p; p = nullptr; } 
 #define SAFE_DELETE_ARRAY(p)		{ if ( p ) delete[] p; p = nullptr; }
 
+#include <jemalloc/jemalloc.h>
 #include <json/json.h>
 
 #include "boost.h"
+#include "memorypool/memory_pool.h"
 #include "database.h"
 
 #include "container/thread_safe_queue.h"
