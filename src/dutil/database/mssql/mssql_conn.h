@@ -46,7 +46,7 @@ public:
 	typedef std::vector<QUERY_DESC_PARAM>	QueryDescParamVec;
 	typedef std::vector<QUERY_COL_ATTR>		QueryColAttrVec;
 
-	MSSQLConn(int32_t& total_query);
+	explicit MSSQLConn(int32_t& total_query);
 	virtual ~MSSQLConn(void);
 
 	bool Connect(TCHAR* connection_string);

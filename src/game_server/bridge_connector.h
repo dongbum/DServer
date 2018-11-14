@@ -3,7 +3,7 @@
 class BridgeConnector : public BasicConnector, public BridgeProtocol
 {
 public:
-	BridgeConnector(IoService& io_service)
+	explicit BridgeConnector(IoService& io_service)
 		: BasicConnector(io_service)
 	{
 

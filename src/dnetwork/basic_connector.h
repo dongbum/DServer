@@ -3,7 +3,7 @@
 class BasicConnector : public BasicSocket
 {
 public:
-	BasicConnector(IoService& io_service);
+	explicit BasicConnector(IoService& io_service);
 	virtual ~BasicConnector(void);
 
 	bool Connect(std::string server_ip, const unsigned short server_port);

@@ -4,7 +4,11 @@ template< std::size_t BUF_SIZE >
 class LinearBuffer
 {
 public:
-	LinearBuffer(void)				{ ClearBuf(); }
+	LinearBuffer(void)
+	{
+		memset(m_szBuf, 0, BUF_SIZE);
+		ClearBuf();
+	}
 	virtual ~LinearBuffer(void)	{ ClearBuf(); }
 
 	void MoveBufferPtr(void);
@@ -24,8 +28,8 @@ protected:
 	void clearWritePos(void)		{ m_nWritePos = 0; }
 
 private:
-	LinearBuffer(const LinearBuffer& rhs);
-	LinearBuffer& operator=(const LinearBuffer& rhs);
+	LinearBuffer(const LinearBuffer& rhs) = delete;
+	LinearBuffer& operator=(const LinearBuffer& rhs) = delete;
 
 protected:
 	char		m_szBuf[BUF_SIZE];
