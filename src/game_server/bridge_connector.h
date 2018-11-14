@@ -14,7 +14,7 @@ public:
 
 	};
 
-	void OnPacket(char* packet, int size)
+	void OnPacket(char* packet, int size) override
 	{
 		// std::cout << "GameSocket OnPacket size:" << size << std::endl;
 		Header header;

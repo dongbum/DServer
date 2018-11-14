@@ -6,6 +6,7 @@ public:
 	Packet(void)
 	{
 		write_pos_ = 0;
+		data_size_ = 0;
 		end_pos_ = &buffer_[SEND_BUFFER_SIZE];
 	}
 

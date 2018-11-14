@@ -10,7 +10,7 @@ public:
 		__super::InitProtocol();
 	};
 
-	void OnPacket(char* packet, int size)
+	void OnPacket(char* packet, int size) override
 	{
 		// std::cout << "GameSocket OnPacket size:" << size << std::endl;
 		Header header;
@@ -26,7 +26,7 @@ public:
 		ExecuteProtocol(shared_from_this(), header.protocol_no_, body, header.data_length_);
 	};
 
-	void OnClose(void)
+	void OnClose(void) override
 	{
 		LL_DEBUG("GameSocket OnClose");
 

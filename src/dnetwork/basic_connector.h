@@ -17,6 +17,8 @@ private:
 
 inline BasicConnector::BasicConnector(IoService& io_service)
 	: BasicSocket(io_service)
+	, server_ip_("127.0.0.1")
+	, server_port_(0)
 {
 
 }
