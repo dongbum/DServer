@@ -12,7 +12,7 @@ ConfigManager::~ConfigManager(void)
 }
 
 
-bool ConfigManager::Initialize(std::string file_name)
+bool ConfigManager::Initialize(const std::string& file_name)
 {
 	std::cout << file_name << " Loading..." << std::endl;
 
@@ -32,7 +32,7 @@ bool ConfigManager::Initialize(std::string file_name)
 }
 
 
-ConfigManager::INI_Value ConfigManager::GetValue(std::string section_name, std::string key_name, bool to_upper_case /* = false */)
+ConfigManager::INI_Value ConfigManager::GetValue(const std::string& section_name, const std::string& key_name, bool to_upper_case /* = false */)
 {
 	try
 	{
@@ -49,17 +49,17 @@ ConfigManager::INI_Value ConfigManager::GetValue(std::string section_name, std::
 	}
 }
 
-int32_t ConfigManager::GetInt32(std::string section_name, std::string key_name)
+int32_t ConfigManager::GetInt32(const std::string& section_name, const std::string& key_name)
 {
 	return std::stoi(GetValue(section_name, key_name));
 }
 
-std::string ConfigManager::GetString(std::string section_name, std::string key_name, bool to_upper_case /* = false */)
+std::string ConfigManager::GetString(const std::string& section_name, const std::string& key_name, bool to_upper_case /* = false */)
 {
 	return GetValue(section_name, key_name, to_upper_case);
 }
 
-bool ConfigManager::GetBool(std::string section_name, std::string key_name)
+bool ConfigManager::GetBool(const std::string& section_name, const std::string& key_name)
 {
 	if ("TRUE" == GetValue(section_name, key_name, true))
 		return true;

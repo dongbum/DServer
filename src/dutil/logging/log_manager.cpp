@@ -2,6 +2,7 @@
 
 LogManager::LogManager(void)
 	: today_(0)
+	, log_mode_(LOG_MODE::LOG_MODE_NONE)
 {
 
 }
@@ -168,7 +169,7 @@ bool LogManager::CreateLogFile(void)
 }
 
 
-bool LogManager::FindFile(const boost::filesystem::path& target_path, std::string file_name, OUT boost::filesystem::path& path)
+bool LogManager::FindFile(const boost::filesystem::path& target_path, const std::string& file_name, OUT boost::filesystem::path& path)
 {
 	if (false == boost::filesystem::exists(target_path))
 		return false;
@@ -195,7 +196,7 @@ bool LogManager::FindFile(const boost::filesystem::path& target_path, std::strin
 }
 
 
-short LogManager::GetLogMode(std::string value)
+short LogManager::GetLogMode(const std::string& value)
 {
 	if (value == "NONE")
 		return LOG_MODE::LOG_MODE_NONE;

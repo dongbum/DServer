@@ -45,7 +45,7 @@ MSSQLConn* MSSQLConnPool::GetOdbcConn(int32_t type)
 
 	if (!mssql_conn || mssql_conn->IsConnDead())
 	{
-		if (mssql_conn)
+		if (nullptr != mssql_conn)
 			SAFE_DELETE(mssql_conn);
 
 		mssql_conn = new MSSQLConn(max_query_count_);

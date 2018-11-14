@@ -3,7 +3,7 @@
 class BridgeConnector : public BasicConnector, public BridgeProtocol
 {
 public:
-	BridgeConnector(IoService& io_service)
+	explicit BridgeConnector(IoService& io_service)
 		: BasicConnector(io_service)
 	{
 
@@ -14,7 +14,7 @@ public:
 
 	};
 
-	void OnPacket(char* packet, int size)
+	void OnPacket(char* packet, int size) override
 	{
 		// std::cout << "GameSocket OnPacket size:" << size << std::endl;
 		Header header;

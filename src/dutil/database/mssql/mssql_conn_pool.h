@@ -4,6 +4,9 @@ class MSSQLConnPool
 {
 public:
 	MSSQLConnPool(int32_t& nMaxThreadCnt, int32_t nMaxQueryCnt);
+	MSSQLConnPool(const MSSQLConnPool& rhs) = delete;
+	MSSQLConnPool& operator=(const MSSQLConnPool& rhs) = delete;
+
 	virtual ~MSSQLConnPool(void);
 
 	bool		Init(TCHAR* connection_string);

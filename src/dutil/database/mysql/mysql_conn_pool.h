@@ -5,7 +5,7 @@ class MySQLConnPool
 public:
 	typedef std::shared_ptr<MySQLConn>		MySQLConnPtr;
 
-	MySQLConnPool(int32_t& pool_count);
+	explicit MySQLConnPool(int32_t& pool_count);
 	virtual ~MySQLConnPool(void);
 
 	bool			Init(void);

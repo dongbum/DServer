@@ -15,8 +15,8 @@ private:
 private:
 	bool	CreateLogDirectory(void);
 	bool	CreateLogFile(void);
-	bool	FindFile(const boost::filesystem::path& target_path, std::string file_name, OUT boost::filesystem::path& path);
-	short	GetLogMode(std::string value);
+	bool	FindFile(const boost::filesystem::path& target_path, const std::string& file_name, OUT boost::filesystem::path& path);
+	short	GetLogMode(const std::string& value);
 
 public:
 	static LogManager& GetMutableInstance(void) { return LogManager::get_mutable_instance(); }

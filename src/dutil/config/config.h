@@ -17,13 +17,13 @@ public:
 	ConfigManager(void);
 	virtual ~ConfigManager(void);
 
-	bool			Initialize(std::string file_name);
-	int32_t			GetInt32(std::string section_name, std::string key_name);
-	std::string		GetString(std::string section_name, std::string key_name, bool to_upper_case = false);
-	bool			GetBool(std::string section_name, std::string key_name);
+	bool			Initialize(const std::string& file_name);
+	int32_t			GetInt32(const std::string& section_name, const std::string& key_name);
+	std::string		GetString(const std::string& section_name, const std::string& key_name, bool to_upper_case = false);
+	bool			GetBool(const std::string& section_name, const std::string& key_name);
 	
 private:
-	ConfigManager::INI_Value GetValue(std::string section_name, std::string key_name, bool to_upper_case = false);
+	ConfigManager::INI_Value GetValue(const std::string& section_name, const std::string& key_name, bool to_upper_case = false);
 
 public:
 	static ConfigManager& GetMutableInstance(void) { return ConfigManager::get_mutable_instance(); }
