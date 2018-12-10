@@ -5,8 +5,8 @@
 class BaseProtocol
 {
 public:
-	typedef boost::function<uint32_t(std::shared_ptr<BasicSocket>, uint32_t&, char*, uint32_t)>	ProtocolFunction;
-	typedef std::map<uint32_t, ProtocolFunction>										ProtocolMap;
+	using ProtocolFunction = boost::function<uint32_t(std::shared_ptr<BasicSocket>, uint32_t&, char*, uint32_t)>;
+	using ProtocolMap = std::map<uint32_t, ProtocolFunction>;
 
 	BaseProtocol(void);
 	virtual ~BaseProtocol(void);

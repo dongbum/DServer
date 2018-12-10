@@ -16,13 +16,13 @@
 #define TCP_V4	boost::asio::ip::address_v4::any()
 #define TCP_V6	boost::asio::ip::address_v6::any()
 
-typedef boost::asio::strand				Strand;
-typedef boost::asio::io_service			IoService;
-typedef boost::asio::io_service::work	Work;
-typedef boost::asio::ip::tcp::endpoint	EndPoint;
-typedef boost::asio::ip::tcp::acceptor	Acceptor;
-typedef boost::asio::ip::tcp::socket	Socket;
-typedef boost::system::error_code		ErrorCode;
+using Strand = boost::asio::strand;
+using IoService = boost::asio::io_service;
+using Work = boost::asio::io_service::work;
+using EndPoint = boost::asio::ip::tcp::endpoint;
+using Acceptor = boost::asio::ip::tcp::acceptor;
+using Socket = boost::asio::ip::tcp::socket;
+using ErrorCode = boost::system::error_code;
 
-typedef boost::mutex					Mutex;
-typedef boost::lock_guard<Mutex>		LockGuard;
+using Mutex = boost::mutex;
+using LockGuard = boost::lock_guard<Mutex>;

@@ -1,4 +1,4 @@
-#include "define.h"
+﻿#include "define.h"
 
 BasicSocket::BasicSocket(IoService& io_service)
 	: socket_(io_service)
