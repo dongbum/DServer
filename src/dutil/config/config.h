@@ -3,9 +3,9 @@
 class ConfigManager : public boost::serialization::singleton<ConfigManager>
 {
 public:
-	typedef std::pair<std::string, std::string> INI_Key;
-	typedef std::string INI_Value;
-	typedef std::map<INI_Key, INI_Value> INI_Container;
+	using INI_Key = std::pair<std::string, std::string>;
+	using INI_Value = std::string;
+	using INI_Container = std::map<INI_Key, INI_Value>;
 
 	enum CONFIG_FILE_TYPE
 	{

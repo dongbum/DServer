@@ -1,9 +1,9 @@
 #pragma once
 
-class MySQLConnPool
+class MySQLConnPool : public MemoryPool
 {
 public:
-	typedef std::shared_ptr<MySQLConn>		MySQLConnPtr;
+	using MySQLConnPtr = std::shared_ptr<MySQLConn>;
 
 	explicit MySQLConnPool(int32_t& pool_count);
 	virtual ~MySQLConnPool(void);

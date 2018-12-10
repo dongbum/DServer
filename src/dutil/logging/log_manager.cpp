@@ -1,4 +1,4 @@
-#include "../define.h"
+﻿#include "../define.h"
 
 LogManager::LogManager(void)
 	: today_(0)

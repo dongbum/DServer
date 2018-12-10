@@ -1,7 +1,7 @@
 #pragma once
 
 // SQLBindParameter에 필요가 타입 정보
-typedef struct DESC_PARAM_STRUCT
+using DESC_PARAM = struct DESC_PARAM_STRUCT
 {
 	SQLSMALLINT					cdata_type;
 	SQLSMALLINT					sql_data_type;
@@ -11,40 +11,40 @@ typedef struct DESC_PARAM_STRUCT
 	DESC_PARAM_STRUCT(void)
 		: cdata_type(0), sql_data_type(0), param_size(0), decimal_digits(0), nullable(0)
 	{}
-} DESC_PARAM;
+};
 
 // DESC_PARAM 관리 구조체
-typedef struct  QUERY_DESC_PARAM_STRUCT
+using QUERY_DESC_PARAM = struct  QUERY_DESC_PARAM_STRUCT
 {
 	bool						is_no_data;		// SQLBindParameter 존재여부 체크
 	std::vector<DESC_PARAM>		desc_param_vec;	// SQLBindParameter Type 정보
 	QUERY_DESC_PARAM_STRUCT(void)
 		: is_no_data(false) {}
-} QUERY_DESC_PARAM;
+};
 
 // SQLBindCol에 필요가 정보
-typedef struct COL_ATTR_STRUCT
+using COL_ATTR = struct COL_ATTR_STRUCT
 {
 	bool						is_cached;
 	SQLSMALLINT					desc_type;
 	SQLLEN						desc_len;
 	COL_ATTR_STRUCT(void)
 		: is_cached(false), desc_type(0), desc_len(0) {}
-} COL_ATTR;
+};
 
-typedef struct QUERY_COL_ATTR_STRUCT
+using QUERY_COL_ATTR = struct QUERY_COL_ATTR_STRUCT
 {
 	bool						is_no_data;		// SQLBindCol 존재여부 체크
 	std::vector<COL_ATTR>		col_attr_vec;	// SQLBindCol Type 정보
 	QUERY_COL_ATTR_STRUCT(void)
 		: is_no_data(false) {}
-} QUERY_COL_ATTR;
+};
 
 class MSSQLConn
 {
 public:
-	typedef std::vector<QUERY_DESC_PARAM>	QueryDescParamVec;
-	typedef std::vector<QUERY_COL_ATTR>		QueryColAttrVec;
+	using QueryDescParamVec = std::vector<QUERY_DESC_PARAM>;
+	using QueryColAttrVec = std::vector<QUERY_COL_ATTR>;
 
 	explicit MSSQLConn(int32_t& total_query);
 	virtual ~MSSQLConn(void);
