@@ -126,6 +126,9 @@
     <ClInclude Include="..\..\src\dutil\database\excel\excelformat\excelformat.h">
       <Filter>소스 파일\database\excel\excelformat</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\dutil\database\excel\excel_conn.h">
+      <Filter>소스 파일\database\excel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\dutil\stdafx.cpp">
@@ -163,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\dutil\database\excel\excelformat\basicexcel.cpp">
       <Filter>소스 파일\database\excel\excelformat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\database\excel\excel_conn.cpp">
+      <Filter>소스 파일\database\excel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
