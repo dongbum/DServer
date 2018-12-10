@@ -122,7 +122,7 @@ void BasicSocket::OnSend(int size, char* data)
 	send_lock_.lock();
 
 	bool can_send_now = send_queue_.empty();
-	send_queue_.push_back(std::pair<char*, int>(send_data, size));
+	send_queue_.push_back(std::make_pair(send_data, size));
 
 	if (can_send_now)
 	{
