@@ -38,12 +38,11 @@ size_t ExcelConn::GetTotalWorkSheetCount(void)
 	return static_cast<size_t>(xls_.GetTotalWorkSheets());
 }
 
-template<typename T>
-bool ExcelConn::LoadSheet(char * sheet_name, bool is_first_row_index /* = true */)
+bool ExcelConn::LoadSheet(char* sheet_name, OUT std::map<int, std::vector<std::string>>& data_container, bool is_first_row_index /* = true */)
 {
 	if (false == is_init_)
 		return false;
-
+	
 	ExcelFormat::BasicExcelWorksheet* worksheet = xls_.GetWorksheet(sheet_name);
 	if (nullptr == worksheet)
 		return false;
@@ -51,9 +50,14 @@ bool ExcelConn::LoadSheet(char * sheet_name, bool is_first_row_index /* = true *
 	int start_row = 0;
 	if (is_first_row_index)
 		start_row = 1;
-		
+	
+	data_container.clear();
+
+	int index = 0;
 	for (int k = start_row; k < worksheet->GetTotalRows(); ++k)
 	{
+		std::vector<std::string> row_data;
+
 		for (int j = 0; j < worksheet->GetTotalCols(); ++j)
 		{
 			ExcelFormat::BasicExcelCell* cell = worksheet->Cell(k, j);
@@ -63,23 +67,29 @@ bool ExcelConn::LoadSheet(char * sheet_name, bool is_first_row_index /* = true *
 			switch (cell->Type())
 			{
 			case ExcelFormat::BasicExcelCell::INT:
-				std::cout << "INT:" << cell->GetInteger() << std::endl;
+				row_data.push_back(std::to_string(cell->GetInteger()));
 				break;
 			case ExcelFormat::BasicExcelCell::DOUBLE:
-				std::cout << "DOUBLE:" << static_cast<int>(cell->GetDouble()) << std::endl;
+				row_data.push_back(std::to_string(cell->GetDouble()));
 				break;
 			case ExcelFormat::BasicExcelCell::STRING:
-				std::cout << "STRING:" << cell->GetString() << std::endl;
+				row_data.push_back(cell->GetString());
 				break;
 			case ExcelFormat::BasicExcelCell::WSTRING:
-				std::cout << "WSTRING:" << cell->GetWString() << std::endl;
-				break;
 			case ExcelFormat::BasicExcelCell::UNDEFINED:
 			case ExcelFormat::BasicExcelCell::FORMULA:
 			default:
+				{
+					data_container.clear();
+					return false;
+				}
 				break;
 			}
 		}
+
+		data_container.insert(std::map<int, std::vector<std::string>>::value_type(index, row_data));
+
+		++index;
 	}
 
 	return true;
