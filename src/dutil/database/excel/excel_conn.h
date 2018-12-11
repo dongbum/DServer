@@ -9,9 +9,12 @@ public:
 	virtual ~ExcelConn(void);
 
 	bool Connect(char* file_name);
-	bool LoadSheet(char* sheet_name);
+	size_t GetTotalWorkSheetCount(void);
+
+	template<typename T>
+	bool LoadSheet(char* sheet_name, bool is_first_row_index = true);
 
 private:
 	ExcelFormat::BasicExcel xls_;
-
+	bool is_init_;
 };
