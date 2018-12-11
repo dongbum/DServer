@@ -96,6 +96,9 @@
     <ClInclude Include="..\..\src\dutil\config\config.h" />
     <ClInclude Include="..\..\src\dutil\container\thread_safe_queue.h" />
     <ClInclude Include="..\..\src\dutil\database.h" />
+    <ClInclude Include="..\..\src\dutil\database\excel\excelformat\basicexcel.hpp" />
+    <ClInclude Include="..\..\src\dutil\database\excel\excelformat\excelformat.h" />
+    <ClInclude Include="..\..\src\dutil\database\excel\excel_conn.h" />
     <ClInclude Include="..\..\src\dutil\database\mssql\mssql_conn.h" />
     <ClInclude Include="..\..\src\dutil\database\mssql\mssql_conn_pool.h" />
     <ClInclude Include="..\..\src\dutil\database\mssql\mssql_define.h" />
@@ -116,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\dutil\config\config.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\excel\excelformat\basicexcel.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\excel\excelformat\excelformat.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\excel\excel_conn.cpp" />
     <ClCompile Include="..\..\src\dutil\database\mssql\mssql_conn.cpp" />
     <ClCompile Include="..\..\src\dutil\database\mssql\mssql_conn_pool.cpp" />
     <ClCompile Include="..\..\src\dutil\database\mysql\mysql_conn.cpp" />
