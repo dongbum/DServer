@@ -97,7 +97,7 @@ void MySQLConn::BindParam(const double value)
 	++param_index_;
 }
 
-
+#ifdef _WIN32
 void MySQLConn::BindParam(const SYSTEMTIME value)
 {
 	char temp[1024] = { 0, };
@@ -108,7 +108,7 @@ void MySQLConn::BindParam(const SYSTEMTIME value)
 	pstmt_->setDateTime(param_index_, sql::SQLString(temp));
 	++param_index_;
 }
-
+#endif
 
 void MySQLConn::BindParam(const char* value)
 {
