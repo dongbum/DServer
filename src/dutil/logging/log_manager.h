@@ -29,7 +29,7 @@ private:
 	std::string		log_file_name_;
 	short			log_mode_;
 
-	boost::filesystem::ofstream		ofs_;
+	std::ofstream	ofs_;
 
 	unsigned int	today_;
 
