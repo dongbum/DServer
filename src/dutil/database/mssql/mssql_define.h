@@ -1,3 +1,5 @@
+#ifdef _WIN32
+
 #pragma once
 
 #include <tchar.h>
@@ -8,3 +10,5 @@
 #define DEFAULT_CONNECTION_TIMEOUT			10	// Any Request Timeout(sec)
 #define DEFAULT_QUERY_TIMEOUT				3	// Query Timeout(sec)
 #define MAX_STRING_LENGTH					256
+
+#endif

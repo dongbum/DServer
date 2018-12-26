@@ -1,3 +1,5 @@
+#ifdef _WIN32
+
 #pragma once
 
 // SQLBindParameter에 필요가 타입 정보
@@ -87,3 +89,5 @@ private:
 	QueryColAttrVec		query_col_attr_vec_;	// SQLBindCol Type 관리용 (std::vector 사용)
 
 };
+
+#endif

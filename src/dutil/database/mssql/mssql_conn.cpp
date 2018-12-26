@@ -1,6 +1,7 @@
+#ifdef _WIN32
+
 #include "../../define.h"
 #include "mssql_conn.h"
-
 
 MSSQLConn::MSSQLConn(int32_t& total_query)
 	: henv_(nullptr)
@@ -356,3 +357,5 @@ TCHAR * MSSQLConn::GetDBEErrorMessage(const SQLSMALLINT handle_type, const SQLHE
 
 	return &message[0];
 }
+
+#endif

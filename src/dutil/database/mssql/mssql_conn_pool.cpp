@@ -1,3 +1,5 @@
+#ifdef _WIN32
+
 #include "../../define.h"
 
 MSSQLConnPool::MSSQLConnPool(int32_t& max_thread_count, int32_t max_query_count)
@@ -65,3 +67,5 @@ void MSSQLConnPool::Clear(void)
 	for (int32_t i = 0; i<max_thread_count_; ++i)
 		SAFE_DELETE(mssql_conns_[i]);
 }
+
+#endif

@@ -1,3 +1,5 @@
+#ifdef _WIN32
+
 #pragma once
 
 class MSSQLConnPool : public MemoryPool
@@ -21,3 +23,5 @@ protected:
 	int32_t			max_query_count_;
 	TCHAR			connetion_string_[MAX_STRING_LENGTH];
 };
+
+#endif
