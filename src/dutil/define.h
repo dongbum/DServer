@@ -7,6 +7,7 @@
 #include <deque>
 #include <memory>
 #include <mutex>
+#include <condition_variable>
 
 #ifdef _WIN64
 #	ifdef _DEBUG
