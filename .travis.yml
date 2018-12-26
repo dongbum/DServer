@@ -9,7 +9,7 @@ os:
 - linux
 
 before_install:
-- sudo apt-cache search boost
+- sudo apt-cache search mysql
 - sudo apt-get install libjemalloc-dev libjsoncpp-dev libjson0 libjson0-dev libboost-dev
 
 
