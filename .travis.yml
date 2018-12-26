@@ -4,5 +4,5 @@ compiler:
 os:
 - linux
 script:
-- g++ example/example.cpp -std=c++11 -o urlparser_example
-- ./urlparser_example
+- g++ src/game_server/main.cpp -std=c++11 -o DServer
+- ./DServer
