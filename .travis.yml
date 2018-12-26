@@ -10,7 +10,7 @@ os:
 
 before_install:
 - sudo apt-cache search mysql
-- sudo apt-get install libjemalloc-dev libjsoncpp-dev libjson0 libjson0-dev libboost-dev
+- sudo apt-get install libjemalloc-dev libjsoncpp-dev libjson0 libjson0-dev libboost-dev libmysqlcppconn-dev libmysqlcppconn7 libmysql++-dev libmysql++3
 
 
 script:
