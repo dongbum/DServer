@@ -9,7 +9,7 @@ os:
 - linux
 
 before_install:
-- sudo apt-get install libjemalloc-dev libjsoncpp-dev libjson0 libjson0-dev libboost1.58-dev
+- sudo apt-get install libjemalloc-dev libjsoncpp-dev libjson0 libjson0-dev libboost
 
 script:
 - g++ src/game_server/main.cpp -std=c++11 -o DServer
