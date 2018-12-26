@@ -1,3 +1,5 @@
+#ifdef _WIN32
+
 #pragma once
 
 class MemoryPool
@@ -27,3 +29,5 @@ public:
 	}
 private:
 };
+
+#endif
