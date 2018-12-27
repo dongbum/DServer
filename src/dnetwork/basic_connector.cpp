@@ -46,8 +46,7 @@ void BasicConnector::ConnectHandler(const ErrorCode& error)
 			LL_DEBUG("Client connection error:[%d] msg:[%s]", error.value(), error.message().c_str());
 		}
 
-		__super::OnClose();
-
+		BaseClass::OnClose();
 		ReConnect();
 		return;
 	}

@@ -6,6 +6,8 @@
 class BridgeServer : public Server<BridgeSocket>
 {
 public:
+	using BaseClass = Server<BridgeSocket>;
+
 	BridgeServer(void);
 	virtual ~BridgeServer(void);
 

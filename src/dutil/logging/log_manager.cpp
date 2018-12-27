@@ -91,11 +91,11 @@ void LogManager::Run(void)
 				boost::filesystem::path file_path;
 				if (true == FindFile(path, log_file_name_, file_path))
 				{
-					ofs_.open(file_path / log_file_name_, boost::filesystem::ofstream::out | boost::filesystem::ofstream::app);
+					ofs_.open(file_path.generic_string() + "/" + log_file_name_, std::ofstream::out | std::ofstream::app);
 				}
 				else
 				{
-					ofs_.open(path / log_file_name_);
+					ofs_.open(file_path.generic_string() + "/" + log_file_name_);
 				}
 
 				today_ = GetTodayInt();
@@ -147,11 +147,11 @@ bool LogManager::CreateLogFile(void)
 		boost::filesystem::path file_path;
 		if (true == FindFile(path, log_file_name_, file_path))
 		{
-			ofs_.open(file_path / log_file_name_, boost::filesystem::ofstream::out | boost::filesystem::ofstream::app);
+			ofs_.open(file_path.generic_string() + "/" + log_file_name_, boost::filesystem::ofstream::out | boost::filesystem::ofstream::app);
 		}
 		else
 		{
-			ofs_.open(path / log_file_name_);
+			ofs_.open(path.generic_string() + "/" + log_file_name_);
 		}
 	}
 	catch (boost::filesystem::filesystem_error& fe)

@@ -10,7 +10,14 @@ public:
 	void		SetUSN(uint64_t usn) { usn_ = usn; };
 
 	char*		GetUserID(void) { return user_id_; };
-	void		SetUserID(char* user_id) { strncpy_s(user_id_, user_id, USER_ID_LEN); };
+	void		SetUserID(char* user_id)
+	{
+#ifdef _WIN32
+		strncpy_s(user_id_, user_id, USER_ID_LEN);
+#else
+		strncpy(user_id_, user_id, USER_ID_LEN);
+#endif
+	};
 
 private:
 	uint64_t		usn_;

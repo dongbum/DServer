@@ -18,7 +18,7 @@ public:
 		return object_ptr;
 	}
 
-	void ReleasePoolObject(T& object_ptr)
+	void ReleasePoolObject(T object_ptr)
 	{
 		object_queue_.Push(object_ptr);
 	}

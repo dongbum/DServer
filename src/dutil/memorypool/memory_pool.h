@@ -6,6 +6,7 @@ public:
 	MemoryPool(void) {}
 	virtual ~MemoryPool(void) {}
 
+#ifdef _WIN32
 	void* operator new(size_t size)
 	{
 		return je_malloc(size);
@@ -25,5 +26,7 @@ public:
 	{
 		je_free(ptr);
 	}
+#endif
+
 private:
 };

@@ -3,6 +3,8 @@
 class BasicConnector : public BasicSocket
 {
 public:
+	using BaseClass = BasicSocket;
+
 	explicit BasicConnector(IoService& io_service);
 	virtual ~BasicConnector(void);
 

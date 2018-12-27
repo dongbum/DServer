@@ -5763,7 +5763,7 @@ void BasicExcel::UpdateWorksheets()
 
 		// References and pointers to shorten code
 		vector<Worksheet::CellTable::RowBlock>& rRowBlocks = rawSheet.cellTable_.rowBlocks_;
-		vector<SmartPtr<Worksheet::CellTable::RowBlock::CellBlock> >* pCellBlocks;
+		vector<SmartPtr<Worksheet::CellTable::RowBlock::CellBlock> >* pCellBlocks = nullptr;
 		Worksheet::CellTable::RowBlock::CellBlock* pCell;
 		rRowBlocks.resize(maxRows/32 + (maxRows%32 ? 1 : 0));
 		for(int r=0, curRowBlock=0; r<maxRows; ++r) {
@@ -5772,7 +5772,10 @@ void BasicExcel::UpdateWorksheets()
 				pCellBlocks = &(rRowBlocks[curRowBlock++].cellBlocks_);
 			}
 			bool newRow = true; // Keep track whether current row contains data.
-			pCellBlocks->reserve(1000);
+
+			if (nullptr != pCellBlocks)
+				pCellBlocks->reserve(1000);
+
 			for(int c=0; c<maxCols; ++c) {
 				const BasicExcelCell* cell = sheet.Cell(r, c);
 

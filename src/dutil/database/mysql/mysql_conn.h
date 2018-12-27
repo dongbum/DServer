@@ -18,7 +18,9 @@ public:
 	void			BindParam(const uint32_t value);
 	void			BindParam(const uint64_t value);
 	void			BindParam(const double value);
+#ifdef _WIN32
 	void			BindParam(const SYSTEMTIME value);
+#endif
 	void			BindParam(const char* value);
 	void			BindParam(const bool value);
 
