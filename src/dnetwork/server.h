@@ -16,7 +16,7 @@ private:
 
 public:
 	static std::shared_ptr<Server<T>> server_instance_;
-	static void SetServerInstance(std::shared_ptr<Server<T>>& server_instance) { server_instance_ = server_instance; }
+	static void SetServerInstance(std::shared_ptr<Server<T>> server_instance) { server_instance_ = server_instance; }
 	static std::shared_ptr<Server<T>>& GetServerInstance(void) { return server_instance_; }
 
 private:
