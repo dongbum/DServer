@@ -7,7 +7,7 @@ public:
 		: BasicSocket(io_service)
 		, session_pool_(session_pool)
 	{
-		__super::InitProtocol();
+		GameProtocol::InitProtocol();
 	};
 
 	void OnPacket(char* packet, int size) override
@@ -30,7 +30,7 @@ public:
 	{
 		LL_DEBUG("GameSocket OnClose");
 
-		__super::OnClose();
+		BasicSocket::OnClose();
 		session_pool_.ReleasePoolObject(shared_from_this());
 	};
 

@@ -3,6 +3,8 @@
 class GameServer : public Server<GameUser>
 {
 public:
+	using BaseClass = Server<GameUser>;
+
 	GameServer(void);
 	virtual ~GameServer(void);
 

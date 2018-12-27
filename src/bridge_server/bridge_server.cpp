@@ -16,5 +16,5 @@ void BridgeServer::Start(void)
 {
 	int32_t thread_count = CONFIG_MANAGER_INSTANCE.GetInt32("DServer", "THREAD_COUNT");
 
-	__super::Start(thread_count);
+	BaseClass::Start(thread_count);
 }
