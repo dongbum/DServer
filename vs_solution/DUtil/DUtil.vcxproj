@@ -59,7 +59,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
       <PrecompiledHeaderFile>
@@ -79,7 +79,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;D:\Library\boost_1_60_0;..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Library\mysql-connector-c++-noinstall-1.1.7-winx64\include;$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
