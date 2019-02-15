@@ -14,5 +14,5 @@ before_install:
 
 
 script:
-- g++ src/game_server/main.cpp -std=c++11 -o DServer
+- g++ src/game_server/main.cpp -Isrc/dutil -Isrc/dnetwork -std=c++11 -o DServer
 - ./DServer
