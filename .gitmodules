@@ -1,3 +1,6 @@
 [submodule "external_library/cpp_redis"]
 	path = external_library/cpp_redis
 	url = https://github.com/cpp-redis/cpp_redis.git
+[submodule "external_library/jsoncpp"]
+	path = external_library/jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp.git
