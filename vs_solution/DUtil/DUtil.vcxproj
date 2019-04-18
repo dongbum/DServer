@@ -59,7 +59,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\external_library\mysql-connector\include;$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;..\..\external_library\cpp_redis\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\external_library\mysql-connector\include;$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;..\..\external_library\cpp_redis\tacopie\includes;..\..\external_library\cpp_redis\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
       <PrecompiledHeaderFile>
@@ -79,7 +79,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\external_library\mysql-connector\include;$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;..\..\external_library\cpp_redis\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\external_library\mysql-connector\include;$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;..\..\external_library\cpp_redis\tacopie\includes;..\..\external_library\cpp_redis\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>

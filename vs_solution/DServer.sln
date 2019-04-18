@@ -42,6 +42,11 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib_json", "..\external_library\projects\lib_json.vcxproj", "{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpp_redis", "..\external_library\projects\cpp_redis.vcxproj", "{8D6B2E0B-45B0-40CB-AF6B-B917F136EB01}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B} = {5DC28D31-04A5-4509-8EE3-CF16DE77475B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tacopie", "..\external_library\projects\tacopie.vcxproj", "{5DC28D31-04A5-4509-8EE3-CF16DE77475B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,6 +182,22 @@ Global
 		{8D6B2E0B-45B0-40CB-AF6B-B917F136EB01}.Release-static|x64.Build.0 = Release|x64
 		{8D6B2E0B-45B0-40CB-AF6B-B917F136EB01}.Release-static|x86.ActiveCfg = Release|Win32
 		{8D6B2E0B-45B0-40CB-AF6B-B917F136EB01}.Release-static|x86.Build.0 = Release|Win32
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Debug|x64.ActiveCfg = Debug|x64
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Debug|x64.Build.0 = Debug|x64
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Debug|x86.ActiveCfg = Debug|Win32
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Debug|x86.Build.0 = Debug|Win32
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Debug-static|x64.ActiveCfg = Debug|x64
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Debug-static|x64.Build.0 = Debug|x64
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Debug-static|x86.ActiveCfg = Debug|Win32
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Debug-static|x86.Build.0 = Debug|Win32
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Release|x64.ActiveCfg = Release|x64
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Release|x64.Build.0 = Release|x64
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Release|x86.ActiveCfg = Release|Win32
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Release|x86.Build.0 = Release|Win32
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Release-static|x64.ActiveCfg = Release|x64
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Release-static|x64.Build.0 = Release|x64
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Release-static|x86.ActiveCfg = Release|Win32
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B}.Release-static|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,5 +211,6 @@ Global
 		{8D6BB292-9E1C-413D-9F98-4864BDC1514A} = {651074FE-98A8-4EC1-B71B-DCA543F74067}
 		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89} = {651074FE-98A8-4EC1-B71B-DCA543F74067}
 		{8D6B2E0B-45B0-40CB-AF6B-B917F136EB01} = {651074FE-98A8-4EC1-B71B-DCA543F74067}
+		{5DC28D31-04A5-4509-8EE3-CF16DE77475B} = {651074FE-98A8-4EC1-B71B-DCA543F74067}
 	EndGlobalSection
 EndGlobal
