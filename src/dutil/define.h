@@ -77,6 +77,6 @@
 #include "database/mssql/mssql_define.h"
 #include "database/mssql/mssql_conn.h"
 #include "database/mssql/mssql_conn_pool.h"
-#include "database/redis/redis.h"
+#include "database/redis/redis_conn.h"
 #include "monitor/system_resource_monitor.h"
 #include "object_pool.h"

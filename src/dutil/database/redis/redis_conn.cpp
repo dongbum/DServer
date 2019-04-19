@@ -1,18 +1,18 @@
 #include "../../define.h"
 
-Redis::Redis(void)
+RedisConn::RedisConn(void)
 {
 
 }
 	
-Redis::~Redis(void)
+RedisConn::~RedisConn(void)
 {
 	if (true == client_.is_connected())
 		client_.disconnect();
 
 }
 
-bool Redis::Connect(std::string& server_addr, std::string& server_port)
+bool RedisConn::Connect(std::string& server_addr, std::string& server_port)
 {
 	if (true == client_.is_connected())
 		client_.disconnect();
@@ -37,6 +37,14 @@ bool Redis::Connect(std::string& server_addr, std::string& server_port)
 			break;
 		}
 	});
+
+	return true;
+}
+
+bool RedisConn::Disconnect(void)
+{
+	if (true == client_.is_connected())
+		client_.disconnect();
 
 	return true;
 }
