@@ -40,3 +40,11 @@ bool Redis::Connect(std::string& server_addr, std::string& server_port)
 
 	return true;
 }
+
+bool Redis::Disconnect(void)
+{
+	if (true == client_.is_connected())
+		client_.disconnect();
+
+	return true;
+}

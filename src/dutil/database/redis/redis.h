@@ -9,6 +9,7 @@ public:
 	virtual ~Redis(void);
 
 	bool	Connect(std::string& server_addr, std::string& server_port);
+	bool	Disconnect(void);
 
 protected:
 
