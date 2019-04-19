@@ -84,9 +84,6 @@
     <ClInclude Include="..\..\src\dutil\database\mysql\mysql_conn_pool.h">
       <Filter>소스 파일\database\mysql</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dutil\database\redis\redis.h">
-      <Filter>소스 파일\database\redis</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\dutil\lock\custom_lock.h">
       <Filter>소스 파일\lock</Filter>
     </ClInclude>
@@ -129,6 +126,9 @@
     <ClInclude Include="..\..\src\dutil\database\excel\excel_conn.h">
       <Filter>소스 파일\database\excel</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\dutil\database\redis\redis_conn.h">
+      <Filter>소스 파일\database\redis</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\dutil\stdafx.cpp">
@@ -152,9 +152,6 @@
     <ClCompile Include="..\..\src\dutil\database\mysql\mysql_conn.cpp">
       <Filter>소스 파일\database\mysql</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dutil\database\redis\redis.cpp">
-      <Filter>소스 파일\database\redis</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\dutil\logging\log_manager.cpp">
       <Filter>소스 파일\logging</Filter>
     </ClCompile>
@@ -169,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\dutil\database\excel\excel_conn.cpp">
       <Filter>소스 파일\database\excel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\database\redis\redis_conn.cpp">
+      <Filter>소스 파일\database\redis</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

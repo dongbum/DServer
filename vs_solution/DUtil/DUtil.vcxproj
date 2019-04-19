@@ -104,7 +104,7 @@
     <ClInclude Include="..\..\src\dutil\database\mssql\mssql_define.h" />
     <ClInclude Include="..\..\src\dutil\database\mysql\mysql_conn.h" />
     <ClInclude Include="..\..\src\dutil\database\mysql\mysql_conn_pool.h" />
-    <ClInclude Include="..\..\src\dutil\database\redis\redis.h" />
+    <ClInclude Include="..\..\src\dutil\database\redis\redis_conn.h" />
     <ClInclude Include="..\..\src\dutil\define.h" />
     <ClInclude Include="..\..\src\dutil\lock\custom_lock.h" />
     <ClInclude Include="..\..\src\dutil\logging\log_define.h" />
@@ -127,7 +127,7 @@
     <ClCompile Include="..\..\src\dutil\database\mysql\mysql_conn.cpp" />
     <ClCompile Include="..\..\src\dutil\database\mysql\mysql_conn_pool.cpp" />
     <ClCompile Include="..\..\src\dutil\database\mysql\mysql_example.cpp" />
-    <ClCompile Include="..\..\src\dutil\database\redis\redis.cpp" />
+    <ClCompile Include="..\..\src\dutil\database\redis\redis_conn.cpp" />
     <ClCompile Include="..\..\src\dutil\logging\log_manager.cpp" />
     <ClCompile Include="..\..\src\dutil\monitor\system_resource_monitor.cpp" />
     <ClCompile Include="..\..\src\dutil\stdafx.cpp" />
