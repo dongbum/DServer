@@ -2,11 +2,11 @@
 
 #include <cpp_redis/core/client.hpp>
 
-class Redis
+class RedisConn
 {
 public:
-	Redis(void);
-	virtual ~Redis(void);
+	RedisConn(void);
+	virtual ~RedisConn(void);
 
 	bool	Connect(std::string& server_addr, std::string& server_port);
 	bool	Disconnect(void);
