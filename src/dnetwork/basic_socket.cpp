@@ -128,7 +128,7 @@ void BasicSocket::OnSend(int size, char* data)
 	{
 		boost::asio::async_write(socket_,
 			boost::asio::buffer(send_queue_.front().first, send_queue_.front().second),
-			strand_.wrap(
+			boost::asio::bind_executor(strand_,
 				boost::bind(
 					&BasicSocket::OnSendHandler,
 					shared_from_this(),
@@ -168,7 +168,7 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 	{
 		boost::asio::async_write(socket_,
 			boost::asio::buffer(send_queue_.front().first, send_queue_.front().second),
-			strand_.wrap(
+			boost::asio::bind_executor(strand_,
 				boost::bind(
 					&BasicSocket::OnSendHandler,
 					shared_from_this(),
