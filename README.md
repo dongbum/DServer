@@ -11,7 +11,7 @@ Cross-platform game server.
 * VS2015+ for MS Windows
 * ~GCC 4.8.0+ for Linux~
 * C++11 complier
-* Boost 1.60+
+* Boost 1.70+
 
 ### Implement
 * TCP game server
