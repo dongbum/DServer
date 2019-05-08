@@ -14,7 +14,7 @@ public:
 protected:
 
 private:
-	boost::asio::io_context		io_service_;
+	boost::asio::io_context		io_context_;
 
 	cpp_redis::client client_;
 

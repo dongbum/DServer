@@ -5,7 +5,7 @@ class BasicConnector : public BasicSocket
 public:
 	using BaseClass = BasicSocket;
 
-	explicit BasicConnector(IoService& io_service);
+	explicit BasicConnector(IoContext& io_context);
 	virtual ~BasicConnector(void);
 
 	bool Connect(std::string server_ip, const unsigned short server_port);
@@ -17,8 +17,8 @@ private:
 	unsigned short server_port_;
 };
 
-inline BasicConnector::BasicConnector(IoService& io_service)
-	: BasicSocket(io_service)
+inline BasicConnector::BasicConnector(IoContext& io_context)
+	: BasicSocket(io_context)
 	, server_ip_("127.0.0.1")
 	, server_port_(0)
 {

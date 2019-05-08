@@ -1,9 +1,9 @@
 ﻿#include "define.h"
 
-BasicSocket::BasicSocket(IoService& io_service)
-	: socket_(io_service)
+BasicSocket::BasicSocket(IoContext& io_context)
+	: socket_(io_context)
 	, remain_size_(0)
-	, strand_(io_service)
+	, strand_(io_context)
 	, is_echo_test_(false)
 {
 	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);

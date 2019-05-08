@@ -9,7 +9,7 @@ public:
 
 	void Start(int thread_pool_size = 0);
 	void Stop(void);
-	IoService& GetIoService(void) { return io_service_; };
+	IoContext& GetIoService(void) { return io_context_; };
 
 private:
 	void CreateThreadPool(void);
@@ -20,7 +20,7 @@ public:
 	static std::shared_ptr<Server<T>>& GetServerInstance(void) { return server_instance_; }
 
 private:
-	IoService io_service_;
+	IoContext io_context_;
 	BasicAcceptor<BasicSocket> acceptor_;
 
 	boost::thread_group io_thread_group_;
@@ -34,7 +34,7 @@ std::shared_ptr<Server<T>> Server<T>::server_instance_ = nullptr;
 
 template<typename T>
 Server<T>::Server(int32_t server_port, int32_t max_session_count)
-	: acceptor_(io_service_, session_pool_, server_port)
+	: acceptor_(io_context_, session_pool_, server_port)
 	, thread_pool_size_(0)
 {
 	LL_INFO("Server Port:[%d]", server_port);
@@ -43,7 +43,7 @@ Server<T>::Server(int32_t server_port, int32_t max_session_count)
 
 	for (int32_t i = 0; i < max_session_count; ++i)
 	{
-		std::shared_ptr<BasicSocket> object_ptr = std::make_shared<T>(io_service_, session_pool_);
+		std::shared_ptr<BasicSocket> object_ptr = std::make_shared<T>(io_context_, session_pool_);
 		session_pool_.PushObject(object_ptr);
 	}
 }
@@ -70,7 +70,7 @@ template<typename T>
 void Server<T>::Stop(void)
 {
 	acceptor_.Stop();
-	io_service_.stop();
+	io_context_.stop();
 	io_thread_group_.join_all();
 }
 
@@ -82,7 +82,7 @@ void Server<T>::CreateThreadPool(void)
 
 	for (int32_t i = 0; i < static_cast<int32_t>(thread_pool_size_); ++i)
 	{
-		boost::thread io_thread(boost::bind(&boost::asio::io_service::run, &io_service_));
+		boost::thread io_thread(boost::bind(&boost::asio::io_context::run, &io_context_));
 		io_thread_group_.add_thread(&io_thread);
 	}
 

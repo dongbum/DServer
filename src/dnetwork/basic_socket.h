@@ -4,7 +4,7 @@
 class BasicSocket : public std::enable_shared_from_this<BasicSocket>, public MemoryPool
 {
 public:
-	explicit BasicSocket(IoService& io_service);
+	explicit BasicSocket(IoContext& io_context);
 	virtual ~BasicSocket(void);
 
 	void OnReceive(void);
