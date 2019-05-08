@@ -18,7 +18,6 @@
 
 using Strand = boost::asio::io_context::strand;
 using IoService = boost::asio::io_context;
-using Work = boost::asio::executor_work_guard<IoService>;
 using EndPoint = boost::asio::ip::tcp::endpoint;
 using Acceptor = boost::asio::ip::tcp::acceptor;
 using Socket = boost::asio::ip::tcp::socket;

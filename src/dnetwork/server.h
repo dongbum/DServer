@@ -21,7 +21,6 @@ public:
 
 private:
 	IoService io_service_;
-	std::shared_ptr<Work> work_ptr_;
 	BasicAcceptor<BasicSocket> acceptor_;
 
 	boost::thread_group io_thread_group_;
@@ -36,7 +35,6 @@ std::shared_ptr<Server<T>> Server<T>::server_instance_ = nullptr;
 template<typename T>
 Server<T>::Server(int32_t server_port, int32_t max_session_count)
 	: acceptor_(io_service_, session_pool_, server_port)
-	, work_ptr_(new Work(io_service_))
 	, thread_pool_size_(0)
 {
 	LL_INFO("Server Port:[%d]", server_port);
