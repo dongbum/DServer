@@ -4,7 +4,7 @@ template<typename T>
 class BasicAcceptor
 {
 public:
-	BasicAcceptor(IoService& io_service, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool, const unsigned short server_port);
+	BasicAcceptor(IoContext& io_context, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool, const unsigned short server_port);
 	virtual ~BasicAcceptor(void);
 
 	void Start(void);
@@ -15,7 +15,7 @@ private:
 	void AcceptHandler(std::shared_ptr<T> socket_ptr, const ErrorCode& ec);
 
 private:
-	IoService& io_service_;
+	IoContext& io_context_;
 	Acceptor acceptor_;
 	ObjectPool<std::shared_ptr<BasicSocket>>& session_pool_;
 
@@ -24,9 +24,9 @@ private:
 };
 
 template<typename T>
-BasicAcceptor<T>::BasicAcceptor(IoService& io_service, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool, const unsigned short server_port)
-	: io_service_(io_service)
-	, acceptor_(io_service_, EndPoint(TCP_V4, server_port))
+BasicAcceptor<T>::BasicAcceptor(IoContext& io_context, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool, const unsigned short server_port)
+	: io_context_(io_context)
+	, acceptor_(io_context_, EndPoint(TCP_V4, server_port))
 	, session_pool_(session_pool)
 	, is_stopped_(false)
 {

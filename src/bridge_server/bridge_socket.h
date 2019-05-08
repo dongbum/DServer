@@ -5,8 +5,8 @@
 class BridgeSocket : public BasicSocket, public BridgeProtocol
 {
 public:
-	BridgeSocket(IoService& io_service, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool)
-		: BasicSocket(io_service)
+	BridgeSocket(IoContext& io_context, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool)
+		: BasicSocket(io_context)
 		, session_pool_(session_pool)
 	{
 		BridgeProtocol::InitProtocol();

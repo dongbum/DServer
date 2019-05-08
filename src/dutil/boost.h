@@ -16,9 +16,8 @@
 #define TCP_V4	boost::asio::ip::address_v4::any()
 #define TCP_V6	boost::asio::ip::address_v6::any()
 
-using Strand = boost::asio::strand;
-using IoService = boost::asio::io_service;
-using Work = boost::asio::io_service::work;
+using Strand = boost::asio::io_context::strand;
+using IoContext = boost::asio::io_context;
 using EndPoint = boost::asio::ip::tcp::endpoint;
 using Acceptor = boost::asio::ip::tcp::acceptor;
 using Socket = boost::asio::ip::tcp::socket;

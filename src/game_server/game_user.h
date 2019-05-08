@@ -3,7 +3,7 @@
 class GameUser : public GameSocket
 {
 public:
-	GameUser(IoService& io_service, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool);
+	GameUser(IoContext& io_context, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool);
 	virtual ~GameUser(void);
 
 	uint64_t&	GetUSN(void) { return usn_; };

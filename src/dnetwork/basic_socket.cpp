@@ -1,9 +1,9 @@
 ﻿#include "define.h"
 
-BasicSocket::BasicSocket(IoService& io_service)
-	: socket_(io_service)
+BasicSocket::BasicSocket(IoContext& io_context)
+	: socket_(io_context)
 	, remain_size_(0)
-	, strand_(io_service)
+	, strand_(io_context)
 	, is_echo_test_(false)
 {
 	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);
@@ -128,7 +128,7 @@ void BasicSocket::OnSend(int size, char* data)
 	{
 		boost::asio::async_write(socket_,
 			boost::asio::buffer(send_queue_.front().first, send_queue_.front().second),
-			strand_.wrap(
+			boost::asio::bind_executor(strand_,
 				boost::bind(
 					&BasicSocket::OnSendHandler,
 					shared_from_this(),
@@ -168,7 +168,7 @@ void BasicSocket::OnSendHandler(const ErrorCode& error, size_t bytes_transferred
 	{
 		boost::asio::async_write(socket_,
 			boost::asio::buffer(send_queue_.front().first, send_queue_.front().second),
-			strand_.wrap(
+			boost::asio::bind_executor(strand_,
 				boost::bind(
 					&BasicSocket::OnSendHandler,
 					shared_from_this(),

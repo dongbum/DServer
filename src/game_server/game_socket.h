@@ -3,8 +3,8 @@
 class GameSocket : public BasicSocket, public GameProtocol
 {
 public:
-	GameSocket(IoService& io_service, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool)
-		: BasicSocket(io_service)
+	GameSocket(IoContext& io_context, ObjectPool<std::shared_ptr<BasicSocket>>& session_pool)
+		: BasicSocket(io_context)
 		, session_pool_(session_pool)
 	{
 		GameProtocol::InitProtocol();
