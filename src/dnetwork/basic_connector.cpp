@@ -11,7 +11,7 @@ bool BasicConnector::Connect(std::string server_ip, const unsigned short server_
 	server_port_ = server_port;
 
 	ErrorCode error_code;
-	boost::asio::ip::address_v4 address = boost::asio::ip::address_v4::from_string(server_ip, error_code);
+	boost::asio::ip::address_v4 address = boost::asio::ip::make_address_v4(server_ip, error_code);
 	if (error_code.value())
 	{
 		LL_DEBUG("Connect Failed. ErrorCode:[%d]", error_code.value());
