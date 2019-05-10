@@ -1,6 +1,7 @@
 #pragma once
 
 #include <boost/asio.hpp>
+#include <boost/asio/ssl.hpp>
 #include <boost/thread.hpp>
 #include <boost/format.hpp>
 #include <boost/filesystem.hpp>
@@ -18,6 +19,7 @@
 
 using Strand = boost::asio::io_context::strand;
 using IoContext = boost::asio::io_context;
+using SSLContext = boost::asio::ssl::context;
 using EndPoint = boost::asio::ip::tcp::endpoint;
 using Acceptor = boost::asio::ip::tcp::acceptor;
 using Socket = boost::asio::ip::tcp::socket;
