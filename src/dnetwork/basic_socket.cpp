@@ -21,6 +21,30 @@ BasicSocket::~BasicSocket(void)
 	OnClose();
 }
 
+void BasicSocket::OnHandshake(void)
+{
+	socket_.async_handshake(boost::asio::ssl::stream_base::server,
+		boost::bind(
+			&BasicSocket::OnHandshakeHandler,
+			shared_from_this(),
+			boost::asio::placeholders::error,
+			boost::asio::placeholders::bytes_transferred
+		)
+	);
+}
+
+void BasicSocket::OnHandshakeHandler(const ErrorCode & error)
+{
+	if (error)
+	{
+		LL_DEBUG("OnHandshakeHandler error:[%d] msg:[%s]", error.value(), error.message().c_str());
+		OnClose();
+		return;
+	}
+
+	OnReceive();
+}
+
 void BasicSocket::OnReceive(void)
 {
 	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);

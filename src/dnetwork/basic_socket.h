@@ -7,12 +7,15 @@ public:
 	explicit BasicSocket(IoContext& io_context);
 	virtual ~BasicSocket(void);
 
+	void OnHandshake(void);
+	void OnHandshakeHandler(const ErrorCode& error);
+
 	void OnReceive(void);
 	void OnReceiveHandler(const ErrorCode& error, size_t bytes_transferred);
 
 	void OnSend(int size, char* data);
 	void OnSendHandler(const ErrorCode& error, size_t bytes_transferred);
-
+	
 	virtual void OnClose(void);
 
 	virtual void OnPacket(char* packet, int size);
