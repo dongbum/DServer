@@ -23,6 +23,7 @@ BasicSocket::~BasicSocket(void)
 
 void BasicSocket::OnHandshake(void)
 {
+#ifdef USE_SSL
 	socket_.async_handshake(boost::asio::ssl::stream_base::server,
 		boost::bind(
 			&BasicSocket::OnHandshakeHandler,
@@ -31,6 +32,7 @@ void BasicSocket::OnHandshake(void)
 			boost::asio::placeholders::bytes_transferred
 		)
 	);
+#endif
 }
 
 void BasicSocket::OnHandshakeHandler(const ErrorCode & error)
