@@ -1,12 +1,12 @@
 language: cpp
 
-dist: xenial
+os:
+- linux
 
 compiler:
 - gcc
 
-os:
-- linux
+dist: bionic
 
 before_install:
 # - sudo apt-cache search mysql
