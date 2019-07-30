@@ -22,7 +22,12 @@ using IoContext = boost::asio::io_context;
 using SSLContext = boost::asio::ssl::context;
 using EndPoint = boost::asio::ip::tcp::endpoint;
 using Acceptor = boost::asio::ip::tcp::acceptor;
-using Socket = boost::asio::ip::tcp::socket;
+using TCPSocket = boost::asio::ip::tcp::socket;
+#ifdef USE_SSL
+using Socket = boost::asio::ssl::stream<TCPSocket>;
+#else
+using Socket = TCPSocket;
+#endif
 using ErrorCode = boost::system::error_code;
 
 using Mutex = boost::mutex;
