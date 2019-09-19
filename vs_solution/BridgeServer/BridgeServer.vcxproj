@@ -147,7 +147,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;BOOST_ASIO_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\src;$(OPENSSL_INCLUDE);$(BOOST_INCLUDE);..\..\external_library\mysql-connector\include;..\..\external_library\cpp_redis\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENSSL_INCLUDE);$(BOOST_INCLUDE);..\..\external_library\mysql-connector\include;..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;..\..\external_library\cpp_redis\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
