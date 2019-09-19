@@ -27,8 +27,11 @@
 #pragma comment(lib, LIB_NAME("lib_json"))
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
+
+#ifdef USE_SSL
 #pragma comment(lib, "libcrypto.lib")
 #pragma comment(lib, "libssl.lib")
+#endif
 
 #ifndef _WIN32_WINNT         
 #define _WIN32_WINNT	0x0501
