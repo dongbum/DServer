@@ -11,7 +11,7 @@ dist: bionic
 addons:
   apt:
     source:
-    - sourceline: 'ppa:mhier/libboost-latest'
+    - sourceline: 'ppa:toolazy/ppa'
     packages:
     - boost1.69
       
