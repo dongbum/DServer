@@ -8,16 +8,13 @@ compiler:
 
 dist: bionic
 
-matrix:
-  include:
-    addons:
-    apt:
-    update: true
+addons:
+  apt:
     source:
-      - sourceline: 'ppa:mhier/libboost-latest'
+    - sourceline: 'ppa:mhier/libboost-latest'
     packages:
-      - boost1.69
-    
+    - boost1.69
+      
 before_install:
 # - sudo apt-cache search mysql
 
