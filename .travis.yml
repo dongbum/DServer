@@ -7,14 +7,7 @@ compiler:
 - gcc
 
 dist: bionic
-
-addons:
-  apt:
-    source:
-    - sourceline: 'ppa:toolazy/ppa'
-    packages:
-    - boost1.69
-      
+    
 before_install:
 # - sudo apt-cache search mysql
 
@@ -22,6 +15,8 @@ before_install:
 # - sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc1-dbg libjsoncpp-dev libjson0 libjson0-dev libboost-all-dev libmysqlcppconn-dev libmysql++-dev
 
 # For bionic
+- sudo add-apt-repository ppa:mhier/libboost-latest
+- sudo apt update
 - sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libboost-all-dev libmysqlcppconn-dev libmysql++-dev
 
 script:
