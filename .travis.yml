@@ -17,7 +17,7 @@ before_install:
 # For bionic
 - sudo add-apt-repository ppa:mhier/libboost-latest -y
 - sudo apt update
-- sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libboost-all-dev libmysqlcppconn-dev libmysql++-dev
+- sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libmysqlcppconn-dev libmysql++-dev libboost1.70-dev
 
 script:
 - g++ src/game_server/main.cpp -Iexternal_library/jemalloc/include -Iexternal_library/jsoncpp/include -Iexternal_library/cpp_redis/tacopie/includes -Iexternal_library/cpp_redis/includes -Isrc/dutil -Isrc/dnetwork -std=c++11 -o DServer
