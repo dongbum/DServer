@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	if (false == CONFIG_MANAGER_INSTANCE.Initialize("BridgeServerConfig.ini"))
+	if (false == ConfigManager::GetInstance()->Initialize("BridgeServerConfig.ini"))
 		return 0;
 
 	if (false == LOG_MANAGER_INSTANCE.Init())

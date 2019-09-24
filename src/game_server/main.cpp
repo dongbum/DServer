@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	if (false == CONFIG_MANAGER_INSTANCE.Initialize("GameServerConfig.ini"))
+	if (false == ConfigManager::GetInstance()->Initialize("GameServerConfig.ini"))
 		return 0;
 
 	if (false == LOG_MANAGER_INSTANCE.Init())
