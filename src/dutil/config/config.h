@@ -3,6 +3,8 @@
 class ConfigManager : public boost::serialization::singleton<ConfigManager>
 {
 public:
+	friend class boost::serialization::singleton<ConfigManager>;
+
 	using INI_Key = std::pair<std::string, std::string>;
 	using INI_Value = std::string;
 	using INI_Container = std::map<INI_Key, INI_Value>;
