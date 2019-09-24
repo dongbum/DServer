@@ -5,7 +5,7 @@ int main(void)
 	if (false == ConfigManager::GetInstance()->Initialize("BridgeServerConfig.ini"))
 		return 0;
 
-	if (false == LOG_MANAGER_INSTANCE.Init())
+	if (false == LogManager::GetInstance()->Init())
 		return 0;
 
 	BridgeServer bridge_server;

@@ -1,5 +1,20 @@
 ﻿#include "../define.h"
 
+std::shared_ptr<LogManager> LogManager::instance_ = nullptr;
+
+std::shared_ptr<LogManager> LogManager::GetInstance(void)
+{
+	if (nullptr == instance_)
+		instance_ = std::shared_ptr<LogManager>(new LogManager());
+
+	return instance_;
+}
+
+void LogManager::ReleaseInstance(void)
+{
+	instance_.reset();
+}
+
 LogManager::LogManager(void)
 	: today_(0)
 	, log_mode_(LOG_MODE::LOG_MODE_NONE)
