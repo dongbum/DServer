@@ -1,3 +1,4 @@
+#include "../../define.h"
 #include "excel_conn.h"
 
 ExcelConn::ExcelConn(void)
