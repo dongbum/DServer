@@ -8,6 +8,7 @@
 #include <memory>
 #include <mutex>
 #include <condition_variable>
+#include <stdarg.h>
 
 #ifdef _WIN64
 #	ifdef _DEBUG
