@@ -72,7 +72,11 @@ void LogManager::Write(LOG_LEVEL log_level, const char* format, ...)
 	va_list ap;
 	va_start(ap, format);
 	
+#ifdef _WIN32
 	vsprintf_s(log_message.GetBuffer(), MAX_LOG_MESSAGE_LENGTH - log_message.GetPosition(), format, ap);
+#else
+	vsprintf(log_message.GetBuffer(), format, ap);
+#endif
 
 	va_end(ap);
 
