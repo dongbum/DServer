@@ -30,4 +30,16 @@ INCLUDE_DIRECTORIES (
 	../../external_library/cpp_redis/includes
 	)
 
+LINK_LIBRARIES (
+	pthread
+	boost_thread
+	boost_system
+	boost_filesystem
+	)
+
+ADD_COMPILE_OPTIONS (
+	-g
+	-std=c++11
+	)
+
 ADD_LIBRARY ( ${DUTIL_OUTPUT} STATIC ${DUTIL_SRC_FILES} )
