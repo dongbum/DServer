@@ -9,12 +9,7 @@ compiler:
 dist: bionic
     
 before_install:
-# - sudo apt-cache search mysql
-
-# For xenial
-# - sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc1-dbg libjsoncpp-dev libjson0 libjson0-dev libboost-all-dev libmysqlcppconn-dev libmysql++-dev
-
-# For bionic
+- pip install --user cpp-coveralls
 - sudo add-apt-repository ppa:mhier/libboost-latest -y
 - sudo apt update
 - sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libmysqlcppconn-dev libmysql++-dev libboost1.70-dev
@@ -27,3 +22,6 @@ script:
 - cmake CMakeLists.txt
 - make
 - ./GameServer
+
+after_success:
+- coveralls --exclude external_library --exclude make_gcc --exclude vs_solution --gcov-options '\-lp'
