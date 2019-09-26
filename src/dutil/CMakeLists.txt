@@ -32,6 +32,7 @@ INCLUDE_DIRECTORIES (
 
 LINK_LIBRARIES (
 	pthread
+	gcov
 	boost_thread
 	boost_system
 	boost_filesystem

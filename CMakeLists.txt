@@ -38,6 +38,7 @@ LINK_LIBRARIES (
 	boost_thread
 	boost_system
 	boost_filesystem
+	gcov
 	dutil
 	dnetwork
 	)
