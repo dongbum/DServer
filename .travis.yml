@@ -7,16 +7,21 @@ compiler:
 - gcc
 
 dist: bionic
-
+    
 before_install:
-# - sudo apt-cache search mysql
+- pip install --user cpp-coveralls
+- sudo add-apt-repository ppa:mhier/libboost-latest -y
+- sudo apt update
+- sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libmysqlcppconn-dev libmysql++-dev libboost1.70-dev
 
-# For xenial
-# - sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc1-dbg libjsoncpp-dev libjson0 libjson0-dev libboost-all-dev libmysqlcppconn-dev libmysql++-dev
-
-# For bionic
-- sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libboost-all-dev libmysqlcppconn-dev libmysql++-dev
+env:
+  global:
+  - MAKEFLAGS="-j 2"
 
 script:
-- g++ src/game_server/main.cpp -Iexternal_library/jemalloc/include -Iexternal_library/jsoncpp/include -Iexternal_library/cpp_redis/tacopie/includes -Iexternal_library/cpp_redis/includes -Isrc/dutil -Isrc/dnetwork -std=c++11 -o DServer
-- ./DServer
+- cmake CMakeLists.txt
+- make
+- ./GameServer
+
+after_success:
+- coveralls --exclude external_library --exclude make_gcc --exclude vs_solution --gcov-options '\-lp'

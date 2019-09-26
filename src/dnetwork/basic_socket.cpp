@@ -10,7 +10,7 @@ BasicSocket::BasicSocket(IoContext& io_context)
 	memset(send_buffer_, 0, SEND_BUFFER_SIZE);
 	memset(packet_buffer_, 0, RECV_BUFFER_SIZE);
 
-	if (CONFIG_MANAGER_INSTANCE.GetBool("DServer", "USE_ECHO_TEST"))
+	if (ConfigManager::GetInstance()->GetBool("DServer", "USE_ECHO_TEST"))
 	{
 		is_echo_test_ = true;
 	}
