@@ -1,5 +1,7 @@
 # DServer2
+[![Build Status](https://travis-ci.com/dongbum/DServer.svg?branch=master)](https://travis-ci.com/dongbum/DServer)
 [![Build status](https://ci.appveyor.com/api/projects/status/pn6fgpol4pg1f7mf?svg=true)](https://ci.appveyor.com/project/dongbum/dserver)
+[![Coverage Status](https://coveralls.io/repos/github/dongbum/DServer/badge.svg?branch=master)](https://coveralls.io/github/dongbum/DServer?branch=master)
 
 Game server project.
 This is not yet release version.
@@ -9,9 +11,10 @@ Cross-platform game server.
 
 ### Requirement
 * VS2015+ for MS Windows
-* ~GCC 4.8.0+ for Linux~
+* GCC 7.4.0 for Linux (Tested on Ubuntu 18.04)
 * C++11 complier
-* Boost 1.70+
+* Boost 1.70 or above
+* CMake
 
 ### Implement
 * TCP game server
