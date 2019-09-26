@@ -46,6 +46,7 @@ ADD_COMPILE_OPTIONS (
 	-g
 	-pthread
 	-std=c++11
+	--coverage
 	)
 
 ADD_EXECUTABLE ( ${GAMESERVER_OUTPUT} ${GAMESERVER_SRC_FILES} )

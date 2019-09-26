@@ -22,4 +22,11 @@ INCLUDE_DIRECTORIES (
 	../../external_library/cpp_redis/includes
 	)
 
+ADD_COMPILE_OPTIONS (
+	-g
+	-pthread
+	-std=c++11
+	--coverage
+	)
+
 ADD_LIBRARY ( ${DNETWORK_OUTPUT} ${DNETWORK_SRC_FILES} )
