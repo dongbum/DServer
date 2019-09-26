@@ -20,5 +20,6 @@ before_install:
 - sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libmysqlcppconn-dev libmysql++-dev libboost1.70-dev
 
 script:
-- g++ src/game_server/main.cpp -Iexternal_library/jemalloc/include -Iexternal_library/jsoncpp/include -Iexternal_library/cpp_redis/tacopie/includes -Iexternal_library/cpp_redis/includes -Isrc/dutil -Isrc/dnetwork -pthread -std=c++11 -o DServer
-- ./DServer
+- cmake CMakeLists.txt
+- make
+- ./GameServer
