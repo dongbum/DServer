@@ -1,5 +1,20 @@
 #include "../define.h"
 
+std::shared_ptr<ConfigManager> ConfigManager::instance_ = nullptr;
+
+std::shared_ptr<ConfigManager> ConfigManager::GetInstance(void)
+{
+	if (nullptr == instance_)
+		instance_ = std::shared_ptr<ConfigManager>(new ConfigManager());
+
+	return instance_;
+}
+
+void ConfigManager::ReleaseInstance(void)
+{
+	instance_.reset();
+}
+
 ConfigManager::ConfigManager(void)
 {
 

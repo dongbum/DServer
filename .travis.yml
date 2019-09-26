@@ -7,14 +7,7 @@ compiler:
 - gcc
 
 dist: bionic
-
-addons:
-  apt:
-    source:
-    - sourceline: 'ppa:toolazy/ppa'
-    packages:
-    - boost1.69
-      
+    
 before_install:
 # - sudo apt-cache search mysql
 
@@ -22,8 +15,15 @@ before_install:
 # - sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc1-dbg libjsoncpp-dev libjson0 libjson0-dev libboost-all-dev libmysqlcppconn-dev libmysql++-dev
 
 # For bionic
-- sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libboost-all-dev libmysqlcppconn-dev libmysql++-dev
+- sudo add-apt-repository ppa:mhier/libboost-latest -y
+- sudo apt update
+- sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libmysqlcppconn-dev libmysql++-dev libboost1.70-dev
+
+env:
+  global:
+  - MAKEFLAGS="-j 2"
 
 script:
-- g++ src/game_server/main.cpp -Iexternal_library/jemalloc/include -Iexternal_library/jsoncpp/include -Iexternal_library/cpp_redis/tacopie/includes -Iexternal_library/cpp_redis/includes -Isrc/dutil -Isrc/dnetwork -std=c++11 -o DServer
-- ./DServer
+- cmake CMakeLists.txt
+- make
+- ./GameServer

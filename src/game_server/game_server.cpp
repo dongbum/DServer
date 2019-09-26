@@ -2,8 +2,8 @@
 
 GameServer::GameServer(void)
 	: Server(
-		CONFIG_MANAGER_INSTANCE.GetInt32("DServer", "GAME_PORT"),
-		CONFIG_MANAGER_INSTANCE.GetInt32("DServer", "MAX_SESSION_COUNT")
+		ConfigManager::GetInstance()->GetInt32("DServer", "GAME_PORT"),
+		ConfigManager::GetInstance()->GetInt32("DServer", "MAX_SESSION_COUNT")
 	)
 	, bridge_conn_(new BridgeConnector(BaseClass::GetIoService()))
 {
@@ -19,11 +19,11 @@ void GameServer::Start(void)
 {
 	LL_DEBUG("GameServer Start");
 
-	int32_t thread_count = CONFIG_MANAGER_INSTANCE.GetInt32("DServer", "THREAD_COUNT");
+	int32_t thread_count = ConfigManager::GetInstance()->GetInt32("DServer", "THREAD_COUNT");
 
 	BaseClass::Start(thread_count);
 
 	bridge_conn_->Connect(
-		CONFIG_MANAGER_INSTANCE.GetString("BRIDGE_SERVER", "IP"),
-		CONFIG_MANAGER_INSTANCE.GetInt32("BRIDGE_SERVER", "PORT"));
+		ConfigManager::GetInstance()->GetString("BRIDGE_SERVER", "IP"),
+		ConfigManager::GetInstance()->GetInt32("BRIDGE_SERVER", "PORT"));
 }
