@@ -27,7 +27,7 @@ SET ( CMAKE_C_COMPILER "g++" )
 
 INCLUDE_DIRECTORIES (
        	/usr/include/jsoncpp
-	../external_library/cpp_redis/includes
+	../../external_library/cpp_redis/includes
 	)
 
 ADD_LIBRARY ( ${DUTIL_OUTPUT} STATIC ${DUTIL_SRC_FILES} )
