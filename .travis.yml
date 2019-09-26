@@ -24,4 +24,4 @@ script:
 - ./GameServer
 
 after_success:
-- coveralls --exclude external_library --exclude make_gcc --exclude vs_solution --gcov-options '\-lp'
+- coveralls --exclude external_library --exclude make_gcc --exclude vs_solution --exclude CMakeFiles --gcov-options '\-lp'
