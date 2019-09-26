@@ -28,4 +28,24 @@ INCLUDE_DIRECTORIES (
 	external_library/jsoncpp/include
 	)
 
+LINK_DIRECTORIES (
+	src/dutil
+	src/dnetwork
+	)
+
+LINK_LIBRARIES (
+	pthread
+	boost_thread
+	boost_system
+	boost_filesystem
+	dutil
+	dnetwork
+	)
+
+ADD_COMPILE_OPTIONS (
+	-g
+	-pthread
+	-std=c++11
+	)
+
 ADD_EXECUTABLE ( ${GAMESERVER_OUTPUT} ${GAMESERVER_SRC_FILES} )
