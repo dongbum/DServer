@@ -19,6 +19,10 @@ before_install:
 - sudo apt update
 - sudo apt-get install libjemalloc-dev libjemalloc1 libjemalloc-dev libjsoncpp-dev libjsoncpp1 libmysqlcppconn-dev libmysql++-dev libboost1.70-dev
 
+env:
+  global:
+  - MAKEFLAGS="-j 2"
+
 script:
 - cmake CMakeLists.txt
 - make
