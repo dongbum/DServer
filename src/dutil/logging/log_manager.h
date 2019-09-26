@@ -1,7 +1,14 @@
 #pragma once
 
-class LogManager : public boost::serialization::singleton<LogManager>
+class LogManager
 {
+private:
+	static std::shared_ptr<LogManager> instance_;
+
+public:
+	static std::shared_ptr<LogManager> GetInstance(void);
+	static void ReleaseInstance(void);
+
 public:
 	LogManager(void);
 	virtual ~LogManager(void);
@@ -18,9 +25,6 @@ private:
 	bool	FindFile(const boost::filesystem::path& target_path, const std::string& file_name, OUT boost::filesystem::path& path);
 	short	GetLogMode(const std::string& value);
 
-public:
-	static LogManager& GetMutableInstance(void) { return LogManager::get_mutable_instance(); }
-
 private:
 	ThreadSafeQueue<LogMessage> log_queue_;
 	boost::thread log_thread_;
@@ -34,7 +38,3 @@ private:
 	unsigned int	today_;
 
 };
-
-
-#define LOG_MANAGER_INSTANCE LogManager::GetMutableInstance()
-#define LOG_MANAGER LogManager::GetMutableInstance()

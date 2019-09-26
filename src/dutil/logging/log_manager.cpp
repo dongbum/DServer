@@ -1,5 +1,20 @@
 ﻿#include "../define.h"
 
+std::shared_ptr<LogManager> LogManager::instance_ = nullptr;
+
+std::shared_ptr<LogManager> LogManager::GetInstance(void)
+{
+	if (nullptr == instance_)
+		instance_ = std::shared_ptr<LogManager>(new LogManager());
+
+	return instance_;
+}
+
+void LogManager::ReleaseInstance(void)
+{
+	instance_.reset();
+}
+
 LogManager::LogManager(void)
 	: today_(0)
 	, log_mode_(LOG_MODE::LOG_MODE_NONE)
@@ -22,9 +37,9 @@ bool LogManager::Init(void)
 {
 	today_ = GetTodayInt();
 
-	log_mode_ = GetLogMode(CONFIG_MANAGER_INSTANCE.GetString("DServer", "LOG_MODE"));
-	log_directory_name_ = CONFIG_MANAGER_INSTANCE.GetString("DServer", "LOG_PATH");
-	log_file_name_ = CONFIG_MANAGER_INSTANCE.GetString("DServer", "LOG_FILE") + "_" + GetTodayStr() + ".log";
+	log_mode_ = GetLogMode(ConfigManager::GetInstance()->GetString("DServer", "LOG_MODE"));
+	log_directory_name_ = ConfigManager::GetInstance()->GetString("DServer", "LOG_PATH");
+	log_file_name_ = ConfigManager::GetInstance()->GetString("DServer", "LOG_FILE") + "_" + GetTodayStr() + ".log";
 
 	if (log_mode_ & LOG_MODE::LOG_MODE_FILE)
 	{
@@ -57,7 +72,11 @@ void LogManager::Write(LOG_LEVEL log_level, const char* format, ...)
 	va_list ap;
 	va_start(ap, format);
 	
+#ifdef _WIN32
 	vsprintf_s(log_message.GetBuffer(), MAX_LOG_MESSAGE_LENGTH - log_message.GetPosition(), format, ap);
+#else
+	vsprintf(log_message.GetBuffer(), format, ap);
+#endif
 
 	va_end(ap);
 
@@ -84,7 +103,7 @@ void LogManager::Run(void)
 				if (ofs_.is_open())
 					ofs_.close();
 
-				log_file_name_ = CONFIG_MANAGER_INSTANCE.GetString("DServer", "LOG_FILE") + "_" + GetTodayStr() + ".log";
+				log_file_name_ = ConfigManager::GetInstance()->GetString("DServer", "LOG_FILE") + "_" + GetTodayStr() + ".log";
 
 				boost::filesystem::path path("./" + log_directory_name_);
 

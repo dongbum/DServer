@@ -2,10 +2,10 @@
 
 int main(void)
 {
-	if (false == CONFIG_MANAGER_INSTANCE.Initialize("GameServerConfig.ini"))
+	if (false == ConfigManager::GetInstance()->Initialize("GameServerConfig.ini"))
 		return 0;
 
-	if (false == LOG_MANAGER_INSTANCE.Init())
+	if (false == LogManager::GetInstance()->Init())
 		return 0;
 
 	std::shared_ptr<GameServer> game_server(new GameServer);
