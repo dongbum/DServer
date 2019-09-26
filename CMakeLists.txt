@@ -5,7 +5,27 @@ PROJECT ( "DServer" )
 SET ( CMAKE_BUILD_TYPE Debug )
 SET ( CMAKE_VERBOSE_MAKEFILE false )
 
-SET ( CMAKE_C_COMPILER "g++" )
+SET ( GAMESERVER_OUTPUT "GameServer" )
+
+# SET ( CMAKE_C_COMPILER "g++" )
 
 ADD_SUBDIRECTORY ( src/dutil )
 ADD_SUBDIRECTORY ( src/dnetwork )
+
+SET ( GAMESERVER_SRC_FILES
+	src/game_server/main.cpp
+	src/game_server/game_user.cpp
+	src/game_server/game_server.cpp
+	src/game_server/protocol/game_protocol.cpp
+	src/game_server/protocol/game_protocol_chatting_req.cpp
+	src/game_server/protocol/BR_GS/bridge_protocol.cpp
+	)
+
+INCLUDE_DIRECTORIES (
+	/usr/include/jsoncpp
+	external_library/cpp_redis/includes
+	external_library/jemalloc/include
+	external_library/jsoncpp/include
+	)
+
+ADD_EXECUTABLE ( ${GAMESERVER_OUTPUT} ${GAMESERVER_SRC_FILES} )
