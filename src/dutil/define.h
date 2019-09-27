@@ -10,12 +10,6 @@
 #include <condition_variable>
 #include <stdarg.h>
 
-#ifdef _WIN32
-#include <windows.h>
-#include <assert.h>
-#include <dbghelp.h>
-#endif
-
 #ifdef _WIN64
 #	ifdef _DEBUG
 #		define LIB_NAME(LIB) LIB##"64D.lib"
@@ -60,6 +54,8 @@
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <Windows.h>
+#include <assert.h>
+#include <DbgHelp.h>
 #include <Psapi.h>
 #pragma comment(lib, "psapi.lib")
 #endif
