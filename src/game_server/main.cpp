@@ -12,8 +12,6 @@ int main(void)
 		ConfigManager::GetInstance()->GetString("DServer", "DUMP_PATH"),
 		ConfigManager::GetInstance()->GetString("DServer", "DUMP_FILENAME"));
 
-	CRASH;
-
 	std::shared_ptr<GameServer> game_server(new GameServer);
 	GameServer::SetServerInstance(std::static_pointer_cast<Server<GameUser>>(game_server));
 	game_server->Start();
