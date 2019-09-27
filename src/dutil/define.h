@@ -57,13 +57,19 @@
 #include <assert.h>
 #include <DbgHelp.h>
 #include <Psapi.h>
+#include <atlbase.h>
+#include <atlconv.h>
 #pragma comment(lib, "psapi.lib")
 #endif
 
 #define RECV_BUFFER_SIZE			1024
 #define SEND_BUFFER_SIZE			1024
 #define MAX_LOG_MESSAGE_LENGTH		1024
+#define MAX_FILE_NAME_LENGTH		256
+#define MAX_FILE_PATH_LENGTH		512
 #define MAX_DATETIME_SIZE			(19+1)
+
+#define UTC_SEOUL					9
 
 #define SAFE_DELETE(p)				{ if ( p ) delete p; p = nullptr; } 
 #define SAFE_DELETE_ARRAY(p)		{ if ( p ) delete[] p; p = nullptr; }
