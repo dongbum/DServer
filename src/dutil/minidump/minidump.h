@@ -13,6 +13,6 @@ public:
 
 private:
 	static long WINAPI UnhandledExceptionFilter(EXCEPTION_POINTERS* exception_ptr);
-	void CreateCurrentProcessCrashDump(MINIDUMP_TYPE dump_type, DWORD dwThread, EXCEPTION_POINTERS* exception_ptr);
+	void CreateCurrentProcessCrashDump(MINIDUMP_TYPE dump_type, TCHAR* filename, DWORD dwThread, EXCEPTION_POINTERS* exception_ptr);
 };
 #endif
