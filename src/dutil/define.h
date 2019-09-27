@@ -10,6 +10,12 @@
 #include <condition_variable>
 #include <stdarg.h>
 
+#ifdef _WIN32
+#include <windows.h>
+#include <assert.h>
+#include <dbghelp.h>
+#endif
+
 #ifdef _WIN64
 #	ifdef _DEBUG
 #		define LIB_NAME(LIB) LIB##"64D.lib"
