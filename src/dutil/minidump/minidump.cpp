@@ -2,41 +2,49 @@
 
 #ifdef _WIN32
 
-const TCHAR* const DBGHelpDllName = _T("DBGHELP.DLL");
-std::string Minidump::app_path = "";
-std::string Minidump::minidump_filename = "";
-
-std::shared_ptr<Minidump> Minidump::instance_ = nullptr;
-
-std::shared_ptr<Minidump> Minidump::GetInstance(void)
-{
-	if (nullptr == instance_)
-		instance_ = std::shared_ptr<Minidump>(new Minidump());
-
-	return instance_;
-}
-
-void Minidump::ReleaseInstance(void)
-{
-	instance_.reset();
-}
+std::string Minidump::app_path_ = "";
+std::string Minidump::minidump_filename_ = "";
+LPTOP_LEVEL_EXCEPTION_FILTER Minidump::PreviousExceptionFilter;
 
 Minidump::Minidump(void)
-	: pfn_write_dump(NULL)
-	, last_error(eINVALID_ERROR)
 {
+	PreviousExceptionFilter = nullptr;
+
+	_invalid_parameter_handler oldHandler, newHandler;
+	newHandler = myInvaildParameterHandler;
+
+	// CRT가 잘못된 인수를 발견할 때 호출할 함수를 설정
+	// return : A pointer to the invalid parameter handler before the call
+	oldHandler = _set_invalid_parameter_handler(newHandler);
+
+	// CRT 오류 메시지 표시 중단하고 바로 덤프로 남도록 함
+	_CrtSetReportMode(_CRT_WARN, 0);
+	_CrtSetReportMode(_CRT_ASSERT, 0);
+	_CrtSetReportMode(_CRT_ERROR, 0);
+
+	// 순수 가상 함수 호출에 대한 오류 처리
+	// pure virtual function called 에러 핸들러를 사용자 정의 함수로 우회
+	_set_purecall_handler(myPurecallHandler);
+
+	SetHandlerDump();
 }
 
 Minidump::~Minidump(void)
 {
+	SetUnhandledExceptionFilter(PreviousExceptionFilter);
 }
 
-bool Minidump::Init(std::string pAppPath, std::string pFileName)
+void Minidump::SetHandlerDump(void)
 {
-	app_path = pAppPath;
-	minidump_filename = pFileName;
+	PreviousExceptionFilter = SetUnhandledExceptionFilter(UnhandledExceptionFilter);
+}
 
-	SetUnhandledExceptionFilter(UnhandledExceptionFilter);
+bool Minidump::Init(std::string minidump_path, std::string minidump_filename)
+{
+	app_path_ = minidump_path;
+	minidump_filename_ = minidump_filename;
+
+	PreviousExceptionFilter = SetUnhandledExceptionFilter(UnhandledExceptionFilter);
 
 	return true;
 }
@@ -70,109 +78,65 @@ bool Minidump::CreateMinidumpDirectory(std::string directory_path)
 	return true;
 }
 
-long WINAPI Minidump::UnhandledExceptionFilter(EXCEPTION_POINTERS* exception_ptr)
+long Minidump::UnhandledExceptionFilter(EXCEPTION_POINTERS* exception_ptr)
 {
 	time_t curr_time = time(NULL);
 	struct tm* curr_tm = gmtime(&curr_time);
 	curr_tm->tm_hour = (curr_tm->tm_hour + UTC_SEOUL) % 24;
 
 	char buffer[1024] = "";
-	strftime(buffer, sizeof(buffer), "[%Y-%m-%d][%H:%M:%S]", curr_tm);
+	strftime(buffer, sizeof(buffer), "[%Y-%m-%d][%H%M%S]", curr_tm);
 
 	std::string full_path = "";
-	full_path += app_path;
-	full_path += "\\MiniDump_" + minidump_filename + "_";
+	full_path += app_path_;
+	full_path += "MiniDump_" + minidump_filename_ + "_";
 	full_path += std::string(buffer);
 	full_path += ".dmp";
 
-	if (false == CreateMinidumpDirectory(app_path))
+	std::cout << full_path.c_str() << std::endl;
+
+	if (false == CreateMinidumpDirectory(app_path_))
 		return EXCEPTION_EXECUTE_HANDLER;
 
-	CA2T full_path_t(full_path.c_str());
-	BSUMDRET eCCPMD = Minidump::GetInstance()->CreateCurrentProcessCrashDump(
-		(MINIDUMP_TYPE)(MiniDumpWithFullMemory),
-		full_path_t, GetCurrentThreadId(), exception_ptr);
+	USES_CONVERSION;
+	std::wstring full_path_t(A2W(full_path.c_str()));
 
-	_ASSERT(eDUMP_SUCCEEDED == eCCPMD);
-
-	return EXCEPTION_EXECUTE_HANDLER;
-}
-
-bool __stdcall Minidump::isMiniDumpFunctionAvailable(void)
-{
-	if (NULL != pfn_write_dump)
-	{
-		HINSTANCE hInstDBGHELP = GetModuleHandle(DBGHelpDllName);
-		if (NULL == hInstDBGHELP)
-			hInstDBGHELP = LoadLibrary(DBGHelpDllName);
-
-		if (NULL == hInstDBGHELP)
-		{
-			last_error = eDBGHELP_NOT_FOUND;
-			return false;
-		}
-
-		pfn_write_dump = (PFNMINIDUMPWRITEDUMP)GetProcAddress(hInstDBGHELP, "MiniDumpWriteDump");
-
-		if (NULL != pfn_write_dump)
-			last_error = eDUMP_SUCCEEDED;
-		else
-			last_error = eDBGHELP_MISSING_EXPORTS;
-	}
-
-	return (NULL != pfn_write_dump);
-}
-
-BSUMDRET __stdcall Minidump::CreateCurrentProcessCrashDump(MINIDUMP_TYPE dump_type, TCHAR* filename, DWORD dwThread, EXCEPTION_POINTERS* exception_ptr)
-{
-	BSUMDRET result = eOPEN_DUMP_FAILED;
-
-	_ASSERT(false == IsBadStringPtr(filename, MAX_PATH));
-	if (true == IsBadStringPtr(filename, MAX_PATH))
-		return eBAD_PARAM;
-
-	_ASSERT(false == IsBadReadPtr(exception_ptr, sizeof(EXCEPTION_POINTERS)));
-	if (true == IsBadReadPtr(exception_ptr, sizeof(EXCEPTION_POINTERS)))
-		return eBAD_PARAM;
-
-	_ASSERT(0 != dwThread);
-	if (0 == dwThread)
-		return eBAD_PARAM;
-
-	if ((NULL == pfn_write_dump) && (eINVALID_ERROR == last_error))
-	{
-		if (FALSE == isMiniDumpFunctionAvailable())
-			return last_error;
-	}
-
-	if (NULL == pfn_write_dump)
-		return last_error;
-
-	HANDLE file_handle = CreateFile(filename, GENERIC_READ | GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-	_ASSERT(INVALID_HANDLE_VALUE != file_handle);
+	wprintf(L"full_path_t : %s", full_path_t.c_str());
+	HANDLE file_handle = CreateFile(full_path_t.c_str(), GENERIC_WRITE, FILE_SHARE_WRITE, nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
 
 	if (INVALID_HANDLE_VALUE != file_handle)
 	{
+		std::cout << "111 START" << std::endl;
 		MINIDUMP_EXCEPTION_INFORMATION except_info;
-		except_info.ThreadId = dwThread;
+		except_info.ThreadId = GetCurrentThreadId();
 		except_info.ExceptionPointers = exception_ptr;
 		except_info.ClientPointers = TRUE;
 
-		BOOL dump_result = pfn_write_dump(GetCurrentProcess(), GetCurrentProcessId(), file_handle, dump_type, &except_info, NULL, NULL);
-		_ASSERT(TRUE == dump_result);
-
-		if (TRUE == dump_result)
-			last_error = eDUMP_SUCCEEDED;
-		else
-			last_error = eMINIDUMPWRITEDUMP_FAILED;
+		MiniDumpWriteDump(GetCurrentProcess(), GetCurrentProcessId(), file_handle, MiniDumpWithFullMemory, &except_info, nullptr, nullptr);
 
 		CloseHandle(file_handle);
 	}
 	else
 	{
-		last_error = eOPEN_DUMP_FAILED;
+		std::cout << "111 - 1111 START" << std::endl;
 	}
 
-	return last_error;
+	return EXCEPTION_EXECUTE_HANDLER;
 }
+
+void Minidump::myInvaildParameterHandler(const wchar_t * expression, const wchar_t * function, const wchar_t * file, unsigned int lien, uintptr_t pReserverd)
+{
+	CRASH
+}
+
+void Minidump::_custom_Report_hook(int ireposttype, char * message, int * returnvalue)
+{
+	CRASH
+}
+
+void Minidump::myPurecallHandler(void)
+{
+	CRASH
+}
+
 #endif

@@ -28,6 +28,7 @@
 #pragma comment(lib, LIB_NAME("lib_json"))
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
+#pragma comment(lib, "dbghelp.lib")
 
 #ifdef USE_SSL
 #pragma comment(lib, "libcrypto.lib")
@@ -56,6 +57,7 @@
 #include <Windows.h>
 #include <assert.h>
 #include <DbgHelp.h>
+#include <crtdbg.h>
 #include <Psapi.h>
 #include <atlbase.h>
 #include <atlconv.h>
@@ -71,6 +73,7 @@
 
 #define UTC_SEOUL					9
 
+#define CRASH						{ char *p = 0; *p = 1; }
 #define SAFE_DELETE(p)				{ if ( p ) delete p; p = nullptr; } 
 #define SAFE_DELETE_ARRAY(p)		{ if ( p ) delete[] p; p = nullptr; }
 
