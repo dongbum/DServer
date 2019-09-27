@@ -52,6 +52,9 @@
     <Filter Include="소스 파일\database\excel\excelformat">
       <UniqueIdentifier>{7f14e0d0-8fb6-47ba-af46-37e474f87576}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\minidump">
+      <UniqueIdentifier>{2e8596bf-8aae-45ff-9164-d8442eac728e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -129,6 +132,9 @@
     <ClInclude Include="..\..\src\dutil\database\redis\redis_conn.h">
       <Filter>소스 파일\database\redis</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\dutil\minidump\minidump.h">
+      <Filter>소스 파일\minidump</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\dutil\stdafx.cpp">
@@ -169,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\dutil\database\redis\redis_conn.cpp">
       <Filter>소스 파일\database\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dutil\minidump\minidump.cpp">
+      <Filter>소스 파일\minidump</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
