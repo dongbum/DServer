@@ -94,3 +94,4 @@
 #include "database/redis/redis_conn.h"
 #include "monitor/system_resource_monitor.h"
 #include "object_pool.h"
+#include "minidump/minidump.h"
