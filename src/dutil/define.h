@@ -28,6 +28,7 @@
 #pragma comment(lib, LIB_NAME("lib_json"))
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
+#pragma comment(lib, "dbghelp.lib")
 
 #ifdef USE_SSL
 #pragma comment(lib, "libcrypto.lib")
@@ -54,15 +55,25 @@
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <Windows.h>
+#include <assert.h>
+#include <DbgHelp.h>
+#include <crtdbg.h>
 #include <Psapi.h>
+#include <atlbase.h>
+#include <atlconv.h>
 #pragma comment(lib, "psapi.lib")
 #endif
 
 #define RECV_BUFFER_SIZE			1024
 #define SEND_BUFFER_SIZE			1024
 #define MAX_LOG_MESSAGE_LENGTH		1024
+#define MAX_FILE_NAME_LENGTH		256
+#define MAX_FILE_PATH_LENGTH		512
 #define MAX_DATETIME_SIZE			(19+1)
 
+#define UTC_SEOUL					9
+
+#define CRASH						{ char *p = 0; *p = 1; }
 #define SAFE_DELETE(p)				{ if ( p ) delete p; p = nullptr; } 
 #define SAFE_DELETE_ARRAY(p)		{ if ( p ) delete[] p; p = nullptr; }
 
@@ -88,3 +99,4 @@
 #include "database/redis/redis_conn.h"
 #include "monitor/system_resource_monitor.h"
 #include "object_pool.h"
+#include "minidump/minidump.h"

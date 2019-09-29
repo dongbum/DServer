@@ -111,6 +111,7 @@
     <ClInclude Include="..\..\src\dutil\logging\log_manager.h" />
     <ClInclude Include="..\..\src\dutil\logging\log_message.h" />
     <ClInclude Include="..\..\src\dutil\memorypool\memory_pool.h" />
+    <ClInclude Include="..\..\src\dutil\minidump\minidump.h" />
     <ClInclude Include="..\..\src\dutil\monitor\system_resource_monitor.h" />
     <ClInclude Include="..\..\src\dutil\object_pool.h" />
     <ClInclude Include="..\..\src\dutil\stdafx.h" />
@@ -129,6 +130,7 @@
     <ClCompile Include="..\..\src\dutil\database\mysql\mysql_example.cpp" />
     <ClCompile Include="..\..\src\dutil\database\redis\redis_conn.cpp" />
     <ClCompile Include="..\..\src\dutil\logging\log_manager.cpp" />
+    <ClCompile Include="..\..\src\dutil\minidump\minidump.cpp" />
     <ClCompile Include="..\..\src\dutil\monitor\system_resource_monitor.cpp" />
     <ClCompile Include="..\..\src\dutil\stdafx.cpp" />
   </ItemGroup>
