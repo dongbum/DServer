@@ -1,6 +1,6 @@
 #pragma once
 
-#include "excelformat/excelformat.h"
+#include <ExcelFormat.h>
 
 class ExcelConn
 {

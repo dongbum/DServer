@@ -10,8 +10,6 @@ SET ( DUTIL_OUTPUT "dutil" )
 SET ( DUTIL_SRC_FILES
 	config/config.cpp
 	database/excel/excel_conn.cpp
-	database/excel/excelformat/basicexcel.cpp
-	database/excel/excelformat/excelformat.cpp
 	database/mssql/mssql_conn.cpp
 	database/mssql/mssql_conn_pool.cpp
 	database/mysql/mysql_conn.cpp
@@ -28,6 +26,7 @@ SET ( CMAKE_C_COMPILER "g++" )
 INCLUDE_DIRECTORIES (
        	/usr/include/jsoncpp
 	../../external_library/cpp_redis/includes
+	../../external_library/ExcelFormat/src
 	)
 
 LINK_LIBRARIES (

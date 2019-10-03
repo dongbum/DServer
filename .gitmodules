@@ -4,3 +4,6 @@
 [submodule "external_library/jsoncpp"]
 	path = external_library/jsoncpp
 	url = https://github.com/open-source-parsers/jsoncpp.git
+[submodule "external_library/ExcelFormat"]
+	path = external_library/ExcelFormat
+	url = https://github.com/dongbum/ExcelFormat.git

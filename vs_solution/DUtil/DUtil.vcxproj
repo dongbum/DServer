@@ -59,7 +59,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;BOOST_ASIO_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\external_library\mysql-connector\include;$(OPENSSL_INCLUDE);$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;..\..\external_library\cpp_redis\tacopie\includes;..\..\external_library\cpp_redis\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\external_library\mysql-connector\include;$(OPENSSL_INCLUDE);$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;..\..\external_library\cpp_redis\tacopie\includes;..\..\external_library\cpp_redis\includes;..\..\external_library\ExcelFormat\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
       <PrecompiledHeaderFile>
@@ -79,7 +79,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;BOOST_ASIO_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\external_library\mysql-connector\include;$(OPENSSL_INCLUDE);$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;..\..\external_library\cpp_redis\tacopie\includes;..\..\external_library\cpp_redis\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\external_library\mysql-connector\include;$(OPENSSL_INCLUDE);$(BOOST_INCLUDE);..\..\external_library\jemalloc\include;..\..\external_library\jsoncpp\include;..\..\external_library\cpp_redis\tacopie\includes;..\..\external_library\cpp_redis\includes;..\..\external_library\ExcelFormat\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -96,8 +96,6 @@
     <ClInclude Include="..\..\src\dutil\config\config.h" />
     <ClInclude Include="..\..\src\dutil\container\thread_safe_queue.h" />
     <ClInclude Include="..\..\src\dutil\database.h" />
-    <ClInclude Include="..\..\src\dutil\database\excel\excelformat\basicexcel.hpp" />
-    <ClInclude Include="..\..\src\dutil\database\excel\excelformat\excelformat.h" />
     <ClInclude Include="..\..\src\dutil\database\excel\excel_conn.h" />
     <ClInclude Include="..\..\src\dutil\database\mssql\mssql_conn.h" />
     <ClInclude Include="..\..\src\dutil\database\mssql\mssql_conn_pool.h" />
@@ -120,8 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\dutil\config\config.cpp" />
-    <ClCompile Include="..\..\src\dutil\database\excel\excelformat\basicexcel.cpp" />
-    <ClCompile Include="..\..\src\dutil\database\excel\excelformat\excelformat.cpp" />
     <ClCompile Include="..\..\src\dutil\database\excel\excel_conn.cpp" />
     <ClCompile Include="..\..\src\dutil\database\mssql\mssql_conn.cpp" />
     <ClCompile Include="..\..\src\dutil\database\mssql\mssql_conn_pool.cpp" />
