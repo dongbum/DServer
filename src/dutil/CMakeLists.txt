@@ -28,6 +28,7 @@ SET ( CMAKE_C_COMPILER "g++" )
 INCLUDE_DIRECTORIES (
        	/usr/include/jsoncpp
 	../../external_library/cpp_redis/includes
+	../../external_library/ExcelFormat/src
 	)
 
 LINK_LIBRARIES (

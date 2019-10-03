@@ -26,6 +26,7 @@ INCLUDE_DIRECTORIES (
 	external_library/cpp_redis/includes
 	external_library/jemalloc/include
 	external_library/jsoncpp/include
+	external_library/ExcelFormat/src
 	)
 
 LINK_DIRECTORIES (
