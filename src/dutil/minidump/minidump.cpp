@@ -81,11 +81,12 @@ bool Minidump::CreateMinidumpDirectory(std::string directory_path)
 long Minidump::UnhandledExceptionFilter(EXCEPTION_POINTERS* exception_ptr)
 {
 	time_t curr_time = time(NULL);
-	struct tm* curr_tm = gmtime(&curr_time);
-	curr_tm->tm_hour = (curr_tm->tm_hour + UTC_SEOUL) % 24;
+	struct tm curr_tm;
+	gmtime_s(&curr_tm, &curr_time);
+	curr_tm.tm_hour = (curr_tm.tm_hour + UTC_SEOUL) % 24;
 
 	char buffer[1024] = "";
-	strftime(buffer, sizeof(buffer), "[%Y-%m-%d][%H%M%S]", curr_tm);
+	strftime(buffer, sizeof(buffer), "[%Y-%m-%d][%H%M%S]", &curr_tm);
 
 	std::string full_path = "";
 	full_path += app_path_;
