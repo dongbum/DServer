@@ -12,7 +12,7 @@ This is not yet release version.
 Cross-platform game server using Boost.ASIO.
 
 ### Requirement
-* VS2015+ for MS Windows
+* VS2019 for MS Windows
 * GCC 7.4.0 for Linux (Tested on Ubuntu 18.04)
 * C++11 complier
 * Boost 1.70 or above
