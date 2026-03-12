@@ -29,7 +29,7 @@ public:
 	uint32_t		GetUInt(void);
 	uint64_t		GetUInt64(void);
 	double			GetDouble(void);
-	const char*		GetString(void);
+	std::string		GetString(void);
 	bool			GetBool(void);
 private:
 	sql::Driver*				driver_;
