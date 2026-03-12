@@ -1,4 +1,4 @@
-ï»¿#include "define.h"
+#include "define.h"
 
 BasicSocket::BasicSocket(IoContext& io_context)
 	: socket_(io_context)
@@ -8,7 +8,7 @@ BasicSocket::BasicSocket(IoContext& io_context)
 {
 	memset(recv_buffer_, 0, RECV_BUFFER_SIZE);
 	memset(send_buffer_, 0, SEND_BUFFER_SIZE);
-	memset(packet_buffer_, 0, RECV_BUFFER_SIZE);
+	memset(packet_buffer_, 0, sizeof(packet_buffer_));
 
 	if (ConfigManager::GetInstance()->GetBool("DServer", "USE_ECHO_TEST"))
 	{
@@ -86,7 +86,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 		return;
 	}
 
-	// íŒ¨í‚·ì„ ë‹´ì•„ë‘˜ ë²„í¼ì— ìˆ˜ì‹ ë²„í¼ì˜ ë‚´ìš©ì„ ë³µì‚¬í•œë‹¤.
+	// ÆĞÅ¶À» ´ã¾ÆµÑ ¹öÆÛ¿¡ ¼ö½Å¹öÆÛÀÇ ³»¿ëÀ» º¹»çÇÑ´Ù.
 	memcpy(&packet_buffer_[remain_size_], recv_buffer_, bytes_transferred);
 
 	uint32_t packet_data_size = remain_size_ + static_cast<uint32_t>(bytes_transferred);
@@ -98,15 +98,23 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 			break;
 
 		Header* header = (Header*)&packet_buffer_[read_position];
+		const int32_t total_length = header->GetTotalLength();
 
-		if (static_cast<uint32_t>(header->GetTotalLength()) <= packet_data_size)
+		if (total_length < static_cast<int32_t>(sizeof(Header)) || total_length > static_cast<int32_t>(sizeof(packet_buffer_)))
 		{
-			// íŒ¨í‚· ì²˜ë¦¬
+			LL_DEBUG("Invalid packet length:[%d]", total_length);
+			OnClose();
+			return;
+		}
 
-			OnPacket(&packet_buffer_[read_position], header->GetTotalLength());
+		if (static_cast<uint32_t>(total_length) <= packet_data_size)
+		{
+			// ÆĞÅ¶ Ã³¸®
 
-			packet_data_size -= header->GetTotalLength();
-			read_position += header->GetTotalLength();
+			OnPacket(&packet_buffer_[read_position], total_length);
+
+			packet_data_size -= total_length;
+			read_position += total_length;
 		}
 		else
 		{
@@ -121,7 +129,7 @@ void BasicSocket::OnReceiveHandler(const ErrorCode& error, size_t bytes_transfer
 			packet_data_size = RECV_BUFFER_SIZE;
 		}
 
-		// ë‚¨ì€ ë°ì´í„°ê°€ ìˆë‹¤ë©´ íŒ¨í‚·ë²„í¼ ë§¨ ì•ìœ¼ë¡œ ì´ë™í•œë‹¤.
+		// ³²Àº µ¥ÀÌÅÍ°¡ ÀÖ´Ù¸é ÆĞÅ¶¹öÆÛ ¸Ç ¾ÕÀ¸·Î ÀÌµ¿ÇÑ´Ù.
 		memmove(&packet_buffer_[0], &packet_buffer_[read_position], packet_data_size);
 	}
 

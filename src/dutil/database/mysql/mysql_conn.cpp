@@ -58,7 +58,7 @@ void MySQLConn::Disconnect(void)
 
 void MySQLConn::PrepareQuery(char* query_info)
 {
-	param_index_ = 0;
+	param_index_ = 1;
 	pstmt_ = conn_->prepareStatement(sql::SQLString(query_info));
 }
 
@@ -154,10 +154,9 @@ double MySQLConn::GetDouble(void)
 }
 
 
-const char* MySQLConn::GetString(void)
+std::string MySQLConn::GetString(void)
 {
-	sql::SQLString result_str = resultset_->getString(column_index_++);
-	return result_str.c_str();
+	return resultset_->getString(column_index_++).asStdString();
 }
 
 

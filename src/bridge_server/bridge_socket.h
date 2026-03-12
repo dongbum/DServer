@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 class BridgeSocket : public BasicSocket, public BridgeProtocol
 {
 public:
@@ -14,13 +12,22 @@ public:
 
 	void OnPacket(char* packet, int size) override
 	{
-		// std::cout << "GameSocket OnPacket size:" << size << std::endl;
 		Header header;
 		memcpy(&header, packet, sizeof(Header));
 
-		// std::cout << "Header.TotalLength : " << header.GetTotalLength() << std::endl;
-		// std::cout << "Header.ProtocolNo : " << header.GetProtocolNo() << std::endl;
-		// std::cout << "Header.DataLength : " << header.GetDataLength() << std::endl;
+		if (header.GetTotalLength() != size)
+		{
+			LL_DEBUG("Invalid packet size. total:[%d] size:[%d]", header.GetTotalLength(), size);
+			OnClose();
+			return;
+		}
+
+		if (header.GetDataLength() < 0 || header.GetDataLength() > (size - static_cast<int>(sizeof(Header))) || header.GetDataLength() > RECV_BUFFER_SIZE)
+		{
+			LL_DEBUG("Invalid packet data length:[%d]", header.GetDataLength());
+			OnClose();
+			return;
+		}
 
 		char body[RECV_BUFFER_SIZE] = { 0, };
 		memcpy(body, &packet[sizeof(Header)], header.GetDataLength());
