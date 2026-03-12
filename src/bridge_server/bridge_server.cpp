@@ -2,7 +2,7 @@
 
 BridgeServer::BridgeServer(void)
 	: Server(
-		ConfigManager::GetInstance()->GetInt32("DServer", "GAME_PORT"),
+		ConfigManager::GetInstance()->GetInt32("BRIDGE_SERVER", "PORT"),
 		ConfigManager::GetInstance()->GetInt32("DServer", "MAX_SESSION_COUNT")
 	)
 {

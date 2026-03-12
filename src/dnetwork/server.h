@@ -82,8 +82,7 @@ void Server<T>::CreateThreadPool(void)
 
 	for (int32_t i = 0; i < static_cast<int32_t>(thread_pool_size_); ++i)
 	{
-		boost::thread io_thread(boost::bind(&boost::asio::io_context::run, &io_context_));
-		io_thread_group_.add_thread(&io_thread);
+		io_thread_group_.create_thread(boost::bind(&boost::asio::io_context::run, &io_context_));
 	}
 
 	LL_DEBUG("Created Thread. [%d]", thread_pool_size_);
